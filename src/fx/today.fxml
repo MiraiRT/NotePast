@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.Controller">
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.ControllerToday">
     <children>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="140.0" style="-fx-background-color: #388ABD;">
             <children>
@@ -78,12 +78,12 @@
                 </Button>
             </children>
         </Pane>
-      <ImageView layoutX="572.0" layoutY="46.0">
+      <ImageView layoutX="572.0" layoutY="46.0" onMouseClicked="#addEvent">
          <image>
-            <Image url="@../images/add.png" />
+            <Image fx:id="addButton" url="@../images/add.png" />
          </image>
       </ImageView>
-      <Label layoutX="183.0" layoutY="42.0" text="11 NOVEMBER 2018" textFill="#388abd">
+      <Label fx:id="dateToday" layoutX="183.0" layoutY="42.0" textFill="#388abd">
          <font>
             <Font name="Segoe UI Bold" size="25.0" />
          </font>
@@ -95,14 +95,14 @@
       </Pagination>
       <AnchorPane layoutX="185.0" layoutY="88.0" prefWidth="411.0">
          <children>
-            <Pane prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+            <Pane fx:id="event1" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
                <children>
-                  <Label layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                  <Label fx:id="timeEvent1" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
+                  <Label fx:id="event1Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i a" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -114,14 +114,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="218.0" layoutY="1.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+            <Pane fx:id="event2" layoutX="218.0" layoutY="1.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
                <children>
-                  <Label layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                  <Label fx:id="timeEvent2" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
+                  <Label fx:id="event2Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -133,14 +133,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="113.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+            <Pane fx:id="event3" layoutY="113.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
                <children>
-                  <Label layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                  <Label fx:id="timeEvent3" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
+                  <Label fx:id="event3Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -152,14 +152,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="218.0" layoutY="114.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+            <Pane fx:id="event4" layoutX="218.0" layoutY="114.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
                <children>
-                  <Label layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                  <Label fx:id="timeEvent4" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
+                  <Label fx:id="event4Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -171,14 +171,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="223.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+            <Pane fx:id="event5" layoutY="223.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
                <children>
-                  <Label layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                  <Label fx:id="timeEvent5" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
+                  <Label fx:id="event5Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -190,14 +190,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="218.0" layoutY="224.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+            <Pane fx:id="event6" layoutX="218.0" layoutY="224.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
                <children>
-                  <Label layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                  <Label fx:id="timeEvent6" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
+                  <Label fx:id="event6Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -211,18 +211,18 @@
             </Pane>
          </children>
       </AnchorPane>
-      <Group layoutX="140.0">
+      <Group fx:id="addBox" layoutX="140.0" visible="false">
          <children>
             <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" />
             <Pane layoutX="93.0" layoutY="135.0" prefHeight="221.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #388ADB; -fx-border-radius: 10;">
                <children>
                   <Line endX="214.0" layoutX="101.0" layoutY="40.0" startX="-100.0" stroke="#388adb" />
-                  <TextArea cacheShape="false" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
+                  <TextArea fx:id="textEvent" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextArea>
-                  <TextField alignment="CENTER" focusTraversable="false" layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="35.0" text="21">
+                  <TextField fx:id="HH" alignment="CENTER" focusTraversable="false" layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="35.0" text="21">
                      <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
@@ -232,12 +232,13 @@
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" focusTraversable="false" layoutX="57.0" layoutY="8.0" prefHeight="28.0" prefWidth="35.0" text="00">
+                  <TextField fx:id="MM" alignment="CENTER" focusTraversable="false" layoutX="57.0" layoutY="8.0" prefHeight="28.0" prefWidth="35.0" text="00">
                      <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Button layoutX="109.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="DONE" textFill="WHITE">
+                  <Button fx:id="doneNewevent" layoutX="109.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                          onMouseReleased="#doneEvent" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="DONE" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -246,6 +247,42 @@
                   <Button layoutX="281.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button" visible="false" />
                   <Line endX="-80.0" endY="20.0" layoutX="381.0" layoutY="10.0" startX="-95.0" startY="5.0" stroke="#388abd" strokeWidth="3.0" />
                   <Line endX="-114.0" endY="14.0" layoutX="400.0" layoutY="16.0" startX="-99.0" startY="-1.0" stroke="#388abd" strokeWidth="3.0" />
+               </children>
+            </Pane>
+         </children>
+      </Group>
+      <Group layoutX="140.0" visible="false">
+         <children>
+            <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" visible="false" />
+            <Pane layoutX="85.0" layoutY="180.0" prefHeight="142.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #388ABD;" visible="false">
+               <children>
+                  <Line endX="233.0" layoutX="101.0" layoutY="38.0" startX="-100.0" stroke="#388abd" />
+                  <Label layoutX="132.0" layoutY="9.0" text="Notepast" textFill="#1d1f1f">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="64.0" layoutY="62.0" text="Are you sure to delete this event?" textFill="#1d1f1f">
+                     <font>
+                        <Font name="Segoe UI" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="50.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="Yes" textFill="WHITE">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="186.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-border-color: #388ABD; -fx-border-radius: 20; -fx-background-color: white; -fx-background-radius: 20;" text="No" textFill="#388abd">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>
