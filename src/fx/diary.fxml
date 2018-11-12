@@ -4,15 +4,15 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane fx:controller="fx.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.Controller">
     <children>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="140.0" style="-fx-background-color: #388ABD;">
             <children>
@@ -36,7 +36,7 @@
                         </Label>
                     </children>
                 </Group>
-                <Label layoutX="40.0" layoutY="181.0" text="DIARY" textFill="#1d1f1f">
+                <Label layoutX="40.0" layoutY="183.0" text="DIARY" textFill="#1d1f1f">
                     <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                     </font>
@@ -44,7 +44,7 @@
                 <Group fx:id="menuDiary" layoutY="171.0" visible="true">
                     <children>
                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #1D1F1F;" />
-                        <Label layoutX="40.0" layoutY="10.0" text="DIARY" textFill="WHITE">
+                        <Label layoutX="40.0" layoutY="12.0" text="DIARY" textFill="WHITE">
                             <font>
                                 <Font name="Segoe UI Bold" size="20.0" />
                             </font>
@@ -66,22 +66,7 @@
                         </Label>
                     </children>
                 </Group>
-                <Label layoutX="29.0" layoutY="279.0" text="SETTING" textFill="#1d1f1f">
-                    <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Group fx:id="menuSetting" layoutY="267.0" visible="false">
-                    <children>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #1D1F1F;" />
-                        <Label layoutX="29.0" layoutY="12.0" text="SETTING" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Bold" size="20.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Group>
-                <Button layoutX="21.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: white; -fx-border-radius: 20;" text="LOG OUT">
+                <Button layoutX="21.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="LOG OUT">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -91,5 +76,86 @@
                 </Button>
             </children>
         </Pane>
+        <Pagination layoutX="184.0" layoutY="85.0" maxPageIndicatorCount="5" pageCount="500" prefHeight="385.0" prefWidth="413.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Pagination>
+        <Label layoutX="183.0" layoutY="42.0" text="DIARY" textFill="#388abd">
+            <font>
+                <Font name="Segoe UI Bold" size="25.0" />
+            </font>
+        </Label>
+      <TextField layoutX="392.0" layoutY="45.0" prefHeight="26.0" prefWidth="182.0" promptText="Search Diary" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="581.0" layoutY="50.0">
+         <image>
+            <Image url="@../images/glass2.png" />
+         </image>
+      </ImageView>
+      <Group layoutX="185.0" layoutY="86.0">
+         <children>
+            <Pane prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="55.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="110.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="165.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="220.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="275.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Group>
     </children>
 </AnchorPane>
