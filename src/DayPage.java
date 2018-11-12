@@ -1,56 +1,73 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class DayPage {
-    private String dayStr;
     private int dayID;
-    private int numOfEvent = 0;
-    private List stackOfEvent;
+    private List<Event> stackOfEvent;
 
-    private static Date date = new Date();
-    private static String time;
-    private static String timeID;
-
-    public DayPage(String dayStr,int dayID){
-        this.dayStr = dayStr;
+    public DayPage(int dayID){
         this.dayID = dayID;
-        this.stackOfEvent = null;
+        this.stackOfEvent = new ArrayList<>();
     }
 
     public int getDayID() {
         return dayID;
     }
 
-    public int getNumOfEvent() {
-        return numOfEvent;
+    public void addEventToStack(Event newEvent){
+        stackOfEvent.add(newEvent);
     }
 
-    public boolean createEvent() {
-        /**
-         *
-         *
-         Insert UI Here
-         *
-         *
-         **/
-        boolean isSave = true;
-        if (isSave) {
-            getCurrentTime();
-            stackOfEvent.add(new Event(time,timeID));
-            numOfEvent++;
-            return true;
-        } else {
-            return false;
+    public static int genDayID() {
+        // Get System Time -> Convert to String Format //
+        String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+        dayStr = dayStr.substring(2);
+        int ID = 0;
+        for(int i = 0; i<dayStr.length(); i++) {
+            ID = ID + ((dayStr.charAt(i)-48)*(int)(Math.pow(10,dayStr.length()-1-i)));
         }
+        return ID;
     }
 
-    private static void getCurrentTime() {
-        time = (new SimpleDateFormat("HH:mm:ss")).format(date);
-        timeID = (new SimpleDateFormat("HHmmss")).format(date);
+    public static boolean createDayPage(NotePast user) {
+        int ID = DayPage.genDayID();
+        // Convert String to Int //
+        if (ID > NotePast.getTodayID()) {
+            // Add New DayPage (another day) to Stack //
+            user.addDayPageToStack(new DayPage(ID));
+            NotePast.setTodayID(ID);
+            // DayPage Added Alert: ***Insert UI Here*** //
+            return true;
+        }
+        // Create Today, Yesterday or Past -> Unexpected Case: ***Insert UI Here*** //
+        return false;
     }
 
+    public boolean deleteDayPage(NotePast user,int targetID) {
+        if (targetID < NotePast.getTodayID()) {
+            int i = 0;
+            while(true) {
+                if(i >= user.getStackOfDayPage().size()){
+                    // Didn't Found DayPage: ***Insert UI Here*** //
+                    return false;
+                }
+                if(user.getStackOfDayPage().get(i).getDayID() == targetID){
+                    // Found DayPage -> Confirm Delete: ***Insert UI Here*** //
+                    user.getStackOfDayPage().remove(i);
+                    // DayPage Removed: ***Update DB Here*** //
+                    return true;
+                }
+                i++;
+            }
+        }
+        // Delete Today and Tomorrow Case -> Unexpected Case: ***Insert UI Here*** //
+        return false;
+    }
+
+    @Override
     public String toString() {
-        return "Day: " + dayStr + " ID: " + dayID + "\n";
+        return "ID: " + dayID + "\n";
     }
 }
