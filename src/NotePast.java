@@ -44,8 +44,10 @@ public class NotePast {
             String dayFormat = new SimpleDateFormat("yyyy.MM.dd").format(new Date());
             user.stackOfDayPage.add(new DayPage(dayFormat,ID));
             todayID = ID;
+            // DayPage Added Alert: ***Insert UI Here*** //
             return true;
         }
+        // Create Yesterday or Past -> Unexpected Case: ***Insert UI Here*** //
         return false;
     }
 
@@ -54,16 +56,18 @@ public class NotePast {
             int i = 0;
             while(true) {
                 if(i >= user.stackOfDayPage.size()){
-                    // Insert
+                    // Didn't Found DayPage: ***Insert UI Here*** //
                     return false;
                 }
                 if(user.stackOfDayPage.get(i).getDayID() == targetID){
+                    // Found DayPage -> Confirm Delete: ***Insert UI Here*** //
                     user.stackOfDayPage.remove(i);
                     return true;
                 }
                 i++;
             }
         }
+        // Delete Today and Tomorrow Case -> Unexpected Case: ***Insert UI Here*** //
         return false;
     }
 
