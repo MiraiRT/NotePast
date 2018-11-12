@@ -81,10 +81,13 @@ public class Event {
     }
 
     public static void main(String[] args) {
-        DayPage testPage = new DayPage(DayPage.genDayID());
-        addEvent(testPage);
-        addEvent(testPage);
-        addEvent(testPage);
-        System.out.println(testPage.getStackOfEvent());
+        NotePast x = new NotePast(new Account());
+
+        DayPage.createDayPage(x);
+
+        addEvent(x.getStackOfDayPage().get(0));
+        addEvent(x.getStackOfDayPage().get(0));
+        addEvent(x.getStackOfDayPage().get(0));
+        System.out.println(x.getStackOfDayPage().get(0).getStackOfEvent());
     }
 }
