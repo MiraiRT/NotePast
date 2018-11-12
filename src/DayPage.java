@@ -3,19 +3,23 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class DayPage {
-    private String day;
+    private String dayStr;
+    private int dayID;
     private int numOfEvent = 0;
-    private List stack;
+    private List stackOfEvent;
 
     private static Date date = new Date();
     private static String time;
     private static String timeID;
-    private static String dayID;
 
-    public DayPage(String day,String dayID){
-        this.day = day;
+    public DayPage(String dayStr,int dayID){
+        this.dayStr = dayStr;
         this.dayID = dayID;
-        this.stack = null;
+        this.stackOfEvent = null;
+    }
+
+    public int getDayID() {
+        return dayID;
     }
 
     public int getNumOfEvent() {
@@ -33,7 +37,7 @@ public class DayPage {
         boolean isSave = true;
         if (isSave) {
             getCurrentTime();
-            stack.add(new Event(time,timeID));
+            stackOfEvent.add(new Event(time,timeID));
             numOfEvent++;
             return true;
         } else {
@@ -44,5 +48,9 @@ public class DayPage {
     private static void getCurrentTime() {
         time = (new SimpleDateFormat("HH:mm:ss")).format(date);
         timeID = (new SimpleDateFormat("HHmmss")).format(date);
+    }
+
+    public String toString() {
+        return "Day: " + dayStr + " ID: " + dayID + "\n";
     }
 }
