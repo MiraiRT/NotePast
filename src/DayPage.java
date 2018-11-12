@@ -16,6 +16,10 @@ public class DayPage {
         return dayID;
     }
 
+    public List<Event> getStackOfEvent() {
+        return stackOfEvent;
+    }
+
     public void addEventToStack(Event newEvent){
         stackOfEvent.add(newEvent);
     }
@@ -45,7 +49,7 @@ public class DayPage {
         return false;
     }
 
-    public boolean deleteDayPage(NotePast user,int targetID) {
+    public static boolean deleteDayPage(NotePast user,int targetID) {
         if (targetID < NotePast.getTodayID()) {
             int i = 0;
             while(true) {

@@ -23,6 +23,14 @@ public class Event {
         this.numOfEvent++;
     }
 
+    public int getEventID() {
+        return eventID;
+    }
+
+    public int getEventID2() {
+        return eventID2;
+    }
+
     public String getNoteText() {
         return noteText;
     }
@@ -47,23 +55,36 @@ public class Event {
         return true;
     }
 
-    public static boolean editEvent(DayPage todayPage){
-        // To do //
+    public static boolean editEvent(DayPage todayPage,int targetID,int targetID2){
+        for(int i = 0; i< todayPage.getStackOfEvent().size();i++) {
+            if (todayPage.getStackOfEvent().get(i).getEventID() == targetID && todayPage.getStackOfEvent().get(i).getEventID2() == targetID2) {
+                // Change of Selected Event //
+                return true;
+            }
+        }
         return false;
     }
 
-    public static boolean deleteEvent(DayPage todayPage){
-        // To do //
+    public static boolean deleteEvent(DayPage todayPage,int targetID,int targetID2){
+        for(int i = 0; i< todayPage.getStackOfEvent().size();i++) {
+            if (todayPage.getStackOfEvent().get(i).getEventID() == targetID && todayPage.getStackOfEvent().get(i).getEventID2() == targetID2) {
+                todayPage.getStackOfEvent().remove(i);
+                return true;
+            }
+        }
         return false;
     }
 
     public String toString() {
-        return "ID1: " + eventID + "\n" + "ID2: " + eventID2 + "\n";
+        return "ID1: " + eventID + "\n" + "ID2: " + eventID2 + "\n"
+                + "Text:" + noteText + "\n";
     }
 
     public static void main(String[] args) {
-        String day = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        String time = (new SimpleDateFormat("HHmm")).format(new Date());
-        System.out.println(genEventID(time));
+        DayPage testPage = new DayPage(DayPage.genDayID());
+        addEvent(testPage);
+        addEvent(testPage);
+        addEvent(testPage);
+        System.out.println(testPage.getStackOfEvent());
     }
 }
