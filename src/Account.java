@@ -1,5 +1,6 @@
 import javax.persistence.*;
-import java.io.Serializable;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,14 +12,11 @@ public class Account implements Serializable {
 //    private NotePast book;
     @OneToMany(mappedBy = "account")
     private NotePast book = new NotePast();
-    private NotePast book;
-    private Searching searchBook;
+//    private Searching searchBook = new Searching();
 
     public Account(String userName,String password) {
         this.userName = userName;
         this.password = password;
-        this.book = new NotePast();
-        this.searchBook = new Searching();
     }
 
     public String getUserName() {
@@ -109,7 +107,7 @@ public class Account implements Serializable {
     public static void main(String[] args) {
 
         EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("C:/Users/HP/Downloads/objectdb-2.7.6/db/test05.odb");
+                Persistence.createEntityManagerFactory("C:/Users/HP/Downloads/objectdb-2.7.6/db/test06.odb");
         EntityManager em = emf.createEntityManager();
 
         Account x = new Account("A","tatatata");
