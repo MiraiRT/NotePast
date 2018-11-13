@@ -11,7 +11,7 @@ public class Event {
     private String noteText;
 
     private static int numOfEvent = 0;
-    private List<String> eventTag;
+    private List<Tag> eventTag;
 
     public Event(String day,String time,String noteText){
         this.day = day;
@@ -48,10 +48,10 @@ public class Event {
         return ID;
     }
 
-    public static boolean addEvent(DayPage todayPage){
+    public static boolean addEvent(DayPage todayPage,String noteText){
         String day = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
         String time = (new SimpleDateFormat("HHmm")).format(new Date());
-        todayPage.addEventToStack(new Event(day,time,"HI BITCH!!!"));
+        todayPage.addEventToStack(new Event(day,time,noteText));
         return true;
     }
 
@@ -76,18 +76,11 @@ public class Event {
     }
 
     public String toString() {
-        return "ID1: " + eventID + "\n" + "ID2: " + eventID2 + "\n"
-                + "Text:" + noteText + "\n";
+        return  "\nDay: " + this.day + " Time: " + this.time + "\n"
+                + "ID1: " + this.eventID + "\n"
+                + "ID2: " + this.eventID2 + "\n"
+                + "Text:" + this.noteText + "\n"
+                + "Tag" + this.eventTag + "\n";
     }
 
-    public static void main(String[] args) {
-        NotePast x = new NotePast(new Account());
-
-        DayPage.createDayPage(x);
-
-        addEvent(x.getStackOfDayPage().get(0));
-        addEvent(x.getStackOfDayPage().get(0));
-        addEvent(x.getStackOfDayPage().get(0));
-        System.out.println(x.getStackOfDayPage().get(0).getStackOfEvent());
-    }
 }

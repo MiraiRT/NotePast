@@ -16,12 +16,20 @@ public class DayPage {
         return dayID;
     }
 
+    public void setDayID(int dayID) {
+        this.dayID = dayID;
+    }
+
     public List<Event> getStackOfEvent() {
         return stackOfEvent;
     }
 
     public void addEventToStack(Event newEvent){
-        stackOfEvent.add(newEvent);
+        this.stackOfEvent.add(newEvent);
+    }
+
+    public static DayPage getTodayPage(NotePast book){
+        return book.getStackOfDayPage().get(book.getStackOfDayPage().size()-1);
     }
 
     public static int genDayID() {
@@ -35,12 +43,12 @@ public class DayPage {
         return ID;
     }
 
-    public static boolean createDayPage(NotePast user) {
+    public static boolean createDayPage(NotePast book) {
         int ID = DayPage.genDayID();
         // Convert String to Int //
         if (ID > NotePast.getTodayID()) {
             // Add New DayPage (another day) to Stack //
-            user.addDayPageToStack(new DayPage(ID));
+            book.addDayPageToStack(new DayPage(ID));
             NotePast.setTodayID(ID);
             // DayPage Added Alert: ***Insert UI Here*** //
             return true;
@@ -72,6 +80,7 @@ public class DayPage {
 
     @Override
     public String toString() {
-        return "ID: " + dayID + "\n";
+        return "ID: " + this.dayID + "\n"
+                + "Event: " + this.stackOfEvent + "\n\n";
     }
 }

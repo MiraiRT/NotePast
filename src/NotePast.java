@@ -1,20 +1,14 @@
 import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class NotePast {
-    private Account writer;
     private List<DayPage> stackOfDayPage = new ArrayList<>();
 
     // REF ID of All Obj //
     private static int todayID = 0;
 
     // Call this Constructor = Create new Account //
-    public NotePast(Account writer){
-        // Set Writer to Find Data in DB //
-        this.writer = writer;
-
+    public NotePast(){
         // Generate DayID //
         todayID = DayPage.genDayID();
         // Add Start DayPage to Stack //
@@ -26,7 +20,7 @@ public class NotePast {
     }
 
     public void addDayPageToStack(DayPage newDay){
-        stackOfDayPage.add(newDay);
+        this.stackOfDayPage.add(newDay);
     }
 
     public static int getTodayID() {
@@ -35,5 +29,11 @@ public class NotePast {
 
     public static void setTodayID(int todayID) {
         NotePast.todayID = todayID;
+    }
+
+    @Override
+    public String toString() {
+        return "Today ID:" + todayID + "\n"
+                + this.stackOfDayPage + "\n\n";
     }
 }
