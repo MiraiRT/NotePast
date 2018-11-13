@@ -1,16 +1,22 @@
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Event {
+public class Event implements Serializable {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    private int eventID;
     private String day;
     private String time;
-    private int eventID;
     private int eventID2;
     private String noteText;
 
@@ -20,7 +26,6 @@ public class Event {
     @ManyToOne(optional=false)
     @JoinColumn(name="DayPage_ID")
     public DayPage dayPage;
-
 
     public Event(String day,String time,String noteText){
         this.day = day;
@@ -58,9 +63,9 @@ public class Event {
     }
 
     public static boolean addEvent(DayPage todayPage,String noteText){
-        String day = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
         String time = (new SimpleDateFormat("HHmm")).format(new Date());
-        todayPage.addEventToStack(new Event(day,time,noteText));
+        todayPage.getStackOfEvent().add(new Event(todayPage.getDay(),time,noteText));
+        System.out.println("\n\nNew Event Created\n\n");
         return true;
     }
 
@@ -85,11 +90,11 @@ public class Event {
     }
 
     public String toString() {
-        return  "\nDay: " + this.day + " Time: " + this.time + "\n"
-                + "ID1: " + this.eventID + "\n"
-                + "ID2: " + this.eventID2 + "\n"
-                + "Text:" + this.noteText + "\n"
-                + "Tag" + this.eventTag + "\n";
+        return  "\n\t\t=> Event\n\t\t"
+                + "Day: " + this.day + " Time: " + this.time + "\n\t\t"
+                + "ID1: " + this.eventID + " ID2: " + this.eventID2 + "\n\t\t"
+                + "Text:" + this.noteText + "\n\t\t"
+                + "Tag" + this.eventTag + "\n\t";
     }
 
 }

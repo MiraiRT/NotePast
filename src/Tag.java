@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Tag {
     public String tagName;
-    private List<Event> stackOfEvent;
+    private List<Event> stackOfEvent = new ArrayList<>();
 
     public String getTagName() {
         return tagName;

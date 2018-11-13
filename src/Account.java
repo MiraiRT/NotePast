@@ -1,26 +1,30 @@
 import javax.persistence.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Account implements Serializable {
 
-    private String userName;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String username;
     private String password;
-//    private NotePast book;
-    @OneToMany(mappedBy = "account")
-    private NotePast book = new NotePast();
-//    private Searching searchBook = new Searching();
 
-    public Account(String userName,String password) {
-        this.userName = userName;
+    public int getId() {
+        return id;
+    }
+
+    @OneToOne(mappedBy = "account")
+    private NotePast book;
+
+    public Account(String username, String password) {
+        this.username = username;
         this.password = password;
+        this.book = new NotePast();
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public String getPassword() {
@@ -68,7 +72,7 @@ public class Account implements Serializable {
     }
 
     public static void saveNewUser(Account newUser) {
-        String dbPath ="database/user.db";
+        String dbPath = "database/data.db";
         try {
             FileOutputStream fileOut = new FileOutputStream(dbPath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -81,67 +85,56 @@ public class Account implements Serializable {
     }
 
     public static ArrayList<Account> loadAllUser(ArrayList<Account> userList) {
-        String dbPath ="database/user.db";
-        try {
-            FileInputStream fileIn = new FileInputStream(dbPath);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            userList = (ArrayList<Account>)objectIn.readObject();
-            objectIn.close();
-            fileIn.close();
+        String dbPath = "database/data.db";
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory(dbPath);
+        EntityManager em = emf.createEntityManager();
+
+        Account oAcc = em.find(Account.class,"");
+
+        em.close();
+        emf.close();
+
+
         return userList;
     }
 
 
     @Override
     public String toString() {
-        return "User: " + this.userName + "\n"
+        return  "--------Account--------\n"
+                + "User: " + this.username + "\n"
                 + "Pass: " + this.password + "\n\n"
-                + "NotePass: " + this.userName + "\n"
-                + this.book + "\n";
+                + this.book + "\n-----------------------\n";
     }
 
     public static void main(String[] args) {
+        Database.openConnection();
 
-        EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("C:/Users/HP/Downloads/objectdb-2.7.6/db/test06.odb");
-        EntityManager em = emf.createEntityManager();
 
-        Account x = new Account("A","tatatata");
+        Account x = new Account("Mirai","TaKub09");
+
+        DayPage.createDayPage(x.getBook());
+        Event.addEvent(DayPage.getTodayPage(x.getBook()),"I do OOAD Project @ECC");
         System.out.println(x);
 
-//        Set<NotePast> noteset = new HashSet<NotePast>();
-//        Set<DayPage> dpset = new HashSet<DayPage>();
-//        Set<Event> evset = new HashSet<Event>();
+        Database.closeConnection();
 
-//        NotePast a = new NotePast();
 
-//        x.setNotePasts(a);
 
-//        DayPage.createDayPage(x.getBook());
-//        Event.addEvent(DayPage.getTodayPage(x.book),"Hi");
-//        Event.addEvent(DayPage.getTodayPage(x.book),"Hi2");
+
+//        Event.addEvent(DayPage.getTodayPage(x.getBook()),"I do OOAD Project @ECC");
+
+//        Event a = new Event("14","555","Helloooo");
+//        a.addEvent(DayPage.getTodayPage(x.getBook()),"I do OOAD Project @ECC");
 //        System.out.println(x);
 
-        em.getTransaction().begin();
-        em.persist(x);
-//        x.setNotePasts();
 
-        em.getTransaction().commit();
 
-        em.close();
-        emf.close();
-
-//
-//
-//        Event.addEvent(x.getBook().getStackOfDayPage().get(0),"A");
-//        System.out.println(x.getUserName() + " " + x.getPassword());
-//        System.out.println("\n" + x.getBook());
-//        System.out.println(x.getBook().getStackOfDayPage());
-//        System.out.println(x.getBook() + "\n");
+//        DayPage.createDayPage(x.getBook());
+//        Event.addEvent(DayPage.getTodayPage(x.getBook()),"I do OOAD Project @ECC");
+//        System.out.println(x);
 
     }
 }

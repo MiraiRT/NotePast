@@ -1,21 +1,30 @@
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-public class DayPage {
+public class DayPage implements Serializable {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    public int getId() {
+        return id;
+    }
+
     private int dayID;
+
+    private String day;
     @OneToMany(mappedBy = "dayPage") private List<Event> stackOfEvent;
-//    Set<Event> events;
 
     @ManyToOne(optional=false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="NotePast_ID")
     public NotePast notePast;
 
-    public DayPage(int dayID){
+    public DayPage(String day,int dayID){
+        this.day = day;
         this.dayID = dayID;
         this.stackOfEvent = new ArrayList<>();
     }
@@ -28,16 +37,16 @@ public class DayPage {
         this.dayID = dayID;
     }
 
+    public String getDay() {
+        return day;
+    }
+
     public List<Event> getStackOfEvent() {
         return stackOfEvent;
     }
 
-    public void addEventToStack(Event newEvent){
-        this.stackOfEvent.add(newEvent);
-    }
-
-    public static DayPage getTodayPage(NotePast book){
-        return book.getStackOfDayPage().get(book.getStackOfDayPage().size()-1);
+    public void setStackOfEvent(List<Event> stackOfEvent) {
+        this.stackOfEvent = stackOfEvent;
     }
 
     public static int genDayID() {
@@ -53,42 +62,40 @@ public class DayPage {
 
     public static boolean createDayPage(NotePast book) {
         int ID = DayPage.genDayID();
-        // Convert String to Int //
+
         if (ID > NotePast.getTodayID()) {
-            // Add New DayPage (another day) to Stack //
-            book.addDayPageToStack(new DayPage(ID));
+            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
             NotePast.setTodayID(ID);
-            // DayPage Added Alert: ***Insert UI Here*** //
+            book.getStackOfDayPage().add(new DayPage(dayStr,ID));
+            System.out.println("\n\nNew Page Created\n\n");
             return true;
         }
-        // Create Today, Yesterday or Past -> Unexpected Case: ***Insert UI Here*** //
+        System.out.println("\n\nFailed to Create New Page\n\n");
         return false;
     }
 
-    public static boolean deleteDayPage(NotePast user,int targetID) {
+    public static boolean deleteDayPage(NotePast book,int targetID) {
         if (targetID < NotePast.getTodayID()) {
-            int i = 0;
-            while(true) {
-                if(i >= user.getStackOfDayPage().size()){
-                    // Didn't Found DayPage: ***Insert UI Here*** //
-                    return false;
-                }
-                if(user.getStackOfDayPage().get(i).getDayID() == targetID){
-                    // Found DayPage -> Confirm Delete: ***Insert UI Here*** //
-                    user.getStackOfDayPage().remove(i);
-                    // DayPage Removed: ***Update DB Here*** //
+            for(int i = 0; i < book.getStackOfDayPage().size(); i++) {
+                if(book.getStackOfDayPage().get(i).getDayID() == targetID){
+                    book.getStackOfDayPage().remove(i);
+                    System.out.println("\n\nDeleted Select Page\n\n");
                     return true;
                 }
-                i++;
             }
         }
-        // Delete Today and Tomorrow Case -> Unexpected Case: ***Insert UI Here*** //
+        System.out.println("\n\nFailed to Delete Page\n\n");
         return false;
+    }
+
+    public static DayPage getTodayPage(NotePast book){
+        int index = book.getStackOfDayPage().size()-1;
+        return book.getStackOfDayPage().get(index);
     }
 
     @Override
     public String toString() {
-        return "ID: " + this.dayID + "\n"
-                + "Event: " + this.stackOfEvent + "\n\n";
+        return  "\n\t-> DayPage" + "   Day ID: " + this.dayID + "\n\t"
+                + this.stackOfEvent + "\n\n";
     }
 }
