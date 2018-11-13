@@ -1,13 +1,16 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Account implements Serializable{
+@Entity
+public class Account implements Serializable {
+
     private String userName;
     private String password;
+//    private NotePast book;
+    @OneToMany(mappedBy = "account")
+    private NotePast book = new NotePast();
     private NotePast book;
     private Searching searchBook;
 
@@ -105,42 +108,42 @@ public class Account implements Serializable{
 
     public static void main(String[] args) {
 
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory("C:/Users/HP/Downloads/objectdb-2.7.6/db/test05.odb");
+        EntityManager em = emf.createEntityManager();
 
         Account x = new Account("A","tatatata");
-        if(Account.checkRegister(x)){
-            Account.saveNewUser(x);
-            System.out.println("Added " + x);
-        }
+        System.out.println(x);
 
+//        Set<NotePast> noteset = new HashSet<NotePast>();
+//        Set<DayPage> dpset = new HashSet<DayPage>();
+//        Set<Event> evset = new HashSet<Event>();
 
-//        x = new Account("B","tbtbtbtb");
-//        if(checkRegister(x)){
-//            saveNewUser(x);
-//            System.out.println("Added " + x);
-//        }
-//
-//        x = new Account("C","tctctctc");
-//        if(checkRegister(x)){
-//            saveNewUser(x);
-//            System.out.println("Added " + x);
-//        }
-//
-//        Account y;
-//        if(loginChecker("A","tatatata")){
-//            System.out.println("Login Success");
-//        }
+//        NotePast a = new NotePast();
 
-
-
-
-
-
+//        x.setNotePasts(a);
 
 //        DayPage.createDayPage(x.getBook());
 //        Event.addEvent(DayPage.getTodayPage(x.book),"Hi");
 //        Event.addEvent(DayPage.getTodayPage(x.book),"Hi2");
 //        System.out.println(x);
 
+        em.getTransaction().begin();
+        em.persist(x);
+//        x.setNotePasts();
+
+        em.getTransaction().commit();
+
+        em.close();
+        emf.close();
+
+//
+//
+//        Event.addEvent(x.getBook().getStackOfDayPage().get(0),"A");
+//        System.out.println(x.getUserName() + " " + x.getPassword());
+//        System.out.println("\n" + x.getBook());
+//        System.out.println(x.getBook().getStackOfDayPage());
+//        System.out.println(x.getBook() + "\n");
 
     }
 }

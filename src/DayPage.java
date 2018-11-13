@@ -1,11 +1,19 @@
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Set;
 
+@Entity
 public class DayPage {
     private int dayID;
-    private List<Event> stackOfEvent;
+    @OneToMany(mappedBy = "dayPage") private List<Event> stackOfEvent;
+//    Set<Event> events;
+
+    @ManyToOne(optional=false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="NotePast_ID")
+    public NotePast notePast;
 
     public DayPage(int dayID){
         this.dayID = dayID;

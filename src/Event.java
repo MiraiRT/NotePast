@@ -1,8 +1,12 @@
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Event {
     private String day;
     private String time;
@@ -12,6 +16,11 @@ public class Event {
 
     private static int numOfEvent = 0;
     private List<Tag> eventTag;
+
+    @ManyToOne(optional=false)
+    @JoinColumn(name="DayPage_ID")
+    public DayPage dayPage;
+
 
     public Event(String day,String time,String noteText){
         this.day = day;
