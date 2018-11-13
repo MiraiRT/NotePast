@@ -33,7 +33,7 @@ public class NotePast {
 
     @Override
     public String toString() {
-        return "Today ID:" + todayID + "\n"
+        return  "Today ID:" + todayID + "\n"
                 + this.stackOfDayPage + "\n\n";
     }
 }
