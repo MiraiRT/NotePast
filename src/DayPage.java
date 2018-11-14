@@ -15,13 +15,13 @@ public class DayPage implements Serializable {
     }
 
     private int dayID;
-
     private String day;
-    @OneToMany(mappedBy = "dayPage") private List<Event> stackOfEvent;
+//    @OneToMany(mappedBy = "dayPage")
+    private List<Event> stackOfEvent;
 
-    @ManyToOne(optional=false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="NotePast_ID")
-    public NotePast notePast;
+//    @ManyToOne(optional=false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name="NotePast_ID")
+//    public NotePast notePast;
 
     public DayPage(String day,int dayID){
         this.day = day;

@@ -23,9 +23,9 @@ public class Event implements Serializable {
     private static int numOfEvent = 0;
     private List<Tag> eventTag;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="DayPage_ID")
-    public DayPage dayPage;
+//    @ManyToOne(optional=false)
+//    @JoinColumn(name="DayPage_ID")
+//    public DayPage dayPage;
 
     public Event(String day,String time,String noteText){
         this.day = day;

@@ -1,26 +1,27 @@
 import javax.persistence.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Account implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_Acc;
+    public int getId() {
+        return id_Acc;
+    }
+
     private String username;
     private String password;
 
-    public int getId() {
-        return id;
-    }
-
-    @OneToOne(mappedBy = "account")
-    private NotePast book;
+    @OneToOne
+    private List<NotePast> book;
 
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
-        this.book = new NotePast();
+        this.book = new ArrayList<>();
     }
 
     public String getUserName() {
@@ -31,7 +32,7 @@ public class Account implements Serializable {
         return password;
     }
 
-    public NotePast getBook() {
+    public List<NotePast> getBook() {
         return book;
     }
 
@@ -111,13 +112,13 @@ public class Account implements Serializable {
 
     public static void main(String[] args) {
         Database.openConnection();
+        Account a = new Account("AA","Apass");
+//        Database.createAccount(a.username,a.password);
+//        Database.createNotePast(1);
+//        Database.addDayPage(1,"Day",0);
+//        Database.addEvent(1,"Heyyy Day","11.11","Textttt");
 
-
-        Account x = new Account("Mirai","TaKub09");
-
-        DayPage.createDayPage(x.getBook());
-        Event.addEvent(DayPage.getTodayPage(x.getBook()),"I do OOAD Project @ECC");
-        System.out.println(x);
+        System.out.println(a);
 
         Database.closeConnection();
 

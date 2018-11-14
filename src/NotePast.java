@@ -7,17 +7,16 @@ import java.util.List;
 public class NotePast implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private int id_NP;
     public int getId() {
-        return id;
+        return id_NP;
     }
 
-    @OneToMany(mappedBy = "notePast")
+//    @OneToMany(mappedBy = "notePast")
     private List<DayPage> stackOfDayPage;
 
-    @OneToOne
-    public Account account;
+//    @OneToOne(mappedBy = "book")
+//    public Account getAccount(){ account; }
 
     // REF ID of All Obj //
     private static int todayID = 0;
