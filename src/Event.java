@@ -8,41 +8,42 @@ import java.util.List;
 @Entity
 public class Event implements Serializable {
 
+    // Database : ObjectDB //
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     public int getId() {
         return id;
     }
+    // Database : ObjectDB //
 
     private int eventID;
     private String day;
     private String time;
-    private int eventID2;
     private String noteText;
-
-    private static int numOfEvent = 0;
     private List<Tag> eventTag;
 
-//    @ManyToOne(optional=false)
-//    @JoinColumn(name="DayPage_ID")
-//    public DayPage dayPage;
-
-    public Event(String day,String time,String noteText){
+    public Event(int eventID,String day,String time,String noteText){
         this.day = day;
         this.time = time;
-        this.eventID = genEventID(time);
-        this.eventID2 = numOfEvent;
+        this.eventID = eventID;
         this.noteText = noteText;
         this.eventTag = new ArrayList<>();
-        this.numOfEvent++;
     }
 
-    public int getEventID() {
-        return eventID;
+    public String getDay() {
+        return day;
     }
 
-    public int getEventID2() {
-        return eventID2;
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getNoteText() {
@@ -53,46 +54,27 @@ public class Event implements Serializable {
         this.noteText = noteText;
     }
 
-    public static int genEventID (String time) {
-        String str = time;
-        int ID = 0;
-        for(int i = 0; i<str.length(); i++) {
-            ID = ID + ((str.charAt(i)-48)*(int)(Math.pow(10,str.length()-1-i)));
-        }
-        return ID;
+    public List<Tag> getEventTag() {
+        return eventTag;
     }
 
-    public static boolean addEvent(DayPage todayPage,String noteText){
-        String time = (new SimpleDateFormat("HHmm")).format(new Date());
-        todayPage.getStackOfEvent().add(new Event(todayPage.getDay(),time,noteText));
-        System.out.println("\n\nNew Event Created\n\n");
-        return true;
+    public void setEventTag(List<Tag> eventTag) {
+        this.eventTag = eventTag;
     }
 
-    public static boolean editEvent(DayPage todayPage,int targetID,int targetID2){
-        for(int i = 0; i< todayPage.getStackOfEvent().size();i++) {
-            if (todayPage.getStackOfEvent().get(i).getEventID() == targetID && todayPage.getStackOfEvent().get(i).getEventID2() == targetID2) {
-                // Change of Selected Event //
-                return true;
-            }
-        }
-        return false;
+    public static Event addEvent(int npID,int dpID,int eventID,String noteText){
+        String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+        String timeStr = (new SimpleDateFormat("HHmmss")).format(new Date());
+        Event newEvent = Database.addEvent(npID,dpID,eventID,dayStr,timeStr,noteText);
+        return newEvent;
     }
 
-    public static boolean deleteEvent(DayPage todayPage,int targetID,int targetID2){
-        for(int i = 0; i< todayPage.getStackOfEvent().size();i++) {
-            if (todayPage.getStackOfEvent().get(i).getEventID() == targetID && todayPage.getStackOfEvent().get(i).getEventID2() == targetID2) {
-                todayPage.getStackOfEvent().remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     public String toString() {
         return  "\n\t\t=> Event\n\t\t"
                 + "Day: " + this.day + " Time: " + this.time + "\n\t\t"
-                + "ID1: " + this.eventID + " ID2: " + this.eventID2 + "\n\t\t"
+                + "ID1: " + this.eventID + "\n\t\t"
                 + "Text:" + this.noteText + "\n\t\t"
                 + "Tag" + this.eventTag + "\n\t";
     }

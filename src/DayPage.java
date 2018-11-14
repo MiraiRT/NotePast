@@ -8,25 +8,24 @@ import java.util.List;
 @Entity
 public class DayPage implements Serializable {
 
+    // Database : ObjectDB //
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     public int getId() {
         return id;
     }
+    // Database : ObjectDB //
 
     private int dayID;
     private String day;
-//    @OneToMany(mappedBy = "dayPage")
     private List<Event> stackOfEvent;
-
-//    @ManyToOne(optional=false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name="NotePast_ID")
-//    public NotePast notePast;
+    private int eventID;
 
     public DayPage(String day,int dayID){
         this.day = day;
         this.dayID = dayID;
         this.stackOfEvent = new ArrayList<>();
+        this.eventID = 1;
     }
 
     public int getDayID() {
@@ -41,6 +40,10 @@ public class DayPage implements Serializable {
         return day;
     }
 
+    public void setDay(String day) {
+        this.day = day;
+    }
+
     public List<Event> getStackOfEvent() {
         return stackOfEvent;
     }
@@ -49,49 +52,26 @@ public class DayPage implements Serializable {
         this.stackOfEvent = stackOfEvent;
     }
 
-    public static int genDayID() {
-        // Get System Time -> Convert to String Format //
+    public int getEventID() {
+        return eventID;
+    }
+
+    public void setEventID(int eventID) {
+        this.eventID = eventID;
+    }
+
+    // Method //
+
+    public static DayPage addDayPage(int npID,int dayID){
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        dayStr = dayStr.substring(2);
-        int ID = 0;
-        for(int i = 0; i<dayStr.length(); i++) {
-            ID = ID + ((dayStr.charAt(i)-48)*(int)(Math.pow(10,dayStr.length()-1-i)));
-        }
-        return ID;
+        DayPage dp = Database.addDayPage(npID,dayStr,dayID);
+        return dp;
     }
 
-    public static boolean createDayPage(NotePast book) {
-        int ID = DayPage.genDayID();
-
-        if (ID > NotePast.getTodayID()) {
-            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-            NotePast.setTodayID(ID);
-            book.getStackOfDayPage().add(new DayPage(dayStr,ID));
-            System.out.println("\n\nNew Page Created\n\n");
-            return true;
-        }
-        System.out.println("\n\nFailed to Create New Page\n\n");
-        return false;
+    public void increaseEventID(){
+        this.eventID++;
     }
 
-    public static boolean deleteDayPage(NotePast book,int targetID) {
-        if (targetID < NotePast.getTodayID()) {
-            for(int i = 0; i < book.getStackOfDayPage().size(); i++) {
-                if(book.getStackOfDayPage().get(i).getDayID() == targetID){
-                    book.getStackOfDayPage().remove(i);
-                    System.out.println("\n\nDeleted Select Page\n\n");
-                    return true;
-                }
-            }
-        }
-        System.out.println("\n\nFailed to Delete Page\n\n");
-        return false;
-    }
-
-    public static DayPage getTodayPage(NotePast book){
-        int index = book.getStackOfDayPage().size()-1;
-        return book.getStackOfDayPage().get(index);
-    }
 
     @Override
     public String toString() {

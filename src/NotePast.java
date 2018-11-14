@@ -6,32 +6,33 @@ import java.util.List;
 @Entity
 public class NotePast implements Serializable {
 
+    // Database : ObjectDB //
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_NP;
     public int getId() {
         return id_NP;
     }
+    // Database : ObjectDB //
 
-//    @OneToMany(mappedBy = "notePast")
+    private int notePastID;
     private List<DayPage> stackOfDayPage;
+    private int dayID;
 
-//    @OneToOne(mappedBy = "book")
-//    public Account getAccount(){ account; }
-
-    // REF ID of All Obj //
-    private static int todayID = 0;
-
-    // Call this Constructor = Create new Account //
-    public NotePast(){
+    // Constructor //
+    public NotePast(int accID){
         this.stackOfDayPage = new ArrayList<>();
+        this.notePastID = accID;
+        this.dayID = 1;
+    }
+    // Constructor //
+
+    // Getter Setter //
+    public int getNotePastID() {
+        return notePastID;
     }
 
-    public static int getTodayID() {
-        return todayID;
-    }
-
-    public static void setTodayID(int todayID) {
-        NotePast.todayID = todayID;
+    public void setNotePastID(int notePastID) {
+        this.notePastID = notePastID;
     }
 
     public List<DayPage> getStackOfDayPage() {
@@ -42,10 +43,34 @@ public class NotePast implements Serializable {
         this.stackOfDayPage = stackOfDayPage;
     }
 
+    public int getDayID() {
+        return dayID;
+    }
+
+    public void setDayID(int dayID) {
+        this.dayID = dayID;
+    }
+    // Getter Setter //
+
+    public static NotePast createNotePast(int accID){
+        NotePast book = Database.createNotePast(accID);
+        return book;
+    }
+
+    public void increaseDayID(){
+        this.dayID++;
+    }
+
+    public DayPage getLastDayPage(){
+        int lastIndex = this.stackOfDayPage.size()-1;
+        return this.stackOfDayPage.get(lastIndex);
+    }
+
+
+
     @Override
     public String toString() {
-        return  "<<--NotePast-->>" + "\n"
-                +"Today ID:" + todayID + "\n"
+        return  "\n<<--NotePast-->>" + "\n"
                 + this.stackOfDayPage + "\n<<------------>>\n";
     }
 }

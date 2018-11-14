@@ -14,7 +14,7 @@ public class Database {
     }
 
     public static void openConnection(){
-        emf = Persistence.createEntityManagerFactory("database/allDB2.odb");
+        emf = Persistence.createEntityManagerFactory("database/data.odb");
         em = emf.createEntityManager();
     }
 
@@ -23,15 +23,15 @@ public class Database {
         emf.close();
     }
 
-    public static void addEvent(int id,String day,String time,String text){
+    public static Event addEvent(int npID,int dpID,int eventID,String day,String time,String text){
         em.getTransaction().begin();
-        Event newEvent = new Event(day,time,text);
+        Event newEvent = new Event(eventID,day,time,text);
         em.persist(newEvent);
         em.getTransaction().commit();
 
         // Find Day Page in DB and add Event to stack //
         em.getTransaction().begin();
-        String sql = "SELECT c FROM DayPage c Where c.id =" + id + "";
+        String sql = "SELECT c FROM DayPage c Where c.id =" + dpID + "";
         TypedQuery<DayPage> query = em.createQuery(sql,DayPage.class);
         List<DayPage> result = query.getResultList();
         result.get(0).getStackOfEvent().add(newEvent);
@@ -40,11 +40,13 @@ public class Database {
         // then Find NotePast in DB and add DayPage to stack //
         em.getTransaction().begin();
         List<DayPage> dayPage = query.getResultList();
-        String sqlNP = "SELECT a FROM NotePast a Where a.id_NP =" + id + "";
+        String sqlNP = "SELECT a FROM NotePast a Where a.id_NP =" + npID + "";
         TypedQuery<NotePast> queryNP = em.createQuery(sqlNP,NotePast.class);
         List<NotePast> resultNP = queryNP.getResultList();
         resultNP.get(0).setStackOfDayPage(dayPage);
         em.getTransaction().commit();
+
+        return newEvent;
     }
 
 //    public void setDayPage(int id, List<DayPage> dayPage){
@@ -56,7 +58,7 @@ public class Database {
 //        em.getTransaction().commit();
 //    }
 
-    public static void addDayPage(int id_NP,String day,int dayID){
+    public static DayPage addDayPage(int id_NP,String day,int dayID){
         em.getTransaction().begin();
         DayPage newPage = new DayPage(day,dayID);
         em.persist(newPage);
@@ -68,10 +70,11 @@ public class Database {
         List<NotePast> resultNP = queryNP.getResultList();
         resultNP.get(0).getStackOfDayPage().add(newPage);
         em.getTransaction().commit();
+        return newPage;
 
     }
 
-    public void delEvent(int id){
+    public static void delEvent(int id){
         em.getTransaction().begin();
         String sql = "SELECT c FROM Event c Where c.id =" + id + "";
         TypedQuery<Event> query = em.createQuery(sql,Event.class);
@@ -80,9 +83,9 @@ public class Database {
         em.getTransaction().commit();
     }
 
-    public static void createNotePast(int id_Acc){
+    public static NotePast createNotePast(int id_Acc){
         em.getTransaction().begin();
-        NotePast notePast = new NotePast();
+        NotePast notePast = new NotePast(id_Acc);
         em.persist(notePast);
         em.getTransaction().commit();
         em.getTransaction().begin();
@@ -91,12 +94,14 @@ public class Database {
         List<Account> result = query.getResultList();
         result.get(0).getBook().add(notePast);
         em.getTransaction().commit();
+        return notePast;
     }
 
-    public static void createAccount(String username, String password){
+    public static Account createAccount(String username, String password){
         em.getTransaction().begin();
         Account account = new Account(username, password);
         em.persist(account);
         em.getTransaction().commit();
+        return account;
     }
 }
