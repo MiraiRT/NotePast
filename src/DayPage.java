@@ -10,9 +10,15 @@ public class DayPage implements Serializable {
 
     // Database : ObjectDB //
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_DP;
     public int getId() {
-        return id;
+        return id_DP;
+    }
+
+
+    private int id_NP;
+    public int getId_NP() {
+        return id_NP;
     }
     // Database : ObjectDB //
 
@@ -21,11 +27,12 @@ public class DayPage implements Serializable {
     private List<Event> stackOfEvent;
     private int eventID;
 
-    public DayPage(String day,int dayID){
+    public DayPage(int id_NP,String day,int dayID){
         this.day = day;
         this.dayID = dayID;
         this.stackOfEvent = new ArrayList<>();
         this.eventID = 1;
+        this.id_NP = id_NP;
     }
 
     public int getDayID() {

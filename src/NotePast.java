@@ -15,6 +15,8 @@ public class NotePast implements Serializable {
     // Database : ObjectDB //
 
     private int notePastID;
+
+    @OneToMany
     private List<DayPage> stackOfDayPage;
     private int dayID;
 

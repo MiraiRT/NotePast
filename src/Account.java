@@ -1,9 +1,6 @@
 import javax.persistence.*;
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -64,19 +61,29 @@ public class Account implements Serializable {
         return acc;
     }
 
+    public static boolean authen(String username, String password){
+        return Database.login(username,password);
+    }
+
+    public static boolean signup(String username,String password){
+        boolean isAvail = Database.signUp(username);
+        if(isAvail) {
+            Account.createAccount(username,password);
+            return true;
+        }
+        return false;
+    }
+
+    public static Account getAccount (String username) {
+        return Database.getAccount(username);
+    }
+
     public NotePast getNotePass(){
         return this.book.get(0);
     }
 
-    // Authen //
 
 
-//    public static class CheckText{
-//        public String name;
-//        public CheckText(String name){
-//            this.name = name;
-//        }
-//    }
 
 
     @Override
@@ -89,56 +96,64 @@ public class Account implements Serializable {
 
     public static void main(String[] args) {
 
-//        List<CheckText> l = new ArrayList<>();
-//
-//        l.add(new CheckText("000100"));
-//        l.add(new CheckText("122500"));
-//        l.add(new CheckText("005000"));
-//
-//        Collections.sort(l.);
-//
-//        System.out.println(l);
-
-
-
         Database.openConnection();
         // Create Account //
-        Account newAcc = createAccount("Ta","Mirai");
+        createAccount("Ta","Mirai");
+
+
+
+        String user = "Ta";
+        String pass = "Mirai";
+        Account activeAcc;
+
+        if(Account.authen(user,pass)) {
+            activeAcc = Account.getAccount(user);
+        } else {
+            while (true) {
+                System.out.println("Tik");
+            }
+        }
+
 
         // Create 1st DayPage //
-        DayPage.addDayPage(newAcc.getNotePass().getNotePastID(),newAcc.getNotePass().getDayID());
-        newAcc.getNotePass().increaseDayID();
+        DayPage.addDayPage(activeAcc.getNotePass().getNotePastID(),activeAcc.getNotePass().getDayID());
+        activeAcc.getNotePass().increaseDayID();
 
         // Create 1.1 Event //
-        DayPage todayPage = newAcc.getNotePass().getLastDayPage();
-        int npID = newAcc.getNotePass().getNotePastID();
+        DayPage todayPage = activeAcc.getNotePass().getLastDayPage();
+        int npID = activeAcc.getNotePass().getNotePastID();
         int dpID = todayPage.getDayID();
         int eventID = todayPage.getEventID();
         Event.addEvent(npID,dpID,eventID,"Hey Kids 1.1");
-        newAcc.getNotePass().getLastDayPage().increaseEventID();
+        System.out.println(npID + " " + dpID + " " + eventID);
+        activeAcc.getNotePass().getLastDayPage().increaseEventID();
 
         // Create 1.2 Event //
-        todayPage = newAcc.getNotePass().getLastDayPage();
-        npID = newAcc.getNotePass().getNotePastID();
+        todayPage = activeAcc.getNotePass().getLastDayPage();
+        npID = activeAcc.getNotePass().getNotePastID();
         dpID = todayPage.getDayID();
         eventID = todayPage.getEventID();
         Event.addEvent(npID,dpID,eventID,"Hey Kids 1.2");
-        newAcc.getNotePass().getLastDayPage().increaseEventID();
+        System.out.println(npID + " " + dpID + " " + eventID);
+        activeAcc.getNotePass().getLastDayPage().increaseEventID();
+
+        Event.deleteEvent(todayPage,1);
+
 
         // Create 2nd DayPage //
-        DayPage.addDayPage(newAcc.getNotePass().getNotePastID(),newAcc.getNotePass().getDayID());
-        newAcc.getNotePass().increaseDayID();
+        DayPage.addDayPage(activeAcc.getNotePass().getNotePastID(),activeAcc.getNotePass().getDayID());
+        activeAcc.getNotePass().increaseDayID();
 
         // Create 2.1 Event //
-        todayPage = newAcc.getNotePass().getLastDayPage();
-        npID = newAcc.getNotePass().getNotePastID();
+        todayPage = activeAcc.getNotePass().getLastDayPage();
+        npID = activeAcc.getNotePass().getNotePastID();
         dpID = todayPage.getDayID();
         eventID = todayPage.getEventID();
         Event.addEvent(npID,dpID,eventID,"Hey Kids 2.1");
-        newAcc.getNotePass().getLastDayPage().increaseEventID();
+        System.out.println(npID + " " + dpID + " " + eventID);
+        activeAcc.getNotePass().getLastDayPage().increaseEventID();
 
-        //System.out.println(newAcc);
-        //System.out.println(newAcc.getBook());
+        System.out.println(activeAcc);
 
         Database.closeConnection();
 

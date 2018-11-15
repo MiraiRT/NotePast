@@ -30,6 +30,14 @@ public class Event implements Serializable {
         this.eventTag = new ArrayList<>();
     }
 
+    public int getEventID() {
+        return eventID;
+    }
+
+    public void setEventID(int eventID) {
+        this.eventID = eventID;
+    }
+
     public String getDay() {
         return day;
     }
@@ -69,7 +77,48 @@ public class Event implements Serializable {
         return newEvent;
     }
 
+    public static boolean isEventInList(DayPage dp, int eventID){
+        int index = 0;
+        if (index < dp.getStackOfEvent().size()){
+            for(Event i : dp.getStackOfEvent()){
+                if(index < dp.getStackOfEvent().size()){
+                    return false;
+                }
+                if(i.getEventID() == eventID) {
+                    return true;
+                }
+                index++;
+            }
+        }
+        return false;
+    }
 
+    public static void editEvent(DayPage dp, int eventID,String time,String noteText){
+        int index = 0;
+        for(Event i : dp.getStackOfEvent()){
+            if(i.getEventID() == eventID) {
+                break;
+            }
+            index++;
+        }
+        Event event = dp.getStackOfEvent().get(index);
+        event.setTime(time);
+        event.setNoteText(noteText);
+        Database.editEvent(dp.getId(),time,noteText);
+    }
+
+    public static void deleteEvent(DayPage dp, int eventID){
+        int index = 0;
+        for(Event i : dp.getStackOfEvent()){
+            if(i.getEventID() == eventID) {
+                break;
+            }
+            index++;
+        }
+        dp.getStackOfEvent().remove(index);
+        Database.delEvent(dp.getId(),eventID);
+
+    }
 
     public String toString() {
         return  "\n\t\t=> Event\n\t\t"
