@@ -3,7 +3,7 @@ import java.util.List;
 
 public abstract class Tag {
     public String tagName;
-    private List<Event> stackOfEvent = new ArrayList<>();
+    private List<Note> stackOfNote = new ArrayList<>();
 
     public String getTagName() {
         return tagName;
@@ -13,17 +13,17 @@ public abstract class Tag {
         this.tagName = tagName;
     }
 
-    public List<Event> getStackOfEvent() {
-        return stackOfEvent;
+    public List<Note> getStackOfNote() {
+        return stackOfNote;
     }
 
-    public void setStackOfEvent(List<Event> stackOfEvent) {
-        this.stackOfEvent = stackOfEvent;
+    public void setStackOfNote(List<Note> stackOfNote) {
+        this.stackOfNote = stackOfNote;
     }
 
     @Override
     public String toString() {
         return "Tag: " + tagName + "\n"
-                + "Event: " + stackOfEvent + "\n";
+                + "Note: " + stackOfNote + "\n";
     }
 }

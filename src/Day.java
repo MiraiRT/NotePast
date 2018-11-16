@@ -6,33 +6,33 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Entity
-public class DayPage implements Serializable {
+public class Day implements Serializable {
 
-    // Database : ObjectDB //
+    // EntityDiary : ObjectDB //
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_DP;
+    private int id_Day;
     public int getId() {
-        return id_DP;
+        return id_Day;
     }
 
 
-    private int id_NP;
-    public int getId_NP() {
-        return id_NP;
+    private int id_Diary;
+    public int getId_Diary() {
+        return id_Diary;
     }
-    // Database : ObjectDB //
+    // EntityDiary : ObjectDB //
 
     private int dayID;
     private String day;
-    private List<Event> stackOfEvent;
+    private List<Note> stackOfNote;
     private int eventID;
 
-    public DayPage(int id_NP,String day,int dayID){
+    public Day(int id_Diary, String day, int dayID){
         this.day = day;
         this.dayID = dayID;
-        this.stackOfEvent = new ArrayList<>();
+        this.stackOfNote = new ArrayList<>();
         this.eventID = 1;
-        this.id_NP = id_NP;
+        this.id_Diary = id_Diary;
     }
 
     public int getDayID() {
@@ -51,12 +51,12 @@ public class DayPage implements Serializable {
         this.day = day;
     }
 
-    public List<Event> getStackOfEvent() {
-        return stackOfEvent;
+    public List<Note> getStackOfNote() {
+        return stackOfNote;
     }
 
-    public void setStackOfEvent(List<Event> stackOfEvent) {
-        this.stackOfEvent = stackOfEvent;
+    public void setStackOfNote(List<Note> stackOfNote) {
+        this.stackOfNote = stackOfNote;
     }
 
     public int getEventID() {
@@ -69,20 +69,20 @@ public class DayPage implements Serializable {
 
     // Method //
 
-    public static DayPage addDayPage(int npID,int dayID){
+    public static Day addDayPage(EntityDiary entity,int npID, int dayID){
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        DayPage dp = Database.addDayPage(npID,dayStr,dayID);
+        Day dp = entity.addDay(npID,dayStr,dayID);
         return dp;
     }
 
-    public void increaseEventID(){
+    public void increaseNoteID(){
         this.eventID++;
     }
 
 
     @Override
     public String toString() {
-        return  "\n\t-> DayPage" + "   Day ID: " + this.dayID + "\n\t"
-                + this.stackOfEvent + "\n\n";
+        return  "\n\t-> Day" + "   Day ID: " + this.dayID + "\n\t"
+                + this.stackOfNote + "\n\n";
     }
 }

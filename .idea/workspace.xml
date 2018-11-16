@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Merge">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Functional RQM has done.&#10;Waiting for Merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NotePast/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NotePast/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NotePast/DayPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NotePast/DayPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DayPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DayPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotePast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotePast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NotePast/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NotePast/NotePast.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EntityDiary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DayPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Day.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Note.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotePast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Diary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/today.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/today.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,26 +68,26 @@
     <session id="1460389092">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.31" value="1" />
-          <entry key="project.open.time.33" value="2" />
+          <entry key="project.open.time.33" value="3" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="13812" />
-          <entry key="txt" value="114" />
+          <entry key="java" value="14323" />
+          <entry key="txt" value="164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13812" />
-          <entry key="PLAIN_TEXT" value="114" />
+          <entry key="JAVA" value="14323" />
+          <entry key="PLAIN_TEXT" value="164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -100,7 +103,7 @@
           <entry key="class" value="2" />
           <entry key="fxml" value="4" />
           <entry key="iml" value="3" />
-          <entry key="java" value="39" />
+          <entry key="java" value="42" />
           <entry key="odb" value="1" />
         </counts>
       </usages-collector>
@@ -108,7 +111,7 @@
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="IDEA_MODULE" value="3" />
-          <entry key="JAVA" value="39" />
+          <entry key="JAVA" value="42" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="UML" value="16" />
           <entry key="XML" value="4" />
@@ -176,93 +179,64 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Account.java">
+        <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="104" column="25" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
+            <state relative-caret-position="238">
+              <caret line="151" column="18" selection-start-line="151" selection-start-column="18" selection-end-line="151" selection-end-column="18" />
               <folding>
-                <element signature="method#Account#0;class#Account#0" />
-                <element signature="method#createAccount#0;class#Account#0" />
-                <element signature="method#signup#0;class#Account#0" />
-                <element signature="method#toString#0;class#Account#0" />
+                <element signature="method#User#0;class#User#0" />
+                <element signature="e#1809#1810#0" expanded="true" />
+                <element signature="e#1864#1865#0" expanded="true" />
+                <element signature="e#1900#1901#0" expanded="true" />
+                <element signature="e#1939#1940#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database.java">
+        <entry file="file://$PROJECT_DIR$/src/Diary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="145" column="37" selection-start-line="145" selection-start-column="37" selection-end-line="145" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Database#0;class#Database#0" />
-                <element signature="method#openConnection#0;class#Database#0" />
-                <element signature="method#closeConnection#0;class#Database#0" />
-                <element signature="method#addEvent#0;class#Database#0" />
-                <element signature="method#delEvent#0;class#Database#0" />
-                <element signature="method#getEvent#0;class#Database#0" />
-                <element signature="method#addDayPage#0;class#Database#0" />
-                <element signature="method#createNotePast#0;class#Database#0" />
-                <element signature="method#createAccount#0;class#Database#0" />
-                <element signature="method#login#0;class#Database#0" />
-                <element signature="method#signUp#0;class#Database#0" />
-                <element signature="method#getAccount#0;class#Database#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DayPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="13" column="20" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-12">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Searching.java">
+        <entry file="file://$PROJECT_DIR$/src/Day.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="208">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#364#365#0" expanded="true" />
-                <element signature="e#405#406#0" expanded="true" />
-                <element signature="e#457#458#0" expanded="true" />
-                <element signature="e#496#497#0" expanded="true" />
-                <element signature="e#565#566#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#691#692#0" expanded="true" />
-                <element signature="e#746#747#0" expanded="true" />
+                <element signature="e#1692#1693#0" expanded="true" />
+                <element signature="e#1722#1723#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Event.java">
+        <entry file="file://$PROJECT_DIR$/src/Note.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="111" column="21" lean-forward="true" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
+            <state relative-caret-position="767">
+              <caret line="75" column="77" selection-start-line="75" selection-start-column="77" selection-end-line="75" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Event#0;class#Event#0" />
+                <element signature="method#Note#0;class#Note#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EntityDiary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -307,11 +281,16 @@
         <option value="$PROJECT_DIR$/src/PeopleTag.java" />
         <option value="$PROJECT_DIR$/src/Tag.java" />
         <option value="$PROJECT_DIR$/src/Searching.java" />
-        <option value="$PROJECT_DIR$/src/NotePast.java" />
         <option value="$PROJECT_DIR$/src/Database.java" />
-        <option value="$PROJECT_DIR$/src/DayPage.java" />
         <option value="$PROJECT_DIR$/src/Event.java" />
+        <option value="$PROJECT_DIR$/src/DayPage.java" />
+        <option value="$PROJECT_DIR$/src/NotePast.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
+        <option value="$PROJECT_DIR$/src/Note.java" />
+        <option value="$PROJECT_DIR$/src/Diary.java" />
+        <option value="$PROJECT_DIR$/src/User.java" />
+        <option value="$PROJECT_DIR$/src/EntityDiary.java" />
+        <option value="$PROJECT_DIR$/src/Day.java" />
       </list>
     </option>
   </component>
@@ -323,10 +302,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="497" />
-    <option name="y" value="-18" />
+    <option name="x" value="352" />
+    <option name="y" value="-32" />
     <option name="width" value="980" />
-    <option name="height" value="793" />
+    <option name="height" value="794" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -334,8 +313,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -380,7 +359,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542296567973" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542361904264" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -401,7 +380,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Account">
+  <component name="RunManager">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -439,26 +418,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Account" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Account" />
+    <configuration name="Day" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Day" />
       <module name="NotePast" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DayPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DayPage" />
+    <configuration name="Diary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Diary" />
       <module name="NotePast" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Event" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Event" />
-      <module name="NotePast" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="--module-path=&quot;C:\Program Files\Java\javafx-sdk-11.0.1\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -481,10 +452,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NotePast" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NotePast" />
+    <configuration name="Note" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Note" />
       <module name="NotePast" />
-      <option name="VM_PARAMETERS" value="--module-path=&quot;C:\Program Files\Java\javafx-sdk-11.0.1\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="User" />
+      <module name="NotePast" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -561,16 +540,16 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.DayPage" />
-      <item itemvalue="Application.NotePast" />
-      <item itemvalue="Application.Event" />
-      <item itemvalue="Application.Account" />
+      <item itemvalue="Application.Diary" />
+      <item itemvalue="Application.Note" />
+      <item itemvalue="Application.User" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Account" />
-        <item itemvalue="Application.Event" />
+        <item itemvalue="Application.User" />
+        <item itemvalue="Application.Note" />
         <item itemvalue="Application.DayPage" />
-        <item itemvalue="Application.NotePast" />
+        <item itemvalue="Application.Diary" />
       </list>
     </recent_temporary>
   </component>
@@ -592,7 +571,8 @@
       <workItem from="1542015845265" duration="9499000" />
       <workItem from="1542100457387" duration="8002000" />
       <workItem from="1542246805182" duration="430000" />
-      <workItem from="1542284206121" duration="9768000" />
+      <workItem from="1542284206121" duration="11198000" />
+      <workItem from="1542353856466" duration="4351000" />
     </task>
     <task id="LOCAL-00001" summary="add ui">
       <created>1541953474821</created>
@@ -643,16 +623,31 @@
       <option name="project" value="LOCAL" />
       <updated>1542216557096</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Functional RQM has done.&#10;Waiting for Merge">
+      <created>1542296601419</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1542296601419</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Functional RQM has done.&#10;Waiting for Merge">
+      <created>1542296607321</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1542296607321</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87712000" />
+    <option name="totallyTimeSpent" value="93493000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22885907" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -662,8 +657,8 @@
       <window_info id="Nl-Palette" order="7" />
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32998565" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30921987" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.98134863" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -742,7 +737,8 @@
     <MESSAGE value="Improve Again" />
     <MESSAGE value="Improve Add Event and Del Event" />
     <MESSAGE value="Merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
+    <MESSAGE value="Functional RQM has done.&#10;Waiting for Merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Functional RQM has done.&#10;Waiting for Merge" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -757,32 +753,32 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/yearsago.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="66" column="176" selection-start-line="66" selection-start-column="176" selection-end-line="66" selection-end-column="176" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/fx.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/today.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="920">
           <caret line="196" column="47" selection-start-line="196" selection-start-column="47" selection-end-line="196" selection-end-column="47" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.1/lib/javafx.graphics.jar!/javafx/application/Application.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -807,8 +803,8 @@
     <entry file="uml://JAVA/Account" />
     <entry file="uml://JavaScript-modules-diagram/D:/Mirai-/Work/3D-1/OOAD/Assignment/NotePast/src" />
     <entry file="file://$PROJECT_DIR$/src/fx/diary.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/ControllerToday.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -821,9 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -845,7 +838,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="291.5" y="2120.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="292.0" y="2120.0" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
@@ -861,11 +854,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
           <folding>
-            <element signature="e#74#75#0" expanded="true" />
-            <element signature="e#117#118#0" expanded="true" />
-            <element signature="e#163#164#0" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Searching.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -883,95 +898,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tag.java">
+    <entry file="file://$PROJECT_DIR$/src/Diary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+        <state relative-caret-position="-12">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="151" column="18" selection-start-line="151" selection-start-column="18" selection-end-line="151" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
+            <element signature="method#User#0;class#User#0" />
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1939#1940#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database.java">
+    <entry file="file://$PROJECT_DIR$/src/EntityDiary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="145" column="37" selection-start-line="145" selection-start-column="37" selection-end-line="145" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Database#0;class#Database#0" />
-            <element signature="method#openConnection#0;class#Database#0" />
-            <element signature="method#closeConnection#0;class#Database#0" />
-            <element signature="method#addEvent#0;class#Database#0" />
-            <element signature="method#delEvent#0;class#Database#0" />
-            <element signature="method#getEvent#0;class#Database#0" />
-            <element signature="method#addDayPage#0;class#Database#0" />
-            <element signature="method#createNotePast#0;class#Database#0" />
-            <element signature="method#createAccount#0;class#Database#0" />
-            <element signature="method#login#0;class#Database#0" />
-            <element signature="method#signUp#0;class#Database#0" />
-            <element signature="method#getAccount#0;class#Database#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NotePast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DayPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="20" />
+        <state relative-caret-position="373">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Event.java">
+    <entry file="file://$PROJECT_DIR$/src/Note.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="111" column="21" lean-forward="true" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
+        <state relative-caret-position="767">
+          <caret line="75" column="77" selection-start-line="75" selection-start-column="77" selection-end-line="75" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Event#0;class#Event#0" />
+            <element signature="method#Note#0;class#Note#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Account.java">
+    <entry file="file://$PROJECT_DIR$/src/Day.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="104" column="25" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="25" />
-          <folding>
-            <element signature="method#Account#0;class#Account#0" />
-            <element signature="method#createAccount#0;class#Account#0" />
-            <element signature="method#signup#0;class#Account#0" />
-            <element signature="method#toString#0;class#Account#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Searching.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="208">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#364#365#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#691#692#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#1692#1693#0" expanded="true" />
+            <element signature="e#1722#1723#0" expanded="true" />
           </folding>
         </state>
       </provider>
