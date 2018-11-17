@@ -11,19 +11,39 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Pane pane = new Pane();
-        Pane pane2 = new Pane();
-        Scene today = new Scene(pane,640,480);
-        Scene diary = new Scene(pane2,640,480);
+        primaryStage.setTitle("NotePast");
 
+        Pane diaryPane = FXMLLoader.load(getClass().getResource("diary.fxml"));
+        Pane loginPane = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Pane searchPane = FXMLLoader.load(getClass().getResource("search.fxml"));
+        Pane signupPane = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        Pane summaryPane = FXMLLoader.load(getClass().getResource("summary.fxml"));
+        Pane todayPane = FXMLLoader.load(getClass().getResource("today.fxml"));
+        Pane yearsagoPane = FXMLLoader.load(getClass().getResource("yearsago.fxml"));
 
-      //  VBox1.setManaged(false);
-
-        Parent root = FXMLLoader.load(getClass().getResource("today.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 640, 480));
+        Scene scene = new Scene(loginPane, 640, 480);
+        primaryStage.setScene(scene);
         primaryStage.show();
 
+        PageController pageController = new PageController(scene);
+
+        /*--------------------------------------------------------------------------*/
+        ControllerLogin controllerLogin = new ControllerLogin(pageController);
+        ControllerSignup controllerSignup = new ControllerSignup(pageController);
+        ControllerToday controllerToday = new ControllerToday(pageController);
+        ControllerDiary controllerDiary = new ControllerDiary(pageController);
+      //  ControllerYearsago controllerYearsago = new ControllerToday(pageController);
+        ControllerSummary controllerSummary = new ControllerSummary(pageController);
+
+        /*--------------------------------------------------------------------------*/
+        pageController.addPage("login", loginPane, controllerLogin);
+        pageController.addPage("signup", signupPane, controllerSignup);
+        pageController.addPage("today", todayPane, controllerToday);
+        pageController.addPage("diary", diaryPane, controllerDiary);
+      //  pageController.addPage("yearsago", yearsagoPane, controllerYearsago);
+        pageController.addPage("summary", summaryPane, controllerSummary);
+
+        pageController.active("today");
     }
 
 //    public static void main(String[] args) {

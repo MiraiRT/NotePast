@@ -9,36 +9,36 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="223.0" fitWidth="444.0" layoutX="98.0" layoutY="69.0">
          <image>
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <PasswordField alignment="CENTER" focusTraversable="false" layoutX="330.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="PASSWORD">
+      <PasswordField fx:id="fieldPassword" alignment="CENTER" focusTraversable="false" layoutX="330.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="PASSWORD">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
       </PasswordField>
-      <TextField alignment="CENTER" focusTraversable="false" layoutX="180.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="USERNAME">
+      <TextField fx:id="fieldUsername" alignment="CENTER" focusTraversable="false" layoutX="180.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="USERNAME">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="279.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="LOG IN" textFill="WHITE">
+      <Button fx:id="btnLogin" layoutX="279.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="LOG IN" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="218.0" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="New to Notepast?" textFill="#707070">
+      <Button fx:id="btnSignup" layoutX="323.0" layoutY="387.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="99.0" style="-fx-background-color: none;" text="Sign up now" textFill="#388abd" underline="true">
          <font>
             <Font size="14.0" />
          </font>
-      </Label>
-      <Label layoutX="335.0" layoutY="393.0" text="Sign up now" textFill="#388abd" underline="true">
+      </Button>
+      <Label layoutX="218.0" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="New to Notepast?" textFill="#707070">
          <font>
-            <Font size="14.0" />
+            <Font name="Segoe UI" size="14.0" />
          </font>
       </Label>
       <Label layoutX="412.0" layoutY="393.0" text=" »" textFill="#388abd">

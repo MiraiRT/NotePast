@@ -10,11 +10,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.ControllerToday">
+<AnchorPane maxHeight="480.0" maxWidth="640.0" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="140.0" style="-fx-background-color: #388ABD;">
             <children>
@@ -23,52 +26,22 @@
                         <Image url="@../images/logo4.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="37.0" layoutY="134.0" text="TODAY" textFill="#1d1f1f">
-                    <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Group fx:id="menuToday" layoutY="123.0">
-                    <children>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #1D1F1F;" />
-                        <Label layoutX="37.0" layoutY="11.0" text="TODAY" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Bold" size="20.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Group>
-                <Label layoutX="40.0" layoutY="183.0" text="DIARY" textFill="#1d1f1f">
-                    <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Group fx:id="menuDiary" layoutY="171.0" visible="false">
-                    <children>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #1D1F1F;" />
-                        <Label layoutX="40.0" layoutY="12.0" text="DIARY" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Bold" size="20.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Group>
-                <Label layoutX="15.0" layoutY="230.0" text="YEARS AGO" textFill="#1d1f1f">
-                    <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Group fx:id="menuYearsago" layoutY="219.0" visible="false">
-                    <children>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #1D1F1F;" />
-                        <Label layoutX="15.0" layoutY="11.0" text="YEARS AGO" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Bold" size="20.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Group>
-                <Button layoutX="21.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="LOG OUT">
+            <Button fx:id="btnToday" focusTraversable="false" layoutY="123.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: #1D1F1F; -fx-background-radius: 0;" text="TODAY" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDiary" focusTraversable="false" layoutY="171.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: none;" text="DIARY" textFill="#1d1f1f">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnYearsAgo" focusTraversable="false" layoutY="219.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: none;" text="YEARS AGO" textFill="#1d1f1f">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Button>
+                <Button fx:id="btnLogout" layoutX="21.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="LOG OUT">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -78,146 +51,184 @@
                 </Button>
             </children>
         </Pane>
-      <ImageView layoutX="572.0" layoutY="46.0" onMouseClicked="#addEvent">
+      <ImageView layoutX="566.0" layoutY="46.0">
          <image>
-            <Image fx:id="addButton" url="@../images/add.png" />
+            <Image url="@../images/add.png" />
          </image>
       </ImageView>
-      <Label fx:id="dateToday" layoutX="183.0" layoutY="42.0" textFill="#388abd">
+      <Button fx:id="btnAddEvent" layoutX="566.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="Button" />
+      <Label fx:id="dateToday" layoutX="183.0" layoutY="42.0" text="29 NOVEMBER 2018" textFill="#388abd">
          <font>
             <Font name="Segoe UI Bold" size="25.0" />
          </font>
       </Label>
-      <Pagination layoutX="186.0" layoutY="88.0" maxPageIndicatorCount="5" pageCount="10" prefHeight="360.0" prefWidth="411.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Pagination>
-      <AnchorPane layoutX="185.0" layoutY="88.0" prefWidth="411.0">
+      <AnchorPane fx:id="pagPane" layoutX="185.0" layoutY="88.0" prefHeight="360.0" prefWidth="413.0">
          <children>
-            <Pane fx:id="event1" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
+            <Pagination fx:id="pag" maxPageIndicatorCount="5" pageCount="10" prefHeight="360.0" prefWidth="411.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Pagination>
+            <GridPane fx:id="gridToday" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="299.0" prefWidth="413.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label fx:id="timeEvent1" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
-                     <font>
-                        <Font name="Segoe UI Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="event1Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i a" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../notepass/bin2.png" />
-                     </image>
-                  </ImageView>
+                  <Pane fx:id="event1" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
+                     <children>
+                        <Label fx:id="timeEvent1" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                           <font>
+                              <Font name="Segoe UI Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="textEvent1" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="delEvent1" layoutX="173.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="16.0" text="Button" />
+                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
+                           <image>
+                              <Image url="@../images/bin2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
+                     </GridPane.margin>
+                  </Pane>
+                  <Pane fx:id="event2" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false" GridPane.columnIndex="1">
+                     <children>
+                        <Label fx:id="timeEvent21" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                           <font>
+                              <Font name="Segoe UI Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="textEvent2" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="hello it's me" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="delEvent2" layoutX="173.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="16.0" text="Button" />
+                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
+                           <image>
+                              <Image url="@../images/bin2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
+                     </GridPane.margin>
+                  </Pane>
+                  <Pane fx:id="event3" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="timeEvent3" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                           <font>
+                              <Font name="Segoe UI Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="textEvent3" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="delEvent3" layoutX="173.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="16.0" text="Button" />
+                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
+                           <image>
+                              <Image url="@../images/bin2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
+                     </GridPane.margin>
+                  </Pane>
+                  <Pane fx:id="event4" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="timeEvent4" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                           <font>
+                              <Font name="Segoe UI Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="textEvent4" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="delEvent4" layoutX="173.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="16.0" text="Button" />
+                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
+                           <image>
+                              <Image url="@../images/bin2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
+                     </GridPane.margin>
+                  </Pane>
+                  <Pane fx:id="event5" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="timeEvent5" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                           <font>
+                              <Font name="Segoe UI Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="textEvent5" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="delEvent5" layoutX="173.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="16.0" text="Button" />
+                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
+                           <image>
+                              <Image url="@../images/bin2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
+                     </GridPane.margin>
+                  </Pane>
+                  <Pane fx:id="event6" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="timeEvent6" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
+                           <font>
+                              <Font name="Segoe UI Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="textEvent6" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="delEvent6" layoutX="173.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" opacity="0.0" prefHeight="16.0" prefWidth="16.0" text="Button" />
+                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
+                           <image>
+                              <Image url="@../images/bin2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
+                     </GridPane.margin>
+                  </Pane>
                </children>
-            </Pane>
-            <Pane fx:id="event2" layoutX="218.0" layoutY="1.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
-               <children>
-                  <Label fx:id="timeEvent2" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
-                     <font>
-                        <Font name="Segoe UI Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="event2Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../notepass/bin2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane fx:id="event3" layoutY="113.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
-               <children>
-                  <Label fx:id="timeEvent3" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
-                     <font>
-                        <Font name="Segoe UI Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="event3Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../notepass/bin2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane fx:id="event4" layoutX="218.0" layoutY="114.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
-               <children>
-                  <Label fx:id="timeEvent4" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
-                     <font>
-                        <Font name="Segoe UI Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="event4Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../notepass/bin2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane fx:id="event5" layoutY="223.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
-               <children>
-                  <Label fx:id="timeEvent5" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
-                     <font>
-                        <Font name="Segoe UI Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="event5Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../notepass/bin2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane fx:id="event6" layoutX="218.0" layoutY="224.0" prefHeight="75.0" prefWidth="195.0" style="-fx-background-color: white; -fx-background-radius: 5;" visible="false">
-               <children>
-                  <Label fx:id="timeEvent6" layoutX="7.0" layoutY="6.0" text="09:45 AM" textFill="#1d1f1f">
-                     <font>
-                        <Font name="Segoe UI Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="event6Text" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="7.0" layoutY="29.0" lineSpacing="3.0" prefHeight="38.0" prefWidth="181.0" text="all i am is a man i want the world in my hand i hate the beach but i stand in california with my toe in sane" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="173.0" layoutY="6.0">
-                     <image>
-                        <Image url="@../../../../notepass/bin2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
+            </GridPane>
          </children>
       </AnchorPane>
-      <Group fx:id="addBox" layoutX="140.0" visible="false">
+      <Group fx:id="addEventBox" layoutX="140.0" visible="false">
          <children>
             <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" />
             <Pane layoutX="93.0" layoutY="135.0" prefHeight="221.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #388ADB; -fx-border-radius: 10;">
                <children>
                   <Line endX="214.0" layoutX="101.0" layoutY="40.0" startX="-100.0" stroke="#388adb" />
-                  <TextArea fx:id="textEvent" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
+                  <TextArea fx:id="textAreaEvent" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -237,24 +248,22 @@
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="doneNewevent" layoutX="109.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                          onMouseReleased="#doneEvent" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="DONE" textFill="WHITE">
+                  <Line endX="-80.0" endY="20.0" layoutX="381.0" layoutY="10.0" startX="-95.0" startY="5.0" stroke="#388abd" strokeWidth="3.0" />
+                  <Line endX="-114.0" endY="14.0" layoutX="400.0" layoutY="16.0" startX="-99.0" startY="-1.0" stroke="#388abd" strokeWidth="3.0" />
+                  <Button fx:id="doneAddEvent" layoutX="109.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="DONE" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Group layoutX="279.878662109375" layoutY="10.878679275512695" />
-                  <Button layoutX="281.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button" visible="false" />
-                  <Line endX="-80.0" endY="20.0" layoutX="381.0" layoutY="10.0" startX="-95.0" startY="5.0" stroke="#388abd" strokeWidth="3.0" />
-                  <Line endX="-114.0" endY="14.0" layoutX="400.0" layoutY="16.0" startX="-99.0" startY="-1.0" stroke="#388abd" strokeWidth="3.0" />
+                  <Button fx:id="closeAddEvent" layoutX="281.0" layoutY="10.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="Button" />
                </children>
             </Pane>
          </children>
       </Group>
-      <Group layoutX="140.0" visible="false">
+      <Group fx:id="popupDel" layoutX="140.0" visible="false">
          <children>
-            <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" visible="false" />
-            <Pane layoutX="85.0" layoutY="180.0" prefHeight="142.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #388ABD;" visible="false">
+            <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" />
+            <Pane layoutX="85.0" layoutY="180.0" prefHeight="142.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #388ABD;">
                <children>
                   <Line endX="233.0" layoutX="101.0" layoutY="38.0" startX="-100.0" stroke="#388abd" />
                   <Label layoutX="132.0" layoutY="9.0" text="Notepast" textFill="#1d1f1f">
@@ -267,7 +276,7 @@
                         <Font name="Segoe UI" size="14.0" />
                      </font>
                   </Label>
-                  <Button layoutX="50.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="Yes" textFill="WHITE">
+                  <Button fx:id="yesDel" layoutX="50.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="Yes" textFill="WHITE">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -275,7 +284,7 @@
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="186.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-border-color: #388ABD; -fx-border-radius: 20; -fx-background-color: white; -fx-background-radius: 20;" text="No" textFill="#388abd">
+                  <Button fx:id="noDel" layoutX="186.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-border-color: #388ABD; -fx-border-radius: 20; -fx-background-color: white; -fx-background-radius: 20;" text="No" textFill="#388abd">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
