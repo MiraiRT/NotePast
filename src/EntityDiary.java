@@ -92,8 +92,24 @@ public class EntityDiary {
         resultNP.get(0).getStackOfDay().add(newPage);
         em.getTransaction().commit();
         return newPage;
-
     }
+
+    public void deleteDay(int diaryID, int dayID){
+        em.getTransaction().begin();
+        String sql = "SELECT c FROM Day c Where c.id_Day =" + dayID + "";
+        TypedQuery<Day> query = em.createQuery(sql, Day.class);
+        List<Day> result = query.getResultList();
+        em.remove(result.get(0));
+        em.getTransaction().commit();
+
+        em.getTransaction().begin();
+        String sql2 = "SELECT c FROM Diary c Where c.id_Diary =" + diaryID + "";
+        TypedQuery<Diary> query2 = em.createQuery(sql2,Diary.class);
+        List<Diary> result2 = query2.getResultList();
+        em.refresh(result2.get(0));
+        em.getTransaction().commit();
+    }
+
 
     public Diary createDiary(int userID){
         em.getTransaction().begin();

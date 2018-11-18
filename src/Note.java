@@ -81,7 +81,7 @@ public class Note implements Serializable {
         int index = 0;
         if (index < day.getStackOfNote().size()){
             for(Note i : day.getStackOfNote()){
-                if(index < day.getStackOfNote().size()){
+                if(index >= day.getStackOfNote().size()){
                     return false;
                 }
                 if(i.getNoteID() == noteID) {

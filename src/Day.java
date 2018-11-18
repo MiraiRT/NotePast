@@ -25,13 +25,13 @@ public class Day implements Serializable {
     private int dayID;
     private String day;
     private List<Note> stackOfNote;
-    private int eventID;
+    private int noteID;
 
     public Day(int id_Diary, String day, int dayID){
         this.day = day;
         this.dayID = dayID;
         this.stackOfNote = new ArrayList<>();
-        this.eventID = 1;
+        this.noteID = 1;
         this.id_Diary = id_Diary;
     }
 
@@ -59,24 +59,69 @@ public class Day implements Serializable {
         this.stackOfNote = stackOfNote;
     }
 
-    public int getEventID() {
-        return eventID;
+    public int getNoteID() {
+        return noteID;
     }
 
-    public void setEventID(int eventID) {
-        this.eventID = eventID;
+    public void setNoteID(int noteID) {
+        this.noteID = noteID;
     }
 
     // Method //
 
-    public static Day addDayPage(EntityDiary entity,int npID, int dayID){
+    public static Day addDay(EntityDiary entity, int diaryID, int dayID){
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        Day dp = entity.addDay(npID,dayStr,dayID);
+        Day dp = entity.addDay(diaryID,dayStr,dayID);
         return dp;
     }
 
+//    public static boolean isDayInList(Day day, int noteID){
+//        int index = 0;
+//        if (index < day.getStackOfNote().size()){
+//            for(Note i : day.getStackOfNote()){
+//                if(index < day.getStackOfNote().size()){
+//                    return false;
+//                }
+//                if(i.getNoteID() == noteID) {
+//                    return true;
+//                }
+//                index++;
+//            }
+//        }
+//        return false;
+//    }
+
+    public static boolean isDayInList(Diary diary, int dayID){
+        int index = 0;
+        if (index < diary.getStackOfDay().size()){
+            for(Day i : diary.getStackOfDay()){
+                if(index >= diary.getStackOfDay().size()){
+                    return false;
+                }
+                if(i.getDayID() == dayID) {
+                    return true;
+                }
+                index++;
+            }
+        }
+        return false;
+    }
+
+    public static void deleteDay(EntityDiary entity,Diary diary, int dayID){
+        int index = 0;
+        for(Day i : diary.getStackOfDay()){
+            if(i.getDayID() == dayID) {
+                break;
+            }
+            index++;
+        }
+        diary.getStackOfDay().remove(index);
+        System.out.println(diary);
+        entity.deleteDay(diary.getId(),dayID);
+    }
+
     public void increaseNoteID(){
-        this.eventID++;
+        this.noteID++;
     }
 
 

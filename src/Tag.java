@@ -21,6 +21,12 @@ public abstract class Tag {
         this.stackOfNote = stackOfNote;
     }
 
+    public abstract Tag addTag(User user,Note note,String name);
+
+    public abstract void deleteTag();
+
+    public abstract boolean isTagInList(User user, int noteID);
+
     @Override
     public String toString() {
         return "Tag: " + tagName + "\n"

@@ -17,6 +17,8 @@ public class User implements Serializable {
     private String username;
     private String password;
     private int userID;
+    private List<PeopleTag> stackOfPeopleTag;
+    private List<LocationTag> stackOfLocationTag;
 
     private static int numOfAcc = 0;
 
@@ -29,6 +31,8 @@ public class User implements Serializable {
         this.book = new ArrayList<>();
         numOfAcc++;
         this.userID = numOfAcc;
+        this.stackOfLocationTag = new ArrayList<>();
+        this.stackOfPeopleTag = new ArrayList<>();
     }
 
     public String getUserName() {
@@ -49,6 +53,22 @@ public class User implements Serializable {
 
     public List<Diary> getBook() {
         return book;
+    }
+
+    public List<PeopleTag> getStackOfPeopleTag() {
+        return stackOfPeopleTag;
+    }
+
+    public void setStackOfPeopleTag(List<PeopleTag> stackOfPeopleTag) {
+        this.stackOfPeopleTag = stackOfPeopleTag;
+    }
+
+    public List<LocationTag> getStackOfLocationTag() {
+        return stackOfLocationTag;
+    }
+
+    public void setStackOfLocationTag(List<LocationTag> stackOfLocationTag) {
+        this.stackOfLocationTag = stackOfLocationTag;
     }
 
 
@@ -100,8 +120,6 @@ public class User implements Serializable {
         // Create User //
         createAccount(entity,"Ta","Mirai");
 
-
-
         String username = "Ta";
         String password = "Mirai";
         User activeAcc;
@@ -116,43 +134,48 @@ public class User implements Serializable {
 
 
         // Create 1st Day //
-        Day.addDayPage(entity,activeAcc.getDiary().getDiaryID(),activeAcc.getDiary().getDayID());
+        Day.addDay(entity,activeAcc.getDiary().getDiaryID(),activeAcc.getDiary().getDayID());
         activeAcc.getDiary().increaseDayID();
-        System.out.println(activeAcc);
 
         // Create 1.1 Note //
         Day today = activeAcc.getDiary().getLastDayInStack();
         int npID = activeAcc.getDiary().getDiaryID();
         int dpID = today.getDayID();
-        int eventID = today.getEventID();
+        int eventID = today.getNoteID();
         Note.addNote(entity,npID,dpID,eventID,"Hey Kids 1.1");
         activeAcc.getDiary().getLastDayInStack().increaseNoteID();
-        System.out.println(activeAcc);
 
         // Create 1.2 Note //
         today = activeAcc.getDiary().getLastDayInStack();
         npID = activeAcc.getDiary().getDiaryID();
         dpID = today.getDayID();
-        eventID = today.getEventID();
+        eventID = today.getNoteID();
         Note.addNote(entity,npID,dpID,eventID,"Hey Kids 1.2");
         activeAcc.getDiary().getLastDayInStack().increaseNoteID();
-        System.out.println(activeAcc);
-
-        Note.deleteNote(entity,today,1);
-
 
         // Create 2nd Day //
-        Day.addDayPage(entity,activeAcc.getDiary().getDiaryID(),activeAcc.getDiary().getDayID());
+        Day.addDay(entity,activeAcc.getDiary().getDiaryID(),activeAcc.getDiary().getDayID());
         activeAcc.getDiary().increaseDayID();
-        System.out.println(activeAcc);
 
         // Create 2.1 Note //
         today = activeAcc.getDiary().getLastDayInStack();
         npID = activeAcc.getDiary().getDiaryID();
         dpID = today.getDayID();
-        eventID = today.getEventID();
+        eventID = today.getNoteID();
         Note.addNote(entity,npID,dpID,eventID,"Hey Kids 2.1");
         activeAcc.getDiary().getLastDayInStack().increaseNoteID();
+
+
+        if(Note.isNoteInList(today,1)) {
+            Note.deleteNote(entity, activeAcc.getDiary().getLastDayInStack(), 1);
+        }
+
+        if(Day.isDayInList(activeAcc.getDiary(),2)) {
+            Day.deleteDay(entity,activeAcc.getDiary(),2);
+        }
+
+
+
         entity.closeConnection();
 
         System.out.println(activeAcc);
