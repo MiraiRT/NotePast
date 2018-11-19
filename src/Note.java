@@ -9,8 +9,10 @@ import java.util.List;
 public class Note implements Serializable {
 
     // EntityDiary : ObjectDB //
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Note;
+
     public int getId() {
         return id_Note;
     }
@@ -22,7 +24,7 @@ public class Note implements Serializable {
     private String noteText;
     private List<Tag> noteTag;
 
-    public Note(int noteID, String dayStr, String timeStr, String noteText){
+    public Note(int noteID, String dayStr, String timeStr, String noteText) {
         this.dayStr = dayStr;
         this.timeStr = timeStr;
         this.noteID = noteID;
@@ -70,37 +72,37 @@ public class Note implements Serializable {
         this.noteTag = noteTag;
     }
 
-    public static Note addNote(EntityDiary entity,Diary diary, String noteText){
+    public static Note addNote(EntityDiary entity, Diary diary, String noteText) {
         int diaryID = diary.getId();
         int dayID = diary.getToday().getId();
         int noteID = diary.getToday().getNoteIDGenerator();
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
         String timeStr = (new SimpleDateFormat("HHmmss")).format(new Date());
-        Note newNote = entity.addNote(diaryID,dayID,noteID,dayStr,timeStr,noteText);
+        Note newNote = entity.addNote(diaryID, dayID, noteID, dayStr, timeStr, noteText);
         diary.getToday().increaseNoteID();
-        System.out.println("NoteID "+ noteID + " >> Added" + "\n");
+        System.out.println("NoteID " + noteID + " >> Added" + "\n");
         return newNote;
     }
 
-    public static boolean isNoteInList(Day day, int noteID){
+    public static boolean isNoteInList(Day day, int noteID) {
         int index = 0;
-        if (index < day.getStackOfNote().size()){
-            for(Note i : day.getStackOfNote()){
-                if(i.getNoteID() == noteID) {
-                    System.out.println("NoteID "+ noteID + " >> Found" + "\n");
+        if (index < day.getStackOfNote().size()) {
+            for (Note i : day.getStackOfNote()) {
+                if (i.getNoteID() == noteID) {
+                    System.out.println("NoteID " + noteID + " >> Found" + "\n");
                     return true;
                 }
                 index++;
             }
         }
-        System.out.println("NoteID "+ noteID + " >> Didn't Found" + "\n");
+        System.out.println("NoteID " + noteID + " >> Didn't Found" + "\n");
         return false;
     }
 
-    public static void editNote(EntityDiary entity,Day day, int noteID, String time, String noteText){
+    public static void editNote(EntityDiary entity, Day day, int noteID, String time, String noteText) {
         int index = 0;
-        for(Note i : day.getStackOfNote()){
-            if(i.getNoteID() == noteID) {
+        for (Note i : day.getStackOfNote()) {
+            if (i.getNoteID() == noteID) {
                 break;
             }
             index++;
@@ -108,25 +110,25 @@ public class Note implements Serializable {
         Note note = day.getStackOfNote().get(index);
         note.setTimeStr(time);
         note.setNoteText(noteText);
-        entity.editNote(note.getId(),time,noteText);
-        System.out.println("NoteID "+ noteID + " >> Edited\n");
+        entity.editNote(note.getId(), time, noteText);
+        System.out.println("NoteID " + noteID + " >> Edited\n");
     }
 
-    public static void deleteNote(EntityDiary entity,Day day, int noteID){
+    public static void deleteNote(EntityDiary entity, Day day, int noteID) {
         int index = 0;
-        for(Note i : day.getStackOfNote()){
-            if(i.getNoteID() == noteID) {
+        for (Note i : day.getStackOfNote()) {
+            if (i.getNoteID() == noteID) {
                 break;
             }
             index++;
         }
         day.getStackOfNote().remove(index);
-        entity.deleteNote(day.getId(),noteID);
-        System.out.println("NoteID "+ noteID + " >> Deleted\n");
+        entity.deleteNote(day.getId(), noteID);
+        System.out.println("NoteID " + noteID + " >> Deleted\n");
     }
 
     public String toString() {
-        return  "\n\t\t=> Note\n\t\t"
+        return "\n\t\t=> Note\n\t\t"
                 + "Day: " + this.dayStr + " Time: " + this.timeStr + "\n\t\t"
                 + "ID: " + this.noteID + "\n\t\t"
                 + "Text:" + this.noteText + "\n\t\t"

@@ -7,8 +7,10 @@ import java.util.List;
 public class Diary implements Serializable {
 
     // EntityDiary : ObjectDB //
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Diary;
+
     public int getId() {
         return id_Diary;
     }
@@ -18,11 +20,14 @@ public class Diary implements Serializable {
 
     @OneToMany
     private List<Day> stackOfDay;
+    private List<Tag> stackOfTag;
+
     private int dayIDGenerator;
 
     // Constructor //
-    public Diary(int accID){
+    public Diary(int accID) {
         this.stackOfDay = new ArrayList<>();
+        this.stackOfTag = new ArrayList<>();
         this.diaryID = accID;
         this.dayIDGenerator = 1;
     }
@@ -52,26 +57,31 @@ public class Diary implements Serializable {
     public void setDayIDGenerator(int dayIDGenerator) {
         this.dayIDGenerator = dayIDGenerator;
     }
+
+    public List<Tag> getStackOfTag() {
+        return stackOfTag;
+    }
+
     // Getter Setter //
 
-    public static Diary createNotePast(EntityDiary entity,int accID){
+    public static Diary createNotePast(EntityDiary entity, int accID) {
         Diary book = entity.createDiary(accID);
         return book;
     }
 
-    public void increaseDayID(){
+    public void increaseDayID() {
         this.dayIDGenerator++;
     }
 
-    public Day getToday(){
+    public Day getToday() {
         // It's mean -> Get Today //
-        int lastIndex = this.stackOfDay.size()-1;
+        int lastIndex = this.stackOfDay.size() - 1;
         return this.stackOfDay.get(lastIndex);
     }
 
     @Override
     public String toString() {
-        return  "\n<<--Diary-->>" + "\n"
+        return "\n<<--Diary-->>" + "\n"
                 + this.stackOfDay + "\n<<------------>>\n";
     }
 }

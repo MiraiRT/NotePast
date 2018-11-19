@@ -9,14 +9,17 @@ import java.util.List;
 public class Day implements Serializable {
 
     // EntityDiary : ObjectDB //
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Day;
+
     public int getId() {
         return id_Day;
     }
 
 
     private int id_Diary;
+
     public int getId_Diary() {
         return id_Diary;
     }
@@ -27,7 +30,7 @@ public class Day implements Serializable {
     private List<Note> stackOfNote;
     private int noteIDGenerator;
 
-    public Day(int id_Diary, String dayStr, int dayID){
+    public Day(int id_Diary, String dayStr, int dayID) {
         this.dayStr = dayStr;
         this.dayID = dayID;
         this.stackOfNote = new ArrayList<>();
@@ -69,51 +72,50 @@ public class Day implements Serializable {
 
     // Method //
 
-    public static Day addDay(EntityDiary entity, Diary diary){
+    public static Day addDay(EntityDiary entity, Diary diary) {
         int diaryID = diary.getDiaryID();
         int dayID = diary.getDayIDGenerator();
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        Day dp = entity.addDay(diaryID,dayStr,dayID);
+        Day dp = entity.addDay(diaryID, dayStr, dayID);
         diary.increaseDayID();
-        System.out.println("DayID "+ dayID + " >> Added" + "\n");
+        System.out.println("DayID " + dayID + " >> Added" + "\n");
         return dp;
     }
 
-    public static boolean isDayInList(Diary diary, int dayID){
+    public static boolean isDayInList(Diary diary, int dayID) {
         int index = 0;
-        if (index < diary.getStackOfDay().size()){
-            for(Day i : diary.getStackOfDay()){
-                if(i.getDayID() == dayID) {
-                    System.out.println("DayID "+ dayID + " >> Found" + "\n");
+        if (index < diary.getStackOfDay().size()) {
+            for (Day i : diary.getStackOfDay()) {
+                if (i.getDayID() == dayID) {
+                    System.out.println("DayID " + dayID + " >> Found" + "\n");
                     return true;
                 }
                 index++;
             }
         }
-        System.out.println("DayID "+ dayID + " >> Didn't Found" + "\n");
+        System.out.println("DayID " + dayID + " >> Didn't Found" + "\n");
         return false;
     }
 
-    public static void deleteDay(EntityDiary entity,Diary diary, int dayID){
+    public static void deleteDay(EntityDiary entity, Diary diary, int dayID) {
         int index = 0;
-        for(Day i : diary.getStackOfDay()){
-            if(i.getId() == dayID) {
+        for (Day i : diary.getStackOfDay()) {
+            if (i.getId() == dayID) {
                 break;
             }
             index++;
         }
         diary.getStackOfDay().remove(index);
-        entity.deleteDay(diary.getId(),dayID);
+        entity.deleteDay(diary.getId(), dayID);
     }
 
-    public void increaseNoteID(){
+    public void increaseNoteID() {
         this.noteIDGenerator++;
     }
 
-
     @Override
     public String toString() {
-        return  "\n\t-> Day" + "   Day ID: " + this.dayID + "\n\t"
+        return "\n\t-> Day" + "   Day ID: " + this.dayID + "\n\t"
                 + this.stackOfNote + "\n\n";
     }
 }

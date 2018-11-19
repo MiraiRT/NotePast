@@ -21,11 +21,32 @@ public abstract class Tag {
         this.stackOfNote = stackOfNote;
     }
 
-    public abstract Tag addTag(User user,Note note,String name);
+    public void addNewTag(Diary diary, Tag tag) {
+        diary.getStackOfTag().add(tag);
+    }
 
-    public abstract void deleteTag();
+    public void deleteTag(Diary diary, Tag tag) {
+        if (tag instanceof LocationTag) {
+            for (int i = 0; i < diary.getStackOfTag().size(); i++) {
+                if(diary.getStackOfTag().get(i) instanceof LocationTag) {
+                    if (diary.getStackOfTag().get(i).getTagName() == tag.getTagName()){
+                        diary.getStackOfTag().remove(i);
+                        break;
+                    }
+                }
+            }
+        } else {
 
-    public abstract boolean isTagInList(User user, int noteID);
+        }
+
+
+    }
+
+//    public Tag addNoteToTag(Diary diary, Note note, String tagName);
+//
+//    public void deleteNoteInTag();
+//
+//    public boolean isTagInList(Diary diary, int noteID);
 
     @Override
     public String toString() {

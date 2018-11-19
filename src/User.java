@@ -111,15 +111,15 @@ public class User implements Serializable {
 
             Day.addDay(entity, userDiary);
 
-            String inputText = "Hey 3.1";
+            String inputText = "I wake up";
             Note.addNote(entity, userDiary, inputText);
 
-            inputText = "Hey 3.2";
+            inputText = "I sleep";
             Note.addNote(entity, userDiary, inputText);
 
             Day.addDay(entity, userDiary);
 
-            inputText = "Hey 4.1";
+            inputText = "I do nothing";
             Note.addNote(entity, userDiary, inputText);
 
             int onSelectedNote = 1;
@@ -129,8 +129,8 @@ public class User implements Serializable {
             }
 
             int onSelectedDay = 2;
-            if(Day.isDayInList(userDiary,onSelectedDay)) {
-                Day.deleteDay(entity,userDiary,onSelectedDay);
+            if (Day.isDayInList(userDiary, onSelectedDay)) {
+                //Day.deleteDay(entity,userDiary,onSelectedDay);
             }
 
             System.out.println(activeAcc);
