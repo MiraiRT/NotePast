@@ -11,7 +11,6 @@ public class EntityDiary {
     public EntityDiary() {
         this.emf = Persistence.createEntityManagerFactory("database/data.odb");
         this.em = emf.createEntityManager();
-
     }
 
     public void closeConnection(){
@@ -52,7 +51,7 @@ public class EntityDiary {
         TypedQuery<Note> query = em.createQuery(sql, Note.class);
         List<Note> result = query.getResultList();
         result.get(0).setNoteText(text);
-        result.get(0).setTime(time);
+        result.get(0).setTimeStr(time);
         em.getTransaction().commit();
     }
 

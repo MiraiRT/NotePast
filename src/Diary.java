@@ -18,13 +18,13 @@ public class Diary implements Serializable {
 
     @OneToMany
     private List<Day> stackOfDay;
-    private int dayID;
+    private int dayIDGenerator;
 
     // Constructor //
     public Diary(int accID){
         this.stackOfDay = new ArrayList<>();
         this.diaryID = accID;
-        this.dayID = 1;
+        this.dayIDGenerator = 1;
     }
     // Constructor //
 
@@ -45,12 +45,12 @@ public class Diary implements Serializable {
         this.stackOfDay = stackOfDay;
     }
 
-    public int getDayID() {
-        return dayID;
+    public int getDayIDGenerator() {
+        return dayIDGenerator;
     }
 
-    public void setDayID(int dayID) {
-        this.dayID = dayID;
+    public void setDayIDGenerator(int dayIDGenerator) {
+        this.dayIDGenerator = dayIDGenerator;
     }
     // Getter Setter //
 
@@ -60,16 +60,14 @@ public class Diary implements Serializable {
     }
 
     public void increaseDayID(){
-        this.dayID++;
+        this.dayIDGenerator++;
     }
 
-    public Day getLastDayInStack(){
+    public Day getToday(){
         // It's mean -> Get Today //
         int lastIndex = this.stackOfDay.size()-1;
         return this.stackOfDay.get(lastIndex);
     }
-
-
 
     @Override
     public String toString() {

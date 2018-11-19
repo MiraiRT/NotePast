@@ -28,25 +28,25 @@ public class LocationTag extends Tag{
     @Override
     public Tag addTag(User user,Note note,String name){
         LocationTag newTag = new LocationTag(name);
-        note.getNoteTag().add(newTag);
-        user.getStackOfLocationTag().add(newTag);
+//        note.getNoteTag().add(newTag);
+//        user.getStackOfLocationTag().add(newTag);
         return newTag;
     }
 
     @Override
     public boolean isTagInList(User user, int noteID) {
-        int index = 0;
-        if (index < user.getStackOfLocationTag().size()){
-            for(LocationTag i : user.getStackOfLocationTag()){
-                if(index >= user.getStackOfLocationTag().size()){
-                    return false;
-                }
-                if(i.getStackOfNote().get(index).getNoteID() == noteID) {
-                    return true;
-                }
-                index++;
-            }
-        }
+//        int index = 0;
+//        if (index < user.getStackOfLocationTag().size()){
+//            for(LocationTag i : user.getStackOfLocationTag()){
+//                if(index >= user.getStackOfLocationTag().size()){
+//                    return false;
+//                }
+//                if(i.getStackOfNote().get(index).getNoteIDGenerator() == noteID) {
+//                    return true;
+//                }
+//                index++;
+//            }
+//        }
         return false;
     }
 
