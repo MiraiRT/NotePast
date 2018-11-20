@@ -7,8 +7,10 @@ import java.util.List;
 public class Diary implements Serializable {
 
     // EntityDiary : ObjectDB //
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Diary;
+
     public int getId() {
         return id_Diary;
     }
@@ -17,14 +19,17 @@ public class Diary implements Serializable {
     private int diaryID;
 
     @OneToMany
-    private List<Day> stackOfDay;
-    private int dayID;
+    private List<Day> listOfDay;
+    private List<Tag> listOfTag;
+
+    private int dayIDGenerator;
 
     // Constructor //
-    public Diary(int accID){
-        this.stackOfDay = new ArrayList<>();
+    public Diary(int accID) {
+        this.listOfDay = new ArrayList<>();
+        this.listOfTag = new ArrayList<>();
         this.diaryID = accID;
-        this.dayID = 1;
+        this.dayIDGenerator = 1;
     }
     // Constructor //
 
@@ -37,43 +42,46 @@ public class Diary implements Serializable {
         this.diaryID = diaryID;
     }
 
-    public List<Day> getStackOfDay() {
-        return stackOfDay;
+    public List<Day> getListOfDay() {
+        return listOfDay;
     }
 
-    public void setStackOfDay(List<Day> stackOfDay) {
-        this.stackOfDay = stackOfDay;
+    public void setListOfDay(List<Day> listOfDay) {
+        this.listOfDay = listOfDay;
     }
 
-    public int getDayID() {
-        return dayID;
+    public int getDayIDGenerator() {
+        return dayIDGenerator;
     }
 
-    public void setDayID(int dayID) {
-        this.dayID = dayID;
+    public void setDayIDGenerator(int dayIDGenerator) {
+        this.dayIDGenerator = dayIDGenerator;
     }
+
+    public List<Tag> getListOfTag() {
+        return listOfTag;
+    }
+
     // Getter Setter //
 
-    public static Diary createNotePast(EntityDiary entity,int accID){
+    public static Diary createNotePast(EntityDiary entity, int accID) {
         Diary book = entity.createDiary(accID);
         return book;
     }
 
-    public void increaseDayID(){
-        this.dayID++;
+    public void increaseDayID() {
+        this.dayIDGenerator++;
     }
 
-    public Day getLastDayInStack(){
+    public Day getToday() {
         // It's mean -> Get Today //
-        int lastIndex = this.stackOfDay.size()-1;
-        return this.stackOfDay.get(lastIndex);
+        int lastIndex = this.listOfDay.size() - 1;
+        return this.listOfDay.get(lastIndex);
     }
-
-
 
     @Override
     public String toString() {
-        return  "\n<<--Diary-->>" + "\n"
-                + this.stackOfDay + "\n<<------------>>\n";
+        return "\n<<--Diary-->>" + "\n"
+                + this.listOfDay + "\n<<------------>>\n";
     }
 }

@@ -1,15 +1,14 @@
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Note implements Serializable {
 
     // EntityDiary : ObjectDB //
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Note;
     public int getId() {
         return id_Note;
@@ -17,17 +16,15 @@ public class Note implements Serializable {
     // EntityDiary : ObjectDB //
 
     private int noteID;
-    private String day;
-    private String time;
+    private String dayStr;
+    private String timeStr;
     private String noteText;
-    private List<Tag> noteTag;
 
-    public Note(int noteID, String day, String time, String noteText){
-        this.day = day;
-        this.time = time;
+    public Note(int noteID, String dayStr, String timeStr, String noteText) {
+        this.dayStr = dayStr;
+        this.timeStr = timeStr;
         this.noteID = noteID;
         this.noteText = noteText;
-        this.noteTag = new ArrayList<>();
     }
 
     public int getNoteID() {
@@ -38,20 +35,20 @@ public class Note implements Serializable {
         this.noteID = noteID;
     }
 
-    public String getDay() {
-        return day;
+    public String getDayStr() {
+        return dayStr;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDayStr(String dayStr) {
+        this.dayStr = dayStr;
     }
 
-    public String getTime() {
-        return time;
+    public String getTimeStr() {
+        return timeStr;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTimeStr(String timeStr) {
+        this.timeStr = timeStr;
     }
 
     public String getNoteText() {
@@ -62,70 +59,66 @@ public class Note implements Serializable {
         this.noteText = noteText;
     }
 
-    public List<Tag> getNoteTag() {
-        return noteTag;
-    }
-
-    public void setNoteTag(List<Tag> noteTag) {
-        this.noteTag = noteTag;
-    }
-
-    public static Note addNote(EntityDiary entity,int diaryID, int dayID, int noteID, String noteText){
+    public static Note addNote(EntityDiary entity, Diary diary, String noteText) {
+        int diaryID = diary.getId();
+        int dayID = diary.getToday().getId();
+        int noteID = diary.getToday().getNoteIDGenerator();
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
         String timeStr = (new SimpleDateFormat("HHmmss")).format(new Date());
-        Note newNote = entity.addNote(diaryID,dayID,noteID,dayStr,timeStr,noteText);
+        Note newNote = entity.addNote(diaryID, dayID, noteID, dayStr, timeStr, noteText);
+        diary.getToday().increaseNoteID();
+        System.out.println("NoteID " + noteID + " >> Added" + "\n");
         return newNote;
     }
 
-    public static boolean isNoteInList(Day day, int noteID){
+    public static boolean isNoteInList(Day day, int noteID) {
         int index = 0;
-        if (index < day.getStackOfNote().size()){
-            for(Note i : day.getStackOfNote()){
-                if(index < day.getStackOfNote().size()){
-                    return false;
-                }
-                if(i.getNoteID() == noteID) {
+        if (index < day.getListOfNote().size()) {
+            for (Note i : day.getListOfNote()) {
+                if (i.getNoteID() == noteID) {
+                    System.out.println("NoteID " + noteID + " >> Found" + "\n");
                     return true;
                 }
                 index++;
             }
         }
+        System.out.println("NoteID " + noteID + " >> Didn't Found" + "\n");
         return false;
     }
 
-    public static void editNote(EntityDiary entity,Day day, int noteID, String time, String noteText){
+    public static void editNote(EntityDiary entity, Day day, int noteID, String time, String noteText) {
         int index = 0;
-        for(Note i : day.getStackOfNote()){
-            if(i.getNoteID() == noteID) {
+        for (Note i : day.getListOfNote()) {
+            if (i.getNoteID() == noteID) {
                 break;
             }
             index++;
         }
-        Note note = day.getStackOfNote().get(index);
-        note.setTime(time);
+        Note note = day.getListOfNote().get(index);
+        note.setTimeStr(time);
         note.setNoteText(noteText);
-        entity.editNote(day.getId(),time,noteText);
+        entity.editNote(note.getId(), time, noteText);
+        System.out.println("NoteID " + noteID + " >> Edited\n");
     }
 
-    public static void deleteNote(EntityDiary entity,Day day, int noteID){
+    public static void deleteNote(EntityDiary entity, Day day, int noteID) {
         int index = 0;
-        for(Note i : day.getStackOfNote()){
-            if(i.getNoteID() == noteID) {
+        for (Note i : day.getListOfNote()) {
+            if (i.getNoteID() == noteID) {
                 break;
             }
             index++;
         }
-        day.getStackOfNote().remove(index);
-        entity.deleteNote(day.getId(),noteID);
-
+        day.getListOfNote().remove(index);
+        entity.deleteNote(day.getId(), noteID);
+        System.out.println("NoteID " + noteID + " >> Deleted\n");
     }
 
     public String toString() {
-        return  "\n\t\t=> Note\n\t\t"
-                + "Day: " + this.day + " Time: " + this.time + "\n\t\t"
+        return "\n\t\t=> Note\n\t\t"
+                + "Day: " + this.dayStr + " Time: " + this.timeStr + "\n\t\t"
                 + "ID: " + this.noteID + "\n\t\t"
-                + "Text:" + this.noteText + "\n\t\t"
-                + "Tag" + this.noteTag + "\n\t";
+                + "Text:" + this.noteText + "\n\t";
     }
 
 }
