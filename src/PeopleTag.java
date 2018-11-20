@@ -16,18 +16,18 @@ public class PeopleTag extends Tag {
     }
 
     @Override
-    public List<Note> getStackOfNote() {
-        return super.getStackOfNote();
+    public List<Note> getListOfNote() {
+        return super.getListOfNote();
     }
 
     @Override
-    public void setStackOfNote(List<Note> stackOfNote) {
-        super.setStackOfNote(stackOfNote);
+    public void setListOfNote(List<Note> listOfNote) {
+        super.setListOfNote(listOfNote);
     }
 
     @Override
     public String toString() {
         return "Tag: " + this.tagName + "\n"
-                + "Note: " + super.getStackOfNote() + "\n";
+                + "Note: " + super.getListOfNote() + "\n";
     }
 }

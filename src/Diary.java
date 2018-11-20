@@ -19,15 +19,15 @@ public class Diary implements Serializable {
     private int diaryID;
 
     @OneToMany
-    private List<Day> stackOfDay;
-    private List<Tag> stackOfTag;
+    private List<Day> listOfDay;
+    private List<Tag> listOfTag;
 
     private int dayIDGenerator;
 
     // Constructor //
     public Diary(int accID) {
-        this.stackOfDay = new ArrayList<>();
-        this.stackOfTag = new ArrayList<>();
+        this.listOfDay = new ArrayList<>();
+        this.listOfTag = new ArrayList<>();
         this.diaryID = accID;
         this.dayIDGenerator = 1;
     }
@@ -42,12 +42,12 @@ public class Diary implements Serializable {
         this.diaryID = diaryID;
     }
 
-    public List<Day> getStackOfDay() {
-        return stackOfDay;
+    public List<Day> getListOfDay() {
+        return listOfDay;
     }
 
-    public void setStackOfDay(List<Day> stackOfDay) {
-        this.stackOfDay = stackOfDay;
+    public void setListOfDay(List<Day> listOfDay) {
+        this.listOfDay = listOfDay;
     }
 
     public int getDayIDGenerator() {
@@ -58,8 +58,8 @@ public class Diary implements Serializable {
         this.dayIDGenerator = dayIDGenerator;
     }
 
-    public List<Tag> getStackOfTag() {
-        return stackOfTag;
+    public List<Tag> getListOfTag() {
+        return listOfTag;
     }
 
     // Getter Setter //
@@ -75,13 +75,13 @@ public class Diary implements Serializable {
 
     public Day getToday() {
         // It's mean -> Get Today //
-        int lastIndex = this.stackOfDay.size() - 1;
-        return this.stackOfDay.get(lastIndex);
+        int lastIndex = this.listOfDay.size() - 1;
+        return this.listOfDay.get(lastIndex);
     }
 
     @Override
     public String toString() {
         return "\n<<--Diary-->>" + "\n"
-                + this.stackOfDay + "\n<<------------>>\n";
+                + this.listOfDay + "\n<<------------>>\n";
     }
 }

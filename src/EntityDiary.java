@@ -29,7 +29,7 @@ public class EntityDiary {
         String sql = "SELECT c FROM Day c Where c.id_Day =" + dayID + "";
         TypedQuery<Day> query = em.createQuery(sql, Day.class);
         List<Day> result = query.getResultList();
-        result.get(0).getStackOfNote().add(newNote);
+        result.get(0).getListOfNote().add(newNote);
         em.getTransaction().commit();
 
         // then Find Diary in DB and add Day to stack //
@@ -40,7 +40,7 @@ public class EntityDiary {
         String sql3 = "SELECT a FROM Day a Where a.id_Diary = " + diaryID + "";
         TypedQuery<Day> queryDP = em.createQuery(sql3, Day.class);
         List<Day> resultDP = queryDP.getResultList();
-        resultNP.get(0).setStackOfDay(resultDP);
+        resultNP.get(0).setListOfDay(resultDP);
         em.getTransaction().commit();
         return newNote;
     }
@@ -88,7 +88,7 @@ public class EntityDiary {
         String sqlNP = "SELECT a FROM Diary a Where a.id_Diary =" + diaryID + "";
         TypedQuery<Diary> queryNP = em.createQuery(sqlNP, Diary.class);
         List<Diary> resultNP = queryNP.getResultList();
-        resultNP.get(0).getStackOfDay().add(newPage);
+        resultNP.get(0).getListOfDay().add(newPage);
         em.getTransaction().commit();
         return newPage;
     }

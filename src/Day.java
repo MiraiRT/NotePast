@@ -27,13 +27,13 @@ public class Day implements Serializable {
 
     private int dayID;
     private String dayStr;
-    private List<Note> stackOfNote;
+    private List<Note> listOfNote;
     private int noteIDGenerator;
 
     public Day(int id_Diary, String dayStr, int dayID) {
         this.dayStr = dayStr;
         this.dayID = dayID;
-        this.stackOfNote = new ArrayList<>();
+        this.listOfNote = new ArrayList<>();
         this.noteIDGenerator = 1;
         this.id_Diary = id_Diary;
     }
@@ -54,12 +54,12 @@ public class Day implements Serializable {
         this.dayStr = dayStr;
     }
 
-    public List<Note> getStackOfNote() {
-        return stackOfNote;
+    public List<Note> getListOfNote() {
+        return listOfNote;
     }
 
-    public void setStackOfNote(List<Note> stackOfNote) {
-        this.stackOfNote = stackOfNote;
+    public void setListOfNote(List<Note> listOfNote) {
+        this.listOfNote = listOfNote;
     }
 
     public int getNoteIDGenerator() {
@@ -84,8 +84,8 @@ public class Day implements Serializable {
 
     public static boolean isDayInList(Diary diary, int dayID) {
         int index = 0;
-        if (index < diary.getStackOfDay().size()) {
-            for (Day i : diary.getStackOfDay()) {
+        if (index < diary.getListOfDay().size()) {
+            for (Day i : diary.getListOfDay()) {
                 if (i.getDayID() == dayID) {
                     System.out.println("DayID " + dayID + " >> Found" + "\n");
                     return true;
@@ -99,13 +99,13 @@ public class Day implements Serializable {
 
     public static void deleteDay(EntityDiary entity, Diary diary, int dayID) {
         int index = 0;
-        for (Day i : diary.getStackOfDay()) {
+        for (Day i : diary.getListOfDay()) {
             if (i.getId() == dayID) {
                 break;
             }
             index++;
         }
-        diary.getStackOfDay().remove(index);
+        diary.getListOfDay().remove(index);
         entity.deleteDay(diary.getId(), dayID);
     }
 
@@ -116,6 +116,6 @@ public class Day implements Serializable {
     @Override
     public String toString() {
         return "\n\t-> Day" + "   Day ID: " + this.dayID + "\n\t"
-                + this.stackOfNote + "\n\n";
+                + this.listOfNote + "\n\n";
     }
 }

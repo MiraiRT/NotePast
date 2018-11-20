@@ -94,53 +94,56 @@ public class User implements Serializable {
 
     public static void main(String[] args) {
 
-        EntityDiary entity = new EntityDiary();
+//        EntityDiary entity = new EntityDiary();
+//
+//        String username = "Ta";
+//        String password = "Mirai";
+//
+//        // Create User //
+//        User.signup(entity, username, password);
+//
+//        username = "Ta";
+//        password = "Mirai";
+//
+//        if (User.authen(entity, username, password)) {
+//            User activeAcc = User.getAccount(entity, username);
+//            Diary userDiary = activeAcc.getDiary();
+//
+//            Day.addDay(entity, userDiary);
+//
+//            String inputText = "I wake up";
+//            Note.addNote(entity, userDiary, inputText);
+//
+//            inputText = "I sleep";
+//            Note.addNote(entity, userDiary, inputText);
+//
+//            Day.addDay(entity, userDiary);
+//
+//            inputText = "I do nothing";
+//            Note.addNote(entity, userDiary, inputText);
+//
+//            int onSelectedNote = 1;
+//            if (Note.isNoteInList(userDiary.getToday(), onSelectedNote)) {
+//                //Note.deleteNote(entity, userDiary.getToday(), onSelectedNote);
+//                //Note.editNote(entity, userDiary.getToday(), onSelectedNote, "999999", "Hey Kids 4.0");
+//            }
+//
+//            int onSelectedDay = 2;
+//            if (Day.isDayInList(userDiary, onSelectedDay)) {
+//                //Day.deleteDay(entity,userDiary,onSelectedDay);
+//            }
+//
+//            System.out.println(activeAcc);
+//
+//        } else {
+//            System.out.println("This User Doesn't found");
+//        }
+//
+//
+//        entity.closeConnection();
 
-        String username = "Ta";
-        String password = "Mirai";
-
-        // Create User //
-        User.signup(entity, username, password);
-
-        username = "Ta";
-        password = "Mirai";
-
-        if (User.authen(entity, username, password)) {
-            User activeAcc = User.getAccount(entity, username);
-            Diary userDiary = activeAcc.getDiary();
-
-            Day.addDay(entity, userDiary);
-
-            String inputText = "I wake up";
-            Note.addNote(entity, userDiary, inputText);
-
-            inputText = "I sleep";
-            Note.addNote(entity, userDiary, inputText);
-
-            Day.addDay(entity, userDiary);
-
-            inputText = "I do nothing";
-            Note.addNote(entity, userDiary, inputText);
-
-            int onSelectedNote = 1;
-            if (Note.isNoteInList(userDiary.getToday(), onSelectedNote)) {
-                //Note.deleteNote(entity, userDiary.getToday(), onSelectedNote);
-                //Note.editNote(entity, userDiary.getToday(), onSelectedNote, "999999", "Hey Kids 4.0");
-            }
-
-            int onSelectedDay = 2;
-            if (Day.isDayInList(userDiary, onSelectedDay)) {
-                //Day.deleteDay(entity,userDiary,onSelectedDay);
-            }
-
-            System.out.println(activeAcc);
-
-        } else {
-            System.out.println("This User Doesn't found");
-        }
-
-
-        entity.closeConnection();
+        String tag = "@ECC";
+        System.out.println(tag.substring(1));
     }
 }
 
