@@ -58,7 +58,7 @@
         </ImageView>
       <ScrollPane fx:id="scp" layoutX="183.0" layoutY="85.0" prefHeight="330.0" prefWidth="413.0">
          <content>
-                  <VBox fx:id="sumVBox" prefWidth="380.0" spacing="20.0" visible="false">
+                  <VBox fx:id="sumVBox" prefWidth="380.0" spacing="20.0">
                       <children>
                           <Group>
                               <children>

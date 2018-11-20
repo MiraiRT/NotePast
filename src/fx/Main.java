@@ -46,8 +46,8 @@ public class Main extends Application {
         pageController.active("today");
     }
 
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }

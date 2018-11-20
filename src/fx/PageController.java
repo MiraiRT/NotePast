@@ -68,7 +68,7 @@ public class PageController {
         PageClass page = pageMap.get(name);
         main.setRoot(page.getPane());
         if(!page.isInit()){
-            page.getController().initilize();
+            page.getController().initialize();
             page.setInit(true);
         }
         page.onActive();

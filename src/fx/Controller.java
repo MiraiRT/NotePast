@@ -1,6 +1,6 @@
 package fx;
 
 public interface Controller {
-    void initilize();
+    void initialize();
     void onActive();
 }

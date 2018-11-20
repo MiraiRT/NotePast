@@ -18,7 +18,7 @@ public class ControllerSignup implements Controller {
     }
 
     @Override
-    public void initilize() {
+    public void initialize() {
         Scene scene = pageController.getScene("signup");
         btnRegSubmin = (Button) scene.lookup("#btnRegSubmin");
         btnRegCancel = (Button) scene.lookup("#btnRegCancel");

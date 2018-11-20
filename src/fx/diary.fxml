@@ -46,7 +46,7 @@
                 </Button>
             </children>
         </Pane>
-        <Pagination fx:id="pag" layoutX="184.0" layoutY="85.0" maxPageIndicatorCount="5" pageCount="500" prefHeight="385.0" prefWidth="413.0" >
+        <Pagination fx:id="pag" layoutX="184.0" layoutY="85.0" maxPageIndicatorCount="5" pageCount="500" prefHeight="385.0" prefWidth="413.0">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
