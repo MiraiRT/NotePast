@@ -68,36 +68,18 @@
             </Pagination>
          </children>
       </AnchorPane>
-      <Pane fx:id="btnEvent0" layoutX="192.0" layoutY="100.0" opacity="0.0" prefHeight="76.0" prefWidth="193.0">
-         <children>
-            <Pane fx:id="delEvent0" layoutX="170.0" layoutY="3.0" opacity="0.0" prefHeight="25.0" prefWidth="19.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="btnEvent1" layoutX="398.0" layoutY="100.0" prefHeight="76.0" prefWidth="193.0">
-         <children>
-            <Pane fx:id="delEvent1" layoutX="170.0" layoutY="3.0" prefHeight="25.0" prefWidth="19.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="btnEvent2" layoutX="192.0" layoutY="200.0" prefHeight="76.0" prefWidth="193.0">
-         <children>
-            <Pane fx:id="delEvent2" layoutX="170.0" layoutY="3.0" prefHeight="25.0" prefWidth="19.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="btnEvent3" layoutX="398.0" layoutY="200.0" prefHeight="76.0" prefWidth="193.0">
-         <children>
-            <Pane fx:id="delEvent3" layoutX="170.0" layoutY="3.0" prefHeight="25.0" prefWidth="19.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="btnEvent4" layoutX="192.0" layoutY="300.0" prefHeight="76.0" prefWidth="193.0">
-         <children>
-            <Pane fx:id="delEvent4" layoutX="170.0" layoutY="3.0" prefHeight="25.0" prefWidth="19.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="btnEvent5" layoutX="398.0" layoutY="300.0" prefHeight="76.0" prefWidth="193.0">
-         <children>
-            <Pane fx:id="delEvent5" layoutX="170.0" layoutY="3.0" prefHeight="25.0" prefWidth="19.0" />
-         </children>
-      </Pane>
+      <Pane fx:id="btnEvent0" layoutX="192.0" layoutY="100.0" prefHeight="76.0" prefWidth="193.0" />
+      <Button fx:id="delEvent0" layoutX="362.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del1" />
+      <Pane fx:id="btnEvent1" layoutX="398.0" layoutY="100.0" opacity="0.0" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: white;" />
+      <Button fx:id="delEvent1" layoutX="565.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del2" />
+      <Pane fx:id="btnEvent2" layoutX="192.0" layoutY="200.0" opacity="0.0" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: white;" />
+      <Button fx:id="delEvent2" layoutX="360.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del2" />
+      <Pane fx:id="btnEvent3" layoutX="398.0" layoutY="200.0" prefHeight="76.0" prefWidth="193.0" />
+      <Button fx:id="delEvent3" layoutX="565.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del3" />
+      <Pane fx:id="btnEvent4" layoutX="192.0" layoutY="300.0" prefHeight="76.0" prefWidth="193.0" />
+      <Button fx:id="delEvent4" layoutX="360.0" layoutY="303.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del4" />
+      <Pane fx:id="btnEvent5" layoutX="398.0" layoutY="300.0" prefHeight="76.0" prefWidth="193.0" />
+      <Button fx:id="delEvent5" layoutX="565.0" layoutY="313.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del5" />
       <Group fx:id="addEventBox" layoutX="140.0" visible="false">
          <children>
             <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" />
