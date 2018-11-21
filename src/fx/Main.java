@@ -1,5 +1,6 @@
 package fx;
 
+import NotePast.EntityDiary;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,11 +44,11 @@ public class Main extends Application {
       //  pageController.addPage("yearsago", yearsagoPane, controllerYearsago);
         pageController.addPage("summary", summaryPane, controllerSummary);
 
-        pageController.active("today");
+        pageController.active("login");
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 
 }

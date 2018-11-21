@@ -1,3 +1,5 @@
+package NotePast;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -59,12 +61,10 @@ public class Note implements Serializable {
         this.noteText = noteText;
     }
 
-    public static Note addNote(EntityDiary entity, Diary diary, String noteText) {
+    public static Note addNote(EntityDiary entity, Diary diary, String noteText,String dayStr,String timeStr) {
         int diaryID = diary.getId();
         int dayID = diary.getToday().getId();
         int noteID = diary.getToday().getNoteIDGenerator();
-        String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        String timeStr = (new SimpleDateFormat("HHmmss")).format(new Date());
         Note newNote = entity.addNote(diaryID, dayID, noteID, dayStr, timeStr, noteText);
         diary.getToday().increaseNoteID();
         System.out.println("NoteID " + noteID + " >> Added" + "\n");
@@ -118,7 +118,7 @@ public class Note implements Serializable {
         return "\n\t\t=> Note\n\t\t"
                 + "Day: " + this.dayStr + " Time: " + this.timeStr + "\n\t\t"
                 + "ID: " + this.noteID + "\n\t\t"
-                + "Text:" + this.noteText + "\n\t";
+                + "Text: " + this.noteText + "\n\t";
     }
 
 }

@@ -1,5 +1,9 @@
 package fx;
 
+import NotePast.Day;
+import NotePast.Diary;
+import NotePast.EntityDiary;
+import NotePast.User;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,9 +16,13 @@ public class ControllerLogin implements Controller {
     Button btnSignup, btnLogin;
     TextField username;
     PasswordField password;
+    EntityDiary entity;
+    static User activeAcc;
+    static Diary activeDiary;
 
     public ControllerLogin(PageController pageController) {
         this.pageController = pageController;
+        this.entity = new EntityDiary();
     }
 
     @Override
@@ -38,10 +46,14 @@ public class ControllerLogin implements Controller {
             public void handle(MouseEvent mouseEvent) {
                 String loginUsername = username.getText();
                 String loginPass = password.getText();
-                /*--------------------TA!!!!! send username n password----------------*/
-
-                /*if true -> switch page to today*/
-                pageController.active("today");
+                if (User.authen(entity, loginUsername, loginPass)) {
+                    activeAcc = User.getAccount(entity, loginUsername);
+                    activeDiary = activeAcc.getDiary();
+                    Day.addDay(entity,activeDiary);
+                    entity.closeConnection();
+                    pageController.active("today");
+                }
+                System.out.println("Login Clicked");
             }
         });
 

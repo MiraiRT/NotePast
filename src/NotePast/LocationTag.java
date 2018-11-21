@@ -1,8 +1,10 @@
+package NotePast;
+
 import java.util.List;
 
-public class PeopleTag extends Tag {
-    public PeopleTag(String people) {
-        super.tagName = people;
+public class LocationTag extends Tag {
+    public LocationTag(String place) {
+        super.tagName = place;
     }
 
     @Override
@@ -27,7 +29,6 @@ public class PeopleTag extends Tag {
 
     @Override
     public String toString() {
-        return "Tag: " + this.tagName + "\n"
-                + "Note: " + super.getListOfNote() + "\n";
+        return super.toString();
     }
 }

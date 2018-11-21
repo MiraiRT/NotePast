@@ -1,5 +1,9 @@
 package fx;
 
+import NotePast.Day;
+import NotePast.EntityDiary;
+import NotePast.Note;
+import NotePast.User;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -9,8 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ControllerToday implements Controller {
     Scene scene;
@@ -21,7 +28,7 @@ public class ControllerToday implements Controller {
     private Group addEventBox, editEventBox, popupDel;
     private TextArea textAreaEvent, textAreaEventEdit;
     private TextField HH, MM, HHedit, MMedit;
-    private int page, objectNum, count = -1;
+    private int page, objectNum, index = -1;
     private String inputHH, inputMM, hourEdit, minEdit;
     private String textTodayEvent, timeTodayEvent;
     private Pagination pag;
@@ -29,8 +36,8 @@ public class ControllerToday implements Controller {
     private GridPane pageBox[] = new GridPane[10];
     private Boolean emptyPag[] = {true, true, true, true, true, true, true, true, true, true};
     private Pane btnEvent0, btnEvent1, btnEvent2, btnEvent3, btnEvent4, btnEvent5;
-    private Pane delEvent0, delEvent1, delEvent2, delEvent3, delEvent4, delEvent5;
-    private Pane paneEvent[] = new Pane[200];
+    private Button delEvent0, delEvent1, delEvent2, delEvent3, delEvent4, delEvent5;
+    private List<Pane> paneEvent = new ArrayList<>();
     private Pane objCreateEvent = new Pane();
 
     private String day = new SimpleDateFormat("dd").format(new Date());
@@ -38,9 +45,13 @@ public class ControllerToday implements Controller {
     private String year = new SimpleDateFormat("yyyy").format(new Date());
     private String hour;// = new SimpleDateFormat("HH").format(new Date());
     private String min;// = new SimpleDateFormat("mm").format(new Date());
+    EntityDiary entity;
+
+    User activeAcc = ControllerLogin.activeAcc;
 
     ControllerToday(PageController pageController) {
         this.pageController = pageController;
+        this.entity = new EntityDiary();
     }
 
     @Override
@@ -67,6 +78,7 @@ public class ControllerToday implements Controller {
         pag = (Pagination) scene.lookup("#pag");
         pagPane = (AnchorPane) scene.lookup("#pagPane");
         textAreaEventEdit = (TextArea) scene.lookup("#textAreaEventEdit");
+        popupDel = (Group) scene.lookup("#popupDel");
 
         btnEvent0 = (Pane) scene.lookup("#btnEvent0");
         btnEvent1 = (Pane) scene.lookup("#btnEvent1");
@@ -74,12 +86,12 @@ public class ControllerToday implements Controller {
         btnEvent3 = (Pane) scene.lookup("#btnEvent3");
         btnEvent4 = (Pane) scene.lookup("#btnEvent4");
         btnEvent5 = (Pane) scene.lookup("#btnEvent5");
-        delEvent0 = (Pane) scene.lookup("#delEvent0");
-        delEvent1 = (Pane) scene.lookup("#delEvent1");
-        delEvent2 = (Pane) scene.lookup("#delEvent2");
-        delEvent3 = (Pane) scene.lookup("#delEvent3");
-        delEvent4 = (Pane) scene.lookup("#delEvent4");
-        delEvent5 = (Pane) scene.lookup("#delEvent5");
+        delEvent0 = (Button) scene.lookup("#delEvent0");
+        delEvent1 = (Button) scene.lookup("#delEvent1");
+        delEvent2 = (Button) scene.lookup("#delEvent2");
+        delEvent3 = (Button) scene.lookup("#delEvent3");
+        delEvent4 = (Button) scene.lookup("#delEvent4");
+        delEvent5 = (Button) scene.lookup("#delEvent5");
 
         pag.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
 //        pag.setStyle("-fx-page-information-color:false");
@@ -131,43 +143,44 @@ public class ControllerToday implements Controller {
             inputHH = HH.getText();
             inputMM = MM.getText();
 
-            if (checkTime()){
+            if (checkTimeFormat()) {
                 textTodayEvent = textAreaEvent.getText();
                 inputHH = "0" + inputHH;
                 inputMM = "0" + inputMM;
-                timeTodayEvent = inputHH.substring(inputHH.length()-2) + ":" + inputMM.substring(inputMM.length()-2);
+                timeTodayEvent = inputHH.substring(inputHH.length() - 2) + ":" + inputMM.substring(inputMM.length() - 2);
 
-                count++;
-                page = count/6;
+//                String timeStr = inputHH.substring(inputHH.length() - 2) + inputMM.substring(inputMM.length() - 2);
+//                String dayStr = new SimpleDateFormat("yyyyMMdd").format(new Date());
+//                //Day.addDay(entity,activeAcc.getDiary());
+//                Note.addNote(entity, activeAcc.getDiary(), textTodayEvent,dayStr , timeStr);
 
-              //  createPage(page);
+                index = paneEvent.size();
+                page = index / 6;
 
+                NotePane newNotePane = new NotePane(index, inputHH, inputMM, textTodayEvent, timeTodayEvent);
+                paneEvent.add(newNotePane);
 
-                paneEvent[count] = new CreateEvent(count, inputHH, inputMM, textTodayEvent, timeTodayEvent);
-                objCreateEvent = ((CreateEvent) paneEvent[count]).getEvent();
+                objCreateEvent = ((NotePane) paneEvent.get(index)).getNoteBox();
                 GridPane.setMargin(objCreateEvent, new Insets(12, 7, 12, 7));
 
-                for(int i=0; i<=count; i++) {
-                    System.out.println(paneEvent[i]);
-                }
                 textAreaEvent.clear();
                 addEventBox.setVisible(false);
 
-                if (count%6 == 0) {
+                if (index % 6 == 0) {
                     createPage(page);
                     pageBox[page].add(objCreateEvent, 0, 0);
-                } else if (count%6 == 1) {
+                } else if (index % 6 == 1) {
                     pageBox[page].add(objCreateEvent, 1, 0);
-                } else if (count%6 == 2) {
+                } else if (index % 6 == 2) {
                     pageBox[page].add(objCreateEvent, 0, 1);
-                } else if (count%6 == 3) {
+                } else if (index % 6 == 3) {
                     pageBox[page].add(objCreateEvent, 1, 1);
-                } else if (count%6 == 4) {
+                } else if (index % 6 == 4) {
                     pageBox[page].add(objCreateEvent, 0, 2);
                 } else {
                     pageBox[page].add(objCreateEvent, 1, 2);
                 }
-
+                System.out.println(paneEvent.size() + " " + index);
                 pag.setCurrentPageIndex(page);
                 /* -------------TA!!!!!!! ------------- */
             }
@@ -175,49 +188,49 @@ public class ControllerToday implements Controller {
 
         /* Click on event */
         btnEvent0.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex()*6);
+            objectNum = (pag.getCurrentPageIndex() * 6);
 
-            if (count >= objectNum){
+            if (index >= objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent1.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex()*6) + 1;
+            objectNum = (pag.getCurrentPageIndex() * 6) + 1;
 
-            if (count >= objectNum){
+            if (index >= objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent2.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex()*6) + 2;
+            objectNum = (pag.getCurrentPageIndex() * 6) + 2;
 
-            if (count >= objectNum){
+            if (index >= objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent3.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex()*6) + 3;
+            objectNum = (pag.getCurrentPageIndex() * 6) + 3;
 
-            if (count >= objectNum){
+            if (index >= objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent4.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex()*6) + 4;
+            objectNum = (pag.getCurrentPageIndex() * 6) + 4;
 
-            if (count >= objectNum){
+            if (index >= objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent5.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex()*6) + 5;
+            objectNum = (pag.getCurrentPageIndex() * 6) + 5;
 
-            if (count >= objectNum){
+            if (index >= objectNum) {
                 showEdit(objectNum);
             }
         });
@@ -230,32 +243,32 @@ public class ControllerToday implements Controller {
             inputHH = HHedit.getText();
             inputMM = MMedit.getText();
 
-            if (checkTime()){
+            if (checkTimeFormat()) {
                 textTodayEvent = textAreaEventEdit.getText();
-                ((CreateEvent) paneEvent[objectNum]).setInputHH(inputHH);
-                ((CreateEvent) paneEvent[objectNum]).setInputMM(inputMM);
+                ((NotePane) paneEvent.get(objectNum)).setInputHH(inputHH);
+                ((NotePane) paneEvent.get(objectNum)).setInputMM(inputMM);
                 inputHH = "0" + inputHH;
                 inputMM = "0" + inputMM;
                 timeTodayEvent = inputHH.substring(inputHH.length() - 2) + ":" + inputMM.substring(inputMM.length() - 2);
-                ((CreateEvent) paneEvent[objectNum]).setTextTodayEvent(textTodayEvent);
-                ((CreateEvent) paneEvent[objectNum]).setTimeTodayEvent(timeTodayEvent);
+                ((NotePane) paneEvent.get(objectNum)).setTextTodayEvent(textTodayEvent);
+                ((NotePane) paneEvent.get(objectNum)).setTimeTodayEvent(timeTodayEvent);
 
-                objCreateEvent = ((CreateEvent) paneEvent[objectNum]).getEvent();
+                objCreateEvent = ((NotePane) paneEvent.get(objectNum)).getNoteBox();
                 GridPane.setMargin(objCreateEvent, new Insets(12, 7, 12, 7));
 
                 textAreaEventEdit.clear();
                 editEventBox.setVisible(false);
 
-                if (objectNum%6 == 0) {
+                if (objectNum % 6 == 0) {
                     pageBox[page].add(objCreateEvent, 0, 0);
-                } else if (objectNum%6 == 1) {
+                } else if (objectNum % 6 == 1) {
 //                    pageBox[page].getChildren().clear();
                     pageBox[page].add(objCreateEvent, 1, 0);
-                } else if (objectNum%6 == 2) {
+                } else if (objectNum % 6 == 2) {
                     pageBox[page].add(objCreateEvent, 0, 1);
-                } else if (objectNum%6 == 3) {
+                } else if (objectNum % 6 == 3) {
                     pageBox[page].add(objCreateEvent, 1, 1);
-                } else if (objectNum%6 == 4) {
+                } else if (objectNum % 6 == 4) {
                     pageBox[page].add(objCreateEvent, 0, 2);
                 } else {
                     pageBox[page].add(objCreateEvent, 1, 2);
@@ -266,7 +279,9 @@ public class ControllerToday implements Controller {
 
     @Override
     public void onActive() {
-
+        addEventBox.setVisible(false);
+        editEventBox.setVisible(false);
+        popupDel.setVisible(false);
     }
 
     private GridPane createPage(int pageIndex) {
@@ -284,18 +299,18 @@ public class ControllerToday implements Controller {
     private void showEdit(int objectNum) {
         editEventBox.setVisible(true);
 
-        hourEdit = (((CreateEvent) paneEvent[objectNum]).getInputHH());
-        hourEdit = hourEdit.substring(hourEdit.length()-2);
-        minEdit = ((CreateEvent) paneEvent[objectNum]).getInputMM();
-        minEdit = minEdit.substring(minEdit.length()-2);
-        textTodayEvent = ((CreateEvent) paneEvent[objectNum]).getTextTodayEvent();
+        hourEdit = (((NotePane) paneEvent.get(objectNum)).getInputHH());
+        hourEdit = hourEdit.substring(hourEdit.length() - 2);
+        minEdit = ((NotePane) paneEvent.get(objectNum)).getInputMM();
+        minEdit = minEdit.substring(minEdit.length() - 2);
+        textTodayEvent = ((NotePane) paneEvent.get(objectNum)).getTextTodayEvent();
 
         HHedit.setText(hourEdit);
         MMedit.setText(minEdit);
         textAreaEventEdit.setText(textTodayEvent);
     }
 
-    private boolean checkTime() {
+    private boolean checkTimeFormat() {
         int intInputHH = 0;
         for (int i = 0; i < inputHH.length(); i++) {
             intInputHH += ((inputHH.charAt(i) - 48) * (int) (Math.pow(10, inputHH.length() - 1 - i)));
@@ -310,7 +325,7 @@ public class ControllerToday implements Controller {
         return false;
     }
 
-    private String convertMonth(String month){
+    private String convertMonth(String month) {
         switch (month) {
             case "01":
                 return "JANUARY";

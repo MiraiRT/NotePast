@@ -1,3 +1,5 @@
+package NotePast;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -111,6 +113,15 @@ public class Day implements Serializable {
 
     public void increaseNoteID() {
         this.noteIDGenerator++;
+    }
+
+    public void summaryNote(){
+        List<Note> l = new ArrayList<>();
+        for(Note i : listOfNote){
+            if (l.size() == 0) {
+                l.add(i);
+            } //else if ()
+        }
     }
 
     @Override
