@@ -1,22 +1,22 @@
 package NotePast;
 
+import javafx.collections.transformation.SortedList;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 @Entity
-public class Day implements Serializable {
+public class DayStory implements Serializable {
 
     // EntityDiary : ObjectDB //
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Day;
+    private int id_DayStory;
 
     public int getId() {
-        return id_Day;
+        return id_DayStory;
     }
 
 
@@ -32,7 +32,7 @@ public class Day implements Serializable {
     private List<Note> listOfNote;
     private int noteIDGenerator;
 
-    public Day(int id_Diary, String dayStr, int dayID) {
+    public DayStory(int id_Diary, String dayStr, int dayID) {
         this.dayStr = dayStr;
         this.dayID = dayID;
         this.listOfNote = new ArrayList<>();
@@ -74,20 +74,20 @@ public class Day implements Serializable {
 
     // Method //
 
-    public static Day addDay(EntityDiary entity, Diary diary) {
+    public static DayStory addDay(EntityDiary entity, Diary diary) {
         int diaryID = diary.getDiaryID();
         int dayID = diary.getDayIDGenerator();
         String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-        Day dp = entity.addDay(diaryID, dayStr, dayID);
+        DayStory dp = entity.addDay(diaryID, dayStr, dayID);
         diary.increaseDayID();
         System.out.println("DayID " + dayID + " >> Added" + "\n");
         return dp;
     }
 
-    public static boolean isDayInList(Diary diary, int dayID) {
+    public static boolean isDayStoryInList(Diary diary, int dayID) {
         int index = 0;
-        if (index < diary.getListOfDay().size()) {
-            for (Day i : diary.getListOfDay()) {
+        if (index < diary.getListOfDayStory().size()) {
+            for (DayStory i : diary.getListOfDayStory()) {
                 if (i.getDayID() == dayID) {
                     System.out.println("DayID " + dayID + " >> Found" + "\n");
                     return true;
@@ -99,15 +99,15 @@ public class Day implements Serializable {
         return false;
     }
 
-    public static void deleteDay(EntityDiary entity, Diary diary, int dayID) {
+    public static void deleteDayStory(EntityDiary entity, Diary diary, int dayID) {
         int index = 0;
-        for (Day i : diary.getListOfDay()) {
+        for (DayStory i : diary.getListOfDayStory()) {
             if (i.getId() == dayID) {
                 break;
             }
             index++;
         }
-        diary.getListOfDay().remove(index);
+        diary.getListOfDayStory().remove(index);
         entity.deleteDay(diary.getId(), dayID);
     }
 
@@ -115,18 +115,39 @@ public class Day implements Serializable {
         this.noteIDGenerator++;
     }
 
-    public void summaryNote(){
-        List<Note> l = new ArrayList<>();
-        for(Note i : listOfNote){
-            if (l.size() == 0) {
-                l.add(i);
-            } //else if ()
-        }
+    public void summaryNote() {
+        Collections.sort(listOfNote, (Note a1, Note a2) -> a1.getTimeStr().compareTo(a2.getTimeStr()) );
+//        List<Note> l = new ArrayList<>();
+//        //Collections.sort(listOfNote.);
+//        for (Note i : listOfNote) {
+//            if (l.size() == 0) {
+//                l.add(i);
+//            } else {
+//                int toPush = Integer.parseInt(i.getTimeStr());
+//                for (int j = 0; j < l.size(); j++) {
+//                    int inList = Integer.parseInt(l.get(j).getTimeStr());
+//                    System.out.println("inList :" + inList + " toPush :" + toPush);
+//                    if(toPush < inList){
+//                        l.add(j,i);
+//                    } else if(toPush == inList){
+//                        if(i.getNoteID() < l.get(j).getNoteID()){
+//                            l.add(j,i);
+//                        } else {
+//                            l.add(j+1,i);
+//                        }
+//
+//                    }
+//                }
+//                l.add(i);
+//            }
+//        }
+//        listOfNote = l;
+//        System.out.println(listOfNote);
     }
 
     @Override
     public String toString() {
-        return "\n\t-> Day" + "   Day ID: " + this.dayID + "\n\t"
+        return "\n\t-> DayStory" + "   DayStory ID: " + this.dayID + "\n\t"
                 + this.listOfNote + "\n\n";
     }
 }

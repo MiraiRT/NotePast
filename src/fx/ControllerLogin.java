@@ -1,6 +1,6 @@
 package fx;
 
-import NotePast.Day;
+import NotePast.DayStory;
 import NotePast.Diary;
 import NotePast.EntityDiary;
 import NotePast.User;
@@ -49,7 +49,7 @@ public class ControllerLogin implements Controller {
                 if (User.authen(entity, loginUsername, loginPass)) {
                     activeAcc = User.getAccount(entity, loginUsername);
                     activeDiary = activeAcc.getDiary();
-                    Day.addDay(entity,activeDiary);
+                    DayStory.addDay(entity,activeDiary);
                     entity.closeConnection();
                     pageController.active("today");
                 }

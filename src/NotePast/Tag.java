@@ -1,11 +1,32 @@
 package NotePast;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Tag {
-    public String tagName;
+@Entity
+public class Tag implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_Tag;
+
+    private int id_Diary;
+    public int getId_Diary() {
+        return id_Diary;
+    }
+
+
+    private String tagName;
+    private String tagType;
     private List<Note> listOfNote = new ArrayList<>();
+
+    public Tag(int id_Diary, String tagName, String tagType) {
+        this.tagName = tagName;
+        this.tagType = tagType;
+        this.id_Diary = id_Diary;
+    }
 
     public String getTagName() {
         return tagName;
@@ -13,6 +34,14 @@ public abstract class Tag {
 
     public void setTagName(String tagName) {
         this.tagName = tagName;
+    }
+
+    public String getTagType() {
+        return tagType;
+    }
+
+    public void setTagType(String tagType) {
+        this.tagType = tagType;
     }
 
     public List<Note> getListOfNote() {
@@ -23,54 +52,14 @@ public abstract class Tag {
         this.listOfNote = listOfNote;
     }
 
-    public static void addNewTag(Diary diary, Tag tag) {
-        diary.getListOfTag().add(tag);
-    }
-
-    public static void deleteTag(Diary diary, Tag tag) {
-        if (tag instanceof LocationTag) {
-            for (int i = 0; i < diary.getListOfTag().size(); i++) {
-                if (diary.getListOfTag().get(i) instanceof LocationTag) {
-                    if (diary.getListOfTag().get(i).getTagName() == tag.getTagName()) {
-                        diary.getListOfTag().remove(i);
-                        break;
-                    }
-                }
-            }
-        } else {
-            for (int i = 0; i < diary.getListOfTag().size(); i++) {
-                if (diary.getListOfTag().get(i) instanceof PeopleTag) {
-                    if (diary.getListOfTag().get(i).getTagName() == tag.getTagName()) {
-                        diary.getListOfTag().remove(i);
-                        break;
-                    }
-                }
-            }
+    public static void addNoteToTag(EntityDiary entity, Diary diary, int noteID, String name, String type) {
+        int diaryID = diary.getId();
+        if (!entity.searchTag(diaryID, name, type)) {
+            Tag newTag = entity.createTag(diaryID, name, type);
+            diary.getListOfTag().add(newTag);
         }
+        entity.addNoteinTag(diaryID, noteID, name, type);
     }
-
-    public static void addNoteToTag(Diary diary, Note note, String tag) {
-        List<Tag> list = diary.getListOfTag();
-        char typeOfTage = tag.charAt(0);
-        String tagName = tag.substring(1);
-        // Check this Tag already Define //
-        if (list.size() == 0) {
-            // Add New Tag //
-        } else {
-            for (int i = 0; i < list.size(); i++) {
-                boolean con1 = (list.get(i).getTagName() == tagName);
-                boolean con2 = (list.get(i) instanceof PeopleTag);
-                if (con1 && con2) {
-                    // Add new Note to Stack //
-                    list.get(i).getListOfNote().add(note);
-                }
-            }
-        }
-    }
-//
-//    public static void deleteNoteInTagList();
-//
-//    public static boolean isTagInList(Diary diary, int noteID);
 
     @Override
     public String toString() {

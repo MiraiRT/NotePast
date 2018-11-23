@@ -1,8 +1,6 @@
 package fx;
 
-import NotePast.Day;
 import NotePast.EntityDiary;
-import NotePast.Note;
 import NotePast.User;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -151,7 +149,7 @@ public class ControllerToday implements Controller {
 
 //                String timeStr = inputHH.substring(inputHH.length() - 2) + inputMM.substring(inputMM.length() - 2);
 //                String dayStr = new SimpleDateFormat("yyyyMMdd").format(new Date());
-//                //Day.addDay(entity,activeAcc.getDiary());
+//                //DayStory.addDay(entity,activeAcc.getDiary());
 //                Note.addNote(entity, activeAcc.getDiary(), textTodayEvent,dayStr , timeStr);
 
                 index = paneEvent.size();

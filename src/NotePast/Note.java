@@ -2,8 +2,6 @@ package NotePast;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Entity
 public class Note implements Serializable {
@@ -12,6 +10,7 @@ public class Note implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_Note;
+
     public int getId() {
         return id_Note;
     }
@@ -61,20 +60,24 @@ public class Note implements Serializable {
         this.noteText = noteText;
     }
 
-    public static Note addNote(EntityDiary entity, Diary diary, String noteText,String dayStr,String timeStr) {
+    public static Note addNote(EntityDiary entity, Diary diary, String noteText, String timeStr) {
         int diaryID = diary.getId();
         int dayID = diary.getToday().getId();
         int noteID = diary.getToday().getNoteIDGenerator();
+        String dayStr = diary.getToday().getDayStr();
+
         Note newNote = entity.addNote(diaryID, dayID, noteID, dayStr, timeStr, noteText);
         diary.getToday().increaseNoteID();
+        Note.detectTag(entity, diary, newNote);
+
         System.out.println("NoteID " + noteID + " >> Added" + "\n");
         return newNote;
     }
 
-    public static boolean isNoteInList(Day day, int noteID) {
+    public static boolean isNoteInList(DayStory dayStory, int noteID) {
         int index = 0;
-        if (index < day.getListOfNote().size()) {
-            for (Note i : day.getListOfNote()) {
+        if (index < dayStory.getListOfNote().size()) {
+            for (Note i : dayStory.getListOfNote()) {
                 if (i.getNoteID() == noteID) {
                     System.out.println("NoteID " + noteID + " >> Found" + "\n");
                     return true;
@@ -86,33 +89,57 @@ public class Note implements Serializable {
         return false;
     }
 
-    public static void editNote(EntityDiary entity, Day day, int noteID, String time, String noteText) {
+    public static void editNote(EntityDiary entity, DayStory dayStory, int noteID, String time, String noteText) {
         int index = 0;
-        for (Note i : day.getListOfNote()) {
+        for (Note i : dayStory.getListOfNote()) {
             if (i.getNoteID() == noteID) {
                 break;
             }
             index++;
         }
-        Note note = day.getListOfNote().get(index);
+        Note note = dayStory.getListOfNote().get(index);
         note.setTimeStr(time);
         note.setNoteText(noteText);
         entity.editNote(note.getId(), time, noteText);
         System.out.println("NoteID " + noteID + " >> Edited\n");
     }
 
-    public static void deleteNote(EntityDiary entity, Day day, int noteID) {
+    public static void deleteNote(EntityDiary entity, DayStory dayStory, int noteID) {
         int index = 0;
-        for (Note i : day.getListOfNote()) {
+        for (Note i : dayStory.getListOfNote()) {
             if (i.getNoteID() == noteID) {
                 break;
             }
             index++;
         }
-        day.getListOfNote().remove(index);
-        entity.deleteNote(day.getId(), noteID);
+        dayStory.getListOfNote().remove(index);
+        entity.deleteNote(dayStory.getId(), noteID);
         System.out.println("NoteID " + noteID + " >> Deleted\n");
     }
+
+    public static void detectTag(EntityDiary entity, Diary diary, Note newNote) {
+        String[] tag = newNote.getNoteText().split(" ");
+        for (int i = 0; i < tag.length; i++) {
+            if (tag[i].substring(0, 1).equals("@") || tag[i].substring(0, 1).equals("#")) {
+                String type = tag[i].substring(0,1);
+                String name = tag[i].substring(1);
+                Tag.addNoteToTag(entity, diary, newNote.getId(), name, type);
+            }
+        }
+
+    }
+
+//    public static int CompareTimeStr(String ,String){
+//
+//    }
+//
+//    public static int convertIntToStr(String str){
+//        int n = 0;
+//        int
+//        for(int i=0;i<str.length();i++){
+//
+//        }
+//    }
 
     public String toString() {
         return "\n\t\t=> Note\n\t\t"
