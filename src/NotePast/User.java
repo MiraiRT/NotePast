@@ -158,7 +158,18 @@ public class User implements Serializable {
             // Finish Test: Add/Edit/Delete Note //
 
             String searchInput = "ecc";
-            System.out.println(Tag.searchTag(searchInput,userDiary));
+            List<Note> result = Tag.searchTag(searchInput, userDiary);
+
+            String targetDay = result.get(0).getDayStr();
+            System.out.println(targetDay);
+
+            DayStory selectedDay = null;
+            for (DayStory day : userDiary.getListOfDayStory()) {
+                if (day.getDayStr().equals(targetDay)) {
+                    selectedDay = day;
+                }
+            }
+            System.out.println(selectedDay);
 
         } else {
             System.out.println("This User Doesn't found");

@@ -61,13 +61,15 @@ public class Tag implements Serializable {
         entity.addNoteinTag(diaryID, noteID, name, type);
     }
 
-    public static List<Tag> searchTag(String searchInput,Diary diary){
+    public static List<Note> searchTag(String searchInput,Diary diary){
         List<Tag> allTag = diary.getListOfTag();
-        List<Tag> result = new ArrayList<>();
+        List<Note> result = new ArrayList<>();
         for(int i = 0; i < allTag.size(); i++) {
             Tag tag = allTag.get(i);
             if(searchInput.toLowerCase().equals(tag.getTagName().toLowerCase())){
-                result.add(tag);
+                for(Note n : tag.getListOfNote()) {
+                    result.add(n);
+                }
             }
         }
         return result;
