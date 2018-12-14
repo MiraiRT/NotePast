@@ -112,7 +112,6 @@ public class EntityDiary {
         em.getTransaction().commit();
     }
 
-
     public Diary createDiary(int userID) {
         em.getTransaction().begin();
         Diary diary = new Diary(userID);
@@ -223,12 +222,14 @@ public class EntityDiary {
 //        String sql = "SELECT c FROM Diary c Where c.id_Diary =" + diaryID + "";
 //        TypedQuery<Diary> query = em.createQuery(sql, Diary.class);
 //        List<Diary> result = query.getResultList();
-//
+
 //        String sql2 = "SELECT a FROM Tag a Where a.tagName LIKE '" + name + "' AND a.tagType LIKE '" + type + "'";
 //        TypedQuery<Tag> query2 = em.createQuery(sql2, Tag.class);
 //        List<Tag> result2 = query2.getResultList();
 
-        String sql3 = "SELECT n, m FROM Diary n, Tag m Where n.id_Diary =" + diaryID + " AND m.getTagName() LIKE '" + name + "' AND m.getTagType() LIKE '" + type + "'";
+        String sql3 = "SELECT n, m FROM Diary n, Tag m Where n.id_Diary ="
+                + diaryID + " AND m.getTagName() LIKE '" + name
+                + "' AND m.getTagType() LIKE '" + type + "'";
         TypedQuery<Tag> query3 = em.createQuery(sql3, Tag.class);
         List<Tag> result3 = query3.getResultList();
 
@@ -237,6 +238,5 @@ public class EntityDiary {
         } else {
             return true;
         }
-
     }
 }

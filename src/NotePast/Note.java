@@ -121,25 +121,18 @@ public class Note implements Serializable {
         String[] tag = newNote.getNoteText().split(" ");
         for (int i = 0; i < tag.length; i++) {
             if (tag[i].substring(0, 1).equals("@") || tag[i].substring(0, 1).equals("#")) {
-                String type = tag[i].substring(0,1);
+                String type;
+                if (tag[i].substring(0, 1).equals("@")) {
+                    type = "Location";
+                } else {
+                    type = "People";
+                }
+
                 String name = tag[i].substring(1);
                 Tag.addNoteToTag(entity, diary, newNote.getId(), name, type);
             }
         }
-
     }
-
-//    public static int CompareTimeStr(String ,String){
-//
-//    }
-//
-//    public static int convertIntToStr(String str){
-//        int n = 0;
-//        int
-//        for(int i=0;i<str.length();i++){
-//
-//        }
-//    }
 
     public String toString() {
         return "\n\t\t=> Note\n\t\t"
