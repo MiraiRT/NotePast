@@ -11,18 +11,20 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ControllerLogin implements Controller {
     PageController pageController;
     Button btnSignup, btnLogin;
     TextField username;
     PasswordField password;
-    EntityDiary entity;
+    EntityDiary entity = Main.entity;
     static User activeAcc;
     static Diary activeDiary;
 
     public ControllerLogin(PageController pageController) {
         this.pageController = pageController;
-        this.entity = new EntityDiary();
     }
 
     @Override
@@ -49,8 +51,18 @@ public class ControllerLogin implements Controller {
                 if (User.authen(entity, loginUsername, loginPass)) {
                     activeAcc = User.getAccount(entity, loginUsername);
                     activeDiary = activeAcc.getDiary();
-                    DayStory.addDay(entity,activeDiary);
-                    entity.closeConnection();
+
+
+                    int today = Integer.parseInt(activeDiary.getToday().getDayStr());
+                    String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+                    int newDay = Integer.parseInt(dayStr);
+
+                    if (activeDiary.getListOfDayStory().size() == 0 || newDay > today) {
+                        DayStory.addDay(entity, activeDiary);
+                    }
+
+
+//                    DayStory.addDay(entity,activeDiary);
                     pageController.active("today");
                 }
                 System.out.println("Login Clicked");

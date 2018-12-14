@@ -167,6 +167,7 @@ public class User implements Serializable {
             for (DayStory day : userDiary.getListOfDayStory()) {
                 if (day.getDayStr().equals(targetDay)) {
                     selectedDay = day;
+                    break;
                 }
             }
             System.out.println(selectedDay);

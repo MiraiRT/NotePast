@@ -1,5 +1,6 @@
 package fx;
 
+import NotePast.Diary;
 import NotePast.EntityDiary;
 import NotePast.User;
 import javafx.event.EventHandler;
@@ -14,11 +15,13 @@ public class ControllerSignup implements Controller {
     Button btnRegSubmit, btnRegCancel;
     TextField regUsername;
     PasswordField regPassword, rePassword;
-    EntityDiary entity;
+    EntityDiary entity = Main.entity;
+
+    User activeAcc;
+    Diary activeDiary;
 
     public ControllerSignup(PageController pageController) {
         this.pageController = pageController;
-        this.entity = new EntityDiary();
     }
 
     @Override
@@ -61,5 +64,7 @@ public class ControllerSignup implements Controller {
         regUsername.clear();
         regPassword.clear();
         rePassword.clear();
+
+        activeAcc = ControllerLogin.activeAcc;
     }
 }

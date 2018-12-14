@@ -33,7 +33,7 @@
                   <Font name="Segoe UI Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnYearsAgo" focusTraversable="false" layoutY="219.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: none;" text="YEARS AGO" textFill="#1d1f1f">
+            <Button fx:id="btnYearsAgo" focusTraversable="false" layoutY="219.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: none;" text="YEARS AGO" textFill="#1d1f1f" visible="false">
                <font>
                   <Font name="Segoe UI Bold" size="20.0" />
                </font>
@@ -53,15 +53,15 @@
             <Image url="@../images/add.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnAddEvent" layoutX="566.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" />
-      <Label fx:id="dateToday" layoutX="183.0" layoutY="42.0" textFill="#388abd">
+      <Button fx:id="btnAddEvent" focusTraversable="false" layoutX="566.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" />
+      <Label fx:id="dateToday" focusTraversable="false" layoutX="183.0" layoutY="42.0" textFill="#388abd">
          <font>
             <Font name="Segoe UI Bold" size="25.0" />
          </font>
       </Label>
       <AnchorPane fx:id="pagPane" layoutX="185.0" layoutY="88.0" prefHeight="360.0" prefWidth="413.0">
          <children>
-            <Pagination fx:id="pag" maxPageIndicatorCount="5" pageCount="10" prefHeight="360.0" prefWidth="411.0">
+            <Pagination fx:id="pag" focusTraversable="false" maxPageIndicatorCount="5" pageCount="10" prefHeight="360.0" prefWidth="411.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -69,34 +69,29 @@
          </children>
       </AnchorPane>
       <Pane fx:id="btnEvent0" layoutX="192.0" layoutY="100.0" prefHeight="76.0" prefWidth="193.0" />
-      <Button fx:id="delEvent0" layoutX="362.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del1" />
+      <Button fx:id="delEvent0" focusTraversable="false" layoutX="362.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del1" visible="false" />
       <Pane fx:id="btnEvent1" layoutX="398.0" layoutY="100.0" opacity="0.0" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: white;" />
-      <Button fx:id="delEvent1" layoutX="565.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del2" />
+      <Button fx:id="delEvent1" focusTraversable="false" layoutX="565.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del2" visible="false" />
       <Pane fx:id="btnEvent2" layoutX="192.0" layoutY="200.0" opacity="0.0" prefHeight="76.0" prefWidth="193.0" style="-fx-background-color: white;" />
-      <Button fx:id="delEvent2" layoutX="360.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del2" />
+      <Button fx:id="delEvent2" focusTraversable="false" layoutX="360.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del2" visible="false" />
       <Pane fx:id="btnEvent3" layoutX="398.0" layoutY="200.0" prefHeight="76.0" prefWidth="193.0" />
-      <Button fx:id="delEvent3" layoutX="565.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del3" />
+      <Button fx:id="delEvent3" focusTraversable="false" layoutX="565.0" layoutY="203.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del3" visible="false" />
       <Pane fx:id="btnEvent4" layoutX="192.0" layoutY="300.0" prefHeight="76.0" prefWidth="193.0" />
-      <Button fx:id="delEvent4" layoutX="360.0" layoutY="303.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del4" />
+      <Button fx:id="delEvent4" focusTraversable="false" layoutX="360.0" layoutY="303.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del4" visible="false" />
       <Pane fx:id="btnEvent5" layoutX="398.0" layoutY="300.0" prefHeight="76.0" prefWidth="193.0" />
-      <Button fx:id="delEvent5" layoutX="565.0" layoutY="313.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del5" />
+      <Button fx:id="delEvent5" focusTraversable="false" layoutX="565.0" layoutY="313.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del5" visible="false" />
       <Group fx:id="addEventBox" layoutX="140.0" visible="false">
          <children>
             <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" />
             <Pane layoutX="93.0" layoutY="135.0" prefHeight="221.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #388ADB; -fx-border-radius: 10;">
                <children>
                   <Line endX="214.0" layoutX="101.0" layoutY="40.0" startX="-100.0" stroke="#388adb" />
-                  <TextArea fx:id="textAreaEvent" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextArea>
                   <TextField fx:id="HH" alignment="CENTER" focusTraversable="false" layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="35.0" text="21">
                      <font>
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="49.0" layoutY="8.0" text=":">
+                  <Label focusTraversable="false" layoutX="49.0" layoutY="8.0" text=":">
                      <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
@@ -106,14 +101,19 @@
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </TextField>
+                   <TextArea fx:id="textAreaEvent" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
+                       <font>
+                           <Font size="14.0" />
+                       </font>
+                   </TextArea>
                   <Line endX="-80.0" endY="20.0" layoutX="381.0" layoutY="10.0" startX="-95.0" startY="5.0" stroke="#388abd" strokeWidth="3.0" />
                   <Line endX="-114.0" endY="14.0" layoutX="400.0" layoutY="16.0" startX="-99.0" startY="-1.0" stroke="#388abd" strokeWidth="3.0" />
-                  <Button fx:id="doneAddEvent" layoutX="109.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="DONE" textFill="WHITE">
+                  <Button fx:id="doneAddEvent" focusTraversable="false" layoutX="109.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="DONE" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="closeAddEvent" layoutX="281.0" layoutY="10.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="Button" />
+                  <Button fx:id="closeAddEvent" focusTraversable="false" layoutX="281.0" layoutY="10.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="Button" />
                </children>
             </Pane>
          </children>
@@ -124,7 +124,7 @@
             <Pane layoutX="93.0" layoutY="135.0" prefHeight="221.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #388ADB; -fx-border-radius: 10;">
                <children>
                   <Line endX="214.0" layoutX="101.0" layoutY="40.0" startX="-100.0" stroke="#388adb" />
-                  <TextArea fx:id="textAreaEventEdit" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
+                  <TextArea fx:id="textAreaEventEdit" focusTraversable="false" layoutX="12.0" layoutY="51.0" prefHeight="121.0" prefWidth="291.0" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -134,7 +134,7 @@
                         <Font name="Segoe UI Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="49.0" layoutY="8.0" text=":">
+                  <Label focusTraversable="false" layoutX="49.0" layoutY="8.0" text=":">
                      <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
@@ -152,6 +152,12 @@
                      </font>
                   </Button>
                   <Button fx:id="closeEditEvent" layoutX="281.0" layoutY="10.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="Button" />
+                   <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="100.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="@../images/bin2.png" />
+                       </image>
+                   </ImageView>
+                   <Button fx:id="del" focusTraversable="false" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="19.0" text="del5" />
                </children>
             </Pane>
          </children>

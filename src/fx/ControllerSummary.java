@@ -1,5 +1,8 @@
 package fx;
 
+import NotePast.Diary;
+import NotePast.EntityDiary;
+import NotePast.User;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +16,11 @@ import javafx.scene.text.TextFlow;
 public class ControllerSummary implements Controller {
     PageController pageController;
     Label dateSummary;
+
+    EntityDiary entity = Main.entity;
+
+    User activeAcc;
+    Diary activeDiary;
 
     public ControllerSummary(PageController pageController) {
         this.pageController = pageController;
@@ -44,5 +52,6 @@ public class ControllerSummary implements Controller {
     public void onActive() {
         Scene scene = pageController.getScene("summary");
 
+        activeAcc = ControllerLogin.activeAcc;
     }
 }

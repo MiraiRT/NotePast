@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="223.0" fitWidth="444.0" layoutX="98.0" layoutY="69.0">
+      <ImageView fitHeight="223.0" fitWidth="444.0" focusTraversable="true" layoutX="98.0" layoutY="69.0">
          <image>
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="fieldPassword" alignment="CENTER" focusTraversable="false" layoutX="330.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="PASSWORD">
-         <font>
-            <Font name="Segoe UI" size="14.0" />
-         </font>
-      </PasswordField>
-      <TextField fx:id="fieldUsername" alignment="CENTER" focusTraversable="false" layoutX="180.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="USERNAME">
+      <TextField fx:id="fieldUsername" focusTraversable="true" alignment="CENTER" layoutX="180.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="USERNAME">
          <font>
             <Font name="Segoe UI" size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="btnLogin" layoutX="279.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="LOG IN" textFill="WHITE">
+      <PasswordField fx:id="fieldPassword" focusTraversable="true" alignment="CENTER" layoutX="330.0" layoutY="304.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="131.0" promptText="PASSWORD">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="btnLogin" focusTraversable="false" layoutX="279.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="LOG IN" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="14.0" />
          </font>

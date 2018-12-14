@@ -41,17 +41,17 @@ class NotePane extends Pane {
         textEvent.setWrapText(true);
         textEvent.setStyle("-fx-line-Spacing:3px; -fx-alignment:TOP_LEFT; -fx-content-Display:TOP; -fx-text-Fill:#1d1f1f");
 
-        Image delImg = new Image(getClass().getResourceAsStream("../images/bin2.png"));
-        ImageView delImgView = new ImageView(delImg);
-        delImgView.setFitHeight(16);
-        delImgView.setFitWidth(16);
-        Button del = new Button( );
-        del.setGraphic(delImgView);
-        del.setStyle("-fx-background-color: transparent");
-        del.setLayoutX(163);
-        del.setLayoutY(4);
+//        Image delImg = new Image(getClass().getResourceAsStream("../images/bin2.png"));
+//        ImageView delImgView = new ImageView(delImg);
+//        delImgView.setFitHeight(16);
+//        delImgView.setFitWidth(16);
+//        Button del = new Button( );
+//        del.setGraphic(delImgView);
+//        del.setStyle("-fx-background-color: transparent");
+//        del.setLayoutX(163);
+//        del.setLayoutY(4);
 
-        noteBox.getChildren().addAll(timeEvent, textEvent, del);
+        noteBox.getChildren().addAll(timeEvent, textEvent);
 
         return noteBox;
     }
