@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public static EntityDiary entity = new EntityDiary();
 
+    public static EntityDiary entity = new EntityDiary();
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("NotePast");
