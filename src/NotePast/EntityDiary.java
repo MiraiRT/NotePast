@@ -1,9 +1,6 @@
 package NotePast;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 public class EntityDiary {
@@ -59,17 +56,17 @@ public class EntityDiary {
 
     public void deleteNote(int dayID, int noteID) {
         em.getTransaction().begin();
-        String sql = "SELECT c FROM Note c Where c.id_Note =" + noteID + "";
-        TypedQuery<Note> query = em.createQuery(sql, Note.class);
-        List<Note> result = query.getResultList();
-        em.remove(result.get(0));
-        em.getTransaction().commit();
-
-        em.getTransaction().begin();
         String sql2 = "SELECT c FROM DayStory c Where c.id_DayStory =" + dayID + "";
         TypedQuery<DayStory> query2 = em.createQuery(sql2, DayStory.class);
         List<DayStory> result2 = query2.getResultList();
-        em.refresh(result2.get(0));
+        String sql = "SELECT c FROM Note c Where c.id_Note =" + noteID + "";
+        TypedQuery<Note> query = em.createQuery(sql, Note.class);
+        List<Note> result = query.getResultList();
+        result2.get(0).getListOfNote().remove(result.get(0));
+        em.getTransaction().commit();
+
+        em.getTransaction().begin();
+        em.remove(result.get(0));
         em.getTransaction().commit();
     }
 
