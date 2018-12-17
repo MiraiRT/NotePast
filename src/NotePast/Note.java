@@ -107,7 +107,7 @@ public class Note implements Serializable {
     public static void deleteNote(EntityDiary entity, DayStory dayStory, int noteID) {
         int index = 0;
         for (Note i : dayStory.getListOfNote()) {
-            if (i.getNoteID() == noteID) {
+            if (i.getId() == noteID) {
                 break;
             }
             index++;
