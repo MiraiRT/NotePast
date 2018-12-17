@@ -9,9 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    public static EntityDiary entity = new EntityDiary();
-
-    public static EntityDiary entity = new EntityDiary();
+    public static EntityDiary entity;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -46,6 +44,7 @@ public class Main extends Application {
         pageController.addPage("diary", diaryPane, controllerDiary);
       //  pageController.addPage("yearsago", yearsagoPane, controllerYearsago);
         pageController.addPage("summary", summaryPane, controllerSummary);
+        entity = new EntityDiary();
 
         pageController.active("login");
     }

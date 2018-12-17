@@ -97,86 +97,85 @@ public class User implements Serializable {
                 + this.book + "\n-----------------------\n";
     }
 
-    public static void main(String[] args) {
-
-        EntityDiary entity = new EntityDiary();
-
-        String username = "Ta1";
-        String password = "Mirai";
-
-        // Sign-up Section //
+//    public static void main(String[] args) {
+//
+//        EntityDiary entity = new EntityDiary();
+//
+//        String username = "Mirai";
+//        String password = "Ta1234";
+//
+//        // Sign-up Section //
 //        User.signup(entity, username, password);
 //        DayStory.addDay(entity, User.getAccount(entity, username).getDiary());
-
-
-        if (User.authen(entity, username, password)) {
-            // Login Section //
-            User activeAcc = User.getAccount(entity, username);
-            Diary userDiary = activeAcc.getDiary();
+//
+//
+//        if (User.authen(entity, username, password)) {
+//            // Login Section //
+//            User activeAcc = User.getAccount(entity, username);
+//            Diary userDiary = activeAcc.getDiary();
 //
 //            // Test : Add/Edit/Delete Note //
-//            int today = Integer.parseInt(userDiary.getToday().getDayStr());
-//            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-//            int newDay = Integer.parseInt(dayStr);
-//
-//            if (userDiary.getListOfDayStory().size() == 0 || newDay > today) {
-//                DayStory.addDay(entity, userDiary);
-//            }
-//
-//            String timeStr = new SimpleDateFormat("HHmmss").format(new Date());
-//            String inputText = "I do OOAD until Sunrise @ECC @KMITL #POM #TIK #PLOY";
-//            Note.addNote(entity, userDiary, inputText, timeStr);
-//
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//
-//            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
-//            inputText = "I plan to kick #VS at @ECC tonight";
-//            Note.addNote(entity, userDiary, inputText, timeStr);
-//
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//
-//            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
-//            inputText = "I gonna to Sleep";
-//            Note.addNote(entity, userDiary, inputText, timeStr);
-//
-////            int onSelectedNote = 2;
-////            if (Note.isNoteInList(userDiary.getToday(), onSelectedNote)) {
-////                //Note.deleteNote(entity, userDiary.getToday(), onSelectedNote);
-////                Note.editNote(entity, userDiary.getToday(), onSelectedNote, "010000", "I gonna to Sleep");
+////            int today = Integer.parseInt(userDiary.getToday().getDayStr());
+////            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+////            int newDay = Integer.parseInt(dayStr);
+////
+////            if (userDiary.getListOfDayStory().size() == 0 || newDay > today) {
+////                DayStory.addDay(entity, userDiary);
 ////            }
+////
+//            String timeStr = new SimpleDateFormat("HHmm").format(new Date());
+//            String inputText = "I play Dota 2 @MyRoom in @Bangkok";
+//            Note.addNote(entity, userDiary, inputText, timeStr);
 //
-//            userDiary.getToday().summaryNote();
-//            System.out.println(userDiary);
-            // Finish Test: Add/Edit/Delete Note //
-
-            String searchInput = "ecc";
-            List<Note> result = Tag.searchTag(searchInput, userDiary);
-
-            String targetDay = result.get(0).getDayStr();
-            System.out.println(targetDay);
-
-            DayStory selectedDay = null;
-            for (DayStory day : userDiary.getListOfDayStory()) {
-                if (day.getDayStr().equals(targetDay)) {
-                    selectedDay = day;
-                    break;
-                }
-            }
-            System.out.println(selectedDay);
-
-        } else {
-            System.out.println("This User Doesn't found");
-        }
-        entity.closeConnection();
-
-    }
+////            try {
+////                Thread.sleep(1000);
+////            } catch (InterruptedException e) {
+////                e.printStackTrace();
+////            }
+////
+////            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
+////            inputText = "I plan to kick #VS at @ECC tonight";
+////            Note.addNote(entity, userDiary, inputText, timeStr);
+////
+////            try {
+////                Thread.sleep(1000);
+////            } catch (InterruptedException e) {
+////                e.printStackTrace();
+////            }
+////
+////            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
+////            inputText = "I gonna to Sleep";
+////            Note.addNote(entity, userDiary, inputText, timeStr);
+////
+//////            int onSelectedNote = 2;
+//////            if (Note.isNoteInList(userDiary.getToday(), onSelectedNote)) {
+//////                //Note.deleteNote(entity, userDiary.getToday(), onSelectedNote);
+//////                Note.editNote(entity, userDiary.getToday(), onSelectedNote, "010000", "I gonna to Sleep");
+//////            }
+////
+////            userDiary.getToday().summaryNote();
+////            System.out.println(userDiary);
+//            // Finish Test: Add/Edit/Delete Note //
+//
+////            String searchInput = "ecc";
+////            List<Note> result = Tag.searchTag(searchInput, userDiary);
+////
+////            String targetDay = result.get(0).getDayStr();
+////            System.out.println(targetDay);
+////
+////            DayStory selectedDay = null;
+////            for (DayStory day : userDiary.getListOfDayStory()) {
+////                if (day.getDayStr().equals(targetDay)) {
+////                    selectedDay = day;
+////                    break;
+////                }
+////            }
+////            System.out.println(selectedDay);
+//
+//        } else {
+//            System.out.println("This User Doesn't found");
+//        }
+//        entity.closeConnection();
+//    }
 
 }

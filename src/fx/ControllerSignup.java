@@ -14,7 +14,7 @@ public class ControllerSignup implements Controller {
     Button btnRegSubmit, btnRegCancel;
     TextField regUsername;
     PasswordField regPassword, rePassword;
-    EntityDiary entity = Main.entity;
+    private EntityDiary entity;
 
     public ControllerSignup(PageController pageController) {
         this.pageController = pageController;
@@ -45,10 +45,12 @@ public class ControllerSignup implements Controller {
                 String password2 = rePassword.getText();
                 System.out.println(password1 + " " + password2);
 
-                if(password1.equals(password2)) {
+
+
+                if (password1.equals(password2)) {
                     System.out.println("Password Re-Type Correct");
-                    boolean isSuccess = User.signup(entity,username,password1);
-                    if(isSuccess) {
+                    boolean isSuccess = User.signup(entity, username, password1);
+                    if (isSuccess) {
                         pageController.active("login");
                     }
                 }
@@ -56,9 +58,11 @@ public class ControllerSignup implements Controller {
             }
         });
     }
+
     public void onActive() {
         regUsername.clear();
         regPassword.clear();
         rePassword.clear();
+        entity = new EntityDiary();
     }
 }

@@ -19,7 +19,7 @@ public class ControllerLogin implements Controller {
     Button btnSignup, btnLogin;
     TextField username;
     PasswordField password;
-    EntityDiary entity = Main.entity;
+    private EntityDiary entity;
     static User activeAcc;
     static Diary activeDiary;
 
@@ -49,23 +49,25 @@ public class ControllerLogin implements Controller {
                 String loginUsername = username.getText();
                 String loginPass = password.getText();
                 if (User.authen(entity, loginUsername, loginPass)) {
-                    activeAcc = User.getAccount(entity, loginUsername);
-                    activeDiary = activeAcc.getDiary();
+                    ControllerLogin.activeAcc = User.getAccount(entity, loginUsername);
+                    ControllerLogin.activeDiary = activeAcc.getDiary();
 
+                    if (activeDiary.getListOfDayStory().size() == 0) {
+                        DayStory.addDay(entity, activeDiary);
+                        System.out.println("New User -> Create Day");
+                    }
 
                     int today = Integer.parseInt(activeDiary.getToday().getDayStr());
                     String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
                     int newDay = Integer.parseInt(dayStr);
 
-                    if (activeDiary.getListOfDayStory().size() == 0 || newDay > today) {
+                    if (newDay > today) {
                         DayStory.addDay(entity, activeDiary);
+                        System.out.println("Create Day");
                     }
-
-
-//                    DayStory.addDay(entity,activeDiary);
+                    System.out.println("Authen -> Success!!\n\n");
                     pageController.active("today");
                 }
-                System.out.println("Login Clicked");
             }
         });
 
@@ -75,5 +77,6 @@ public class ControllerLogin implements Controller {
     public void onActive() {
         username.clear();
         password.clear();
+        entity = new EntityDiary();
     }
 }
