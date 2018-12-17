@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Rename Day -&gt; DayStory&#10;Add Feature -&gt; summaryNote in DayStory&#10;Remove LocationTag/PeopleTag/Searching">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/NotePast/fx/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NotePast/fx/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fx/ControllerLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fx/ControllerSignup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerSignup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NotePast/fx/diary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NotePast/fx/diary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/ControllerDiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerDiary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/ControllerSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerSummary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fx/ControllerToday.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerToday.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/DiaryPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/DiaryPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/diary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/diary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/summary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/summary.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -131,13 +133,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="37" />
-          <entry key="java" value="683" />
+          <entry key="java" value="750" />
           <entry key="txt" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="683" />
+          <entry key="JAVA" value="750" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="XML" value="37" />
         </counts>
@@ -145,12 +147,12 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="fxml" value="9" />
-          <entry key="java" value="22" />
+          <entry key="java" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="22" />
+          <entry key="JAVA" value="23" />
           <entry key="XML" value="9" />
         </counts>
       </usages-collector>
@@ -194,105 +196,152 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="168" column="38" lean-forward="true" selection-start-line="168" selection-start-column="38" selection-end-line="168" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/note.fxml">
-          <provider selected="true" editor-type-id="text-editor" />
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/Tag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#addNoteToTag#0;class#Tag#0" />
-                <element signature="method#searchTag#0;class#Tag#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/EntityDiary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="220" column="67" selection-start-line="220" selection-start-column="67" selection-end-line="220" selection-end-column="67" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#EntityDiary#0;class#EntityDiary#0" />
-                <element signature="method#closeConnection#0;class#EntityDiary#0" />
-                <element signature="method#addNote#0;class#EntityDiary#0" />
-                <element signature="method#editNote#0;class#EntityDiary#0" />
-                <element signature="method#deleteNote#0;class#EntityDiary#0" />
-                <element signature="method#getNote#0;class#EntityDiary#0" />
-                <element signature="method#addDay#0;class#EntityDiary#0" />
-                <element signature="method#deleteDay#0;class#EntityDiary#0" />
-                <element signature="method#createDiary#0;class#EntityDiary#0" />
-                <element signature="method#createUser#0;class#EntityDiary#0" />
-                <element signature="method#login#0;class#EntityDiary#0" />
-                <element signature="method#signUp#0;class#EntityDiary#0" />
-                <element signature="method#getAccount#0;class#EntityDiary#0" />
-                <element signature="method#addNoteinTag#0;class#EntityDiary#0" />
-                <element signature="method#deleteNoteinTag#0;class#EntityDiary#0" />
-                <element signature="method#createTag#0;class#EntityDiary#0" />
-                <element signature="method#searchTag#0;class#EntityDiary#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/Note.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="81" column="66" lean-forward="true" selection-start-line="81" selection-start-column="66" selection-end-line="81" selection-end-column="66" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/Diary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-253">
-              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createNotePast#0;class#Diary#0" />
-                <element signature="method#getToday#0;class#Diary#0" />
-                <element signature="method#toString#0;class#Diary#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/DayStory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.42813918">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/NotePast/User.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="317">
+                  <caret line="169" column="26" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#404#405#0" expanded="true" />
+                    <element signature="e#434#435#0" expanded="true" />
+                    <element signature="e#886#887#0" expanded="true" />
+                    <element signature="e#917#918#0" expanded="true" />
+                    <element signature="e#952#953#0" expanded="true" />
+                    <element signature="e#983#984#0" expanded="true" />
+                    <element signature="e#1013#1014#0" expanded="true" />
+                    <element signature="e#1042#1043#0" expanded="true" />
+                    <element signature="e#1083#1084#0" expanded="true" />
+                    <element signature="e#1119#1120#0" expanded="true" />
+                    <element signature="e#1155#1156#0" expanded="true" />
+                    <element signature="e#1182#1183#0" expanded="true" />
+                    <element signature="e#1967#1968#0" expanded="true" />
+                    <element signature="e#2017#2018#0" expanded="true" />
+                    <element signature="e#2048#2049#0" expanded="true" />
+                    <element signature="e#2087#2088#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fx/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="51" selection-start-line="51" selection-end-line="53" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#2402#2403#0" expanded="true" />
+                    <element signature="e#2430#2431#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fx/ControllerSummary.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="176">
+                  <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fx/diary.fxml">
+              <provider editor-type-id="text-editor">
+                <state relative-caret-position="1343">
+                  <caret line="79" selection-start-line="78" selection-end-line="79" />
+                </state>
+              </provider>
+              <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/jdk/internal/reflect/DelegatingMethodAccessorImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="289">
+                  <caret line="42" selection-start-line="42" selection-end-line="42" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/fx/ControllerDiary.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="575">
+                  <caret line="160" column="29" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="29" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fx/summary.fxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="95">
+                  <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+                </state>
+              </provider>
+              <provider editor-type-id="JavaFX-Scene-Builder" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/NotePast/DayStory.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="265">
+                  <caret line="50" column="27" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fx/DiaryPane.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="115">
+                  <caret line="16" column="47" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="47" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/fx/ControllerToday.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="303">
+                  <caret line="136" column="16" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1916#1917#0" expanded="true" />
+                    <element signature="e#1968#1969#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/NotePast/Note.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="274">
+                  <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -323,6 +372,7 @@
       <find>this</find>
       <find>onac</find>
       <find>addDay</find>
+      <find>pageBox</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -358,13 +408,13 @@
         <option value="$PROJECT_DIR$/src/NotePast/Diary.java" />
         <option value="$PROJECT_DIR$/src/NotePast/DayStory.java" />
         <option value="$PROJECT_DIR$/src/fx/ControllerSignup.java" />
-        <option value="$PROJECT_DIR$/src/fx/ControllerToday.java" />
         <option value="$PROJECT_DIR$/src/fx/Main.java" />
         <option value="$PROJECT_DIR$/src/fx/ControllerLogin.java" />
         <option value="$PROJECT_DIR$/src/NotePast/EntityDiary.java" />
         <option value="$PROJECT_DIR$/src/NotePast/Note.java" />
         <option value="$PROJECT_DIR$/src/NotePast/Tag.java" />
         <option value="$PROJECT_DIR$/src/NotePast/User.java" />
+        <option value="$PROJECT_DIR$/src/fx/ControllerToday.java" />
       </list>
     </option>
   </component>
@@ -387,6 +437,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -409,13 +461,6 @@
               <item name="NotePast" type="b2602c69:ProjectViewProjectNode" />
               <item name="NotePast" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="fx" type="462c0819:PsiDirectoryNode" />
-              <item name="PageController.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="NotePast" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NotePast" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="NotePast" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -426,8 +471,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -449,6 +492,124 @@
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/NotePast.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/NotePast/fx/Main.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/NotePast/Note.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/NotePast/User.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/fx/ControllerLogin.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/fx/ControllerSignup.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/fx/ControllerToday.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/fx/Main.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -461,7 +622,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.User">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -841,10 +1002,10 @@
     <option name="totallyTimeSpent" value="183314000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2785235" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2785235" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -855,7 +1016,7 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26666668" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17420435" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -952,14 +1113,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/fx/yearsago.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="176" selection-start-line="66" selection-start-column="176" selection-end-line="66" selection-end-column="176" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/fx/fx.fxml" />
     <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.1/lib/javafx.graphics.jar!/javafx/application/Application.class">
@@ -992,12 +1145,20 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/diary.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" selection-start-line="78" selection-end-line="79" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/summary.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/today.fxml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1028,95 +1189,10 @@
     <entry file="file://$PROJECT_DIR$/src/NotePast/Searching.java" />
     <entry file="file://$PROJECT_DIR$/src/NotePast/LocationTag.java" />
     <entry file="file://$PROJECT_DIR$/src/NotePast/PeopleTag.java" />
-    <entry file="uml://MODULES/mdl-NotePast">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MODULES</ID>
-          <OriginalElement>mdl-NotePast</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.1" x="-196.0" y="-65.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="226.0" y="237.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/NotePast">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>NotePast</OriginalElement>
-          <nodes>
-            <node x="" y="">NotePast.Tag</node>
-            <node x="" y="">NotePast.Note</node>
-            <node x="" y="">NotePast.Day</node>
-            <node x="" y="">NotePast.User</node>
-            <node x="" y="">NotePast.EntityDiary</node>
-            <node x="" y="">NotePast.Diary</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.3096153846153846" x="320.0" y="1036.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/fx">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>fx</OriginalElement>
-          <nodes>
-            <node x="" y="">fx.PageController</node>
-            <node x="" y="">fx.ControllerLogin</node>
-            <node x="" y="">fx.NotePane</node>
-            <node x="" y="">fx.ControllerDiary</node>
-            <node x="" y="">fx.Main</node>
-            <node x="" y="">fx.ControllerSummary</node>
-            <node x="" y="">fx.Controller</node>
-            <node x="" y="">fx.ControllerSignup</node>
-            <node x="" y="">fx.PageClass</node>
-            <node x="" y="">fx.ControllerToday</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.3653631284916201" x="959.0" y="875.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
+    <entry file="uml://MODULES/mdl-NotePast" />
+    <entry file="uml://JAVA/" />
+    <entry file="uml://JAVA/NotePast" />
+    <entry file="uml://JAVA/fx" />
     <entry file="file://$PROJECT_DIR$/Package NotePast.png" />
     <entry file="file://$PROJECT_DIR$/src/fx/NotePane.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1134,8 +1210,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/ControllerSummary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="176">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -1143,13 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fx/ControllerToday.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="285" column="8" selection-start-line="285" selection-start-column="8" selection-end-line="286" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1166,15 +1235,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="53" column="7" selection-start-line="51" selection-start-column="13" selection-end-line="53" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fx/ControllerDiary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="120">
+          <caret line="51" selection-start-line="51" selection-end-line="53" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2402#2403#0" expanded="true" />
+            <element signature="e#2430#2431#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1192,26 +1259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="220" column="67" selection-start-line="220" selection-start-column="67" selection-end-line="220" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#EntityDiary#0;class#EntityDiary#0" />
-            <element signature="method#closeConnection#0;class#EntityDiary#0" />
-            <element signature="method#addNote#0;class#EntityDiary#0" />
-            <element signature="method#editNote#0;class#EntityDiary#0" />
-            <element signature="method#deleteNote#0;class#EntityDiary#0" />
-            <element signature="method#getNote#0;class#EntityDiary#0" />
-            <element signature="method#addDay#0;class#EntityDiary#0" />
-            <element signature="method#deleteDay#0;class#EntityDiary#0" />
-            <element signature="method#createDiary#0;class#EntityDiary#0" />
-            <element signature="method#createUser#0;class#EntityDiary#0" />
-            <element signature="method#login#0;class#EntityDiary#0" />
-            <element signature="method#signUp#0;class#EntityDiary#0" />
-            <element signature="method#getAccount#0;class#EntityDiary#0" />
-            <element signature="method#addNoteinTag#0;class#EntityDiary#0" />
-            <element signature="method#deleteNoteinTag#0;class#EntityDiary#0" />
-            <element signature="method#createTag#0;class#EntityDiary#0" />
-            <element signature="method#searchTag#0;class#EntityDiary#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1223,21 +1270,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addNoteToTag#0;class#Tag#0" />
-            <element signature="method#searchTag#0;class#Tag#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/Note.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="81" column="66" lean-forward="true" selection-start-line="81" selection-start-column="66" selection-end-line="81" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="274">
+          <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -1245,29 +1284,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-253">
           <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#createNotePast#0;class#Diary#0" />
-            <element signature="method#getToday#0;class#Diary#0" />
-            <element signature="method#toString#0;class#Diary#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/DayStory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="80" column="20" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
+        <state relative-caret-position="265">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NotePast/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="169" column="26" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#886#887#0" expanded="true" />
+            <element signature="e#917#918#0" expanded="true" />
+            <element signature="e#952#953#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1119#1120#0" expanded="true" />
+            <element signature="e#1155#1156#0" expanded="true" />
+            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
+            <element signature="e#2048#2049#0" expanded="true" />
+            <element signature="e#2087#2088#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fx/ControllerDiary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="160" column="29" selection-start-line="160" selection-start-column="29" selection-end-line="160" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NotePast/User.java">
+    <entry file="file://$PROJECT_DIR$/src/fx/DiaryPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="168" column="38" lean-forward="true" selection-start-line="168" selection-start-column="38" selection-end-line="168" selection-end-column="38" />
+        <state relative-caret-position="115">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fx/ControllerToday.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="136" column="16" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1968#1969#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

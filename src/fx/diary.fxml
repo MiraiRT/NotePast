@@ -66,34 +66,34 @@
          </image>
       </ImageView>
       <Button fx:id="btnSearch" layoutX="577.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="21.0" prefWidth="16.0" text="Button" />
-      <Group layoutX="185.0" layoutY="86.0" visible="false">
+      <Group layoutX="185.0" layoutY="86.0">
          <children>
-            <Button fx:id="diary1" mnemonicParsing="false" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+            <Button fx:id="diary0" mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="diary2" layoutY="55.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+            <Button fx:id="diary1" layoutY="55.0" mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="diary3" layoutY="110.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+            <Button fx:id="diary2" layoutY="110.0" mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="diary4" layoutY="165.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+            <Button fx:id="diary3" layoutY="165.0" mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="diary5" layoutY="220.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+            <Button fx:id="diary4" layoutY="220.0" mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="diary6" layoutY="275.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
+            <Button fx:id="diary5" layoutY="275.0" mnemonicParsing="false" opacity="0.0" prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1;" text="29 SEPTEMBER 2018" textFill="#1d1f1f">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>

@@ -1,5 +1,6 @@
 package fx;
 
+import NotePast.DayStory;
 import NotePast.Diary;
 import NotePast.EntityDiary;
 import NotePast.User;
@@ -29,16 +30,34 @@ public class ControllerSummary implements Controller {
     @Override
     public void initialize() {
         Scene scene = pageController.getScene("summary");
-        AnchorPane acp = (AnchorPane) scene.lookup("#acp");
         ScrollPane scp = (ScrollPane) scene.lookup("#scp");
 
         dateSummary = (Label) scene.lookup("#dateSummary");
+
         VBox eachDay = new VBox();
         Label time = new Label();
         Label text = new Label();
 
-        String dateSummaryDB = "!!!!!!!!!"; /* TA!!!!!!!!!!!!!!!!!!!!!!!!! */
-        dateSummary.setText(dateSummaryDB);
+//        for (int i = 0; i < ControllerDiary.selectedDayStory.getListOfNote().size(); i++) {
+//            index = i;
+//            page = index / 6;
+//
+//            DayStory dayStory = activeDiary.getListOfDayStory().get(i);
+//            String dateDayStory = dayStory.getDayStr().substring(6) + " " +
+//                    convertMonth(dayStory.getDayStr().substring(4, 6)) + " " + dayStory.getDayStr().substring(0, 4);
+//            DiaryPane newDiaryPane = new DiaryPane(index, dateDayStory);
+//
+//            paneDiary.add(newDiaryPane);
+//            objCreateDiary = ((DiaryPane) paneDiary.get(index)).getDiaryBox();
+//
+//            if (index%6 == 0) {
+//                createPage(page);
+//            }
+//
+//            pageBox[page].getChildren().add(objCreateDiary);
+//        }
+//
+//        dateSummary.setText(ControllerDiary.selectedDayStory);
         time.setFont(new Font("Segoe UI bold", 13));
         text.setFont(new Font("Segoe UI", 10));
 
