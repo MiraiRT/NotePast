@@ -46,8 +46,6 @@ public class ControllerToday implements Controller {
     private String min;
 
     private EntityDiary entity;
-    User activeAcc;
-    Diary activeDiary;
 
     ControllerToday(PageController pageController) {
         this.pageController = pageController;
@@ -132,12 +130,14 @@ public class ControllerToday implements Controller {
 
                 String timeStr = timeTodayEvent;
                 String inputText = textAreaEvent.getText();
-                Note.addNote(entity, activeDiary, inputText, timeStr);
+                Note.addNote(entity, ControllerLogin.activeDiary, inputText, timeStr);
+                ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
+                ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
 
                 eraseDayStoryPane();
                 drawDayStoryPane();
 
-                pag.setCurrentPageIndex(activeDiary.getToday().getListOfNote().size() / 6);
+                pag.setCurrentPageIndex(ControllerLogin.activeDiary.getToday().getListOfNote().size() / 6);
             }
         });
 
@@ -204,8 +204,10 @@ public class ControllerToday implements Controller {
                 String timeStr = timeTodayEvent;
                 String inputText = textAreaEventEdit.getText();
 
-                onSelectedNote = activeDiary.getToday().getListOfNote().get(objectNum).getNoteID();
-                Note.editNote(entity, activeDiary.getToday(), onSelectedNote, timeStr, inputText);
+                onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getNoteID();
+                Note.editNote(entity, ControllerLogin.activeDiary.getToday(), onSelectedNote, timeStr, inputText);
+                ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
+                ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
 
                 eraseDayStoryPane();
                 drawDayStoryPane();
@@ -225,16 +227,18 @@ public class ControllerToday implements Controller {
             popupDel.setVisible(false);
             editEventBox.setVisible(false);
 
-            onSelectedNote = activeDiary.getToday().getListOfNote().get(objectNum).getId();
-            Note.deleteNote(entity, activeDiary.getToday(), onSelectedNote);
+            onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getId();
+            Note.deleteNote(entity, ControllerLogin.activeDiary.getToday(), onSelectedNote);
+            ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
+            ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
 
             eraseDayStoryPane();
 
-            if (activeDiary.getToday().getListOfNote().size() % 6 == 0) {
-                if (activeDiary.getToday().getListOfNote().size() / 6 != 0) {
-                    emptyPag[activeDiary.getToday().getListOfNote().size() / 6] = true;
+            if (ControllerLogin.activeDiary.getToday().getListOfNote().size() % 6 == 0) {
+                if (ControllerLogin.activeDiary.getToday().getListOfNote().size() / 6 != 0) {
+                    emptyPag[ControllerLogin.activeDiary.getToday().getListOfNote().size() / 6] = true;
                 }
-                pag.setCurrentPageIndex(activeDiary.getToday().getListOfNote().size() / 6 - 1);
+                pag.setCurrentPageIndex(ControllerLogin.activeDiary.getToday().getListOfNote().size() / 6 - 1);
             }
 
             drawDayStoryPane();
@@ -335,8 +339,8 @@ public class ControllerToday implements Controller {
 
     private void drawDayStoryPane() {
         paneEvent.clear();
-        for (int i = 0; i < activeDiary.getToday().getListOfNote().size(); i++) {
-            Note note = activeDiary.getToday().getListOfNote().get(i);
+        for (int i = 0; i < ControllerLogin.activeDiary.getToday().getListOfNote().size(); i++) {
+            Note note = ControllerLogin.activeDiary.getToday().getListOfNote().get(i);
             inputHH = note.getTimeStr().substring(0, 2);
             inputMM = note.getTimeStr().substring(2, 4);
             index = i;
@@ -375,8 +379,6 @@ public class ControllerToday implements Controller {
     @Override
     public void onActive() {
         System.out.println("active today");
-        activeAcc = ControllerLogin.activeAcc;
-        activeDiary = ControllerLogin.activeDiary;
         entity = new EntityDiary();
 
         addEventBox.setVisible(false);
@@ -386,7 +388,7 @@ public class ControllerToday implements Controller {
         for (int i = 0; i < 10; i++) {
             emptyPag[i] = true;
         }
-        if (activeDiary.getToday().getListOfNote() != null) {
+        if (ControllerLogin.activeDiary.getToday().getListOfNote() != null) {
             System.out.println("not null");
             drawDayStoryPane();
         } else {

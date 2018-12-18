@@ -114,47 +114,54 @@ public class User implements Serializable {
 //            User activeAcc = User.getAccount(entity, username);
 //            Diary userDiary = activeAcc.getDiary();
 //
+////            DayStory.addDay(entity, userDiary);
+////            DayStory.addDay(entity, userDiary);
+////            DayStory.addDay(entity, userDiary);
+////            DayStory.addDay(entity, userDiary);
+////            DayStory.addDay(entity, userDiary);
+////            DayStory.addDay(entity, userDiary);
+//
 //            // Test : Add/Edit/Delete Note //
-////            int today = Integer.parseInt(userDiary.getToday().getDayStr());
-////            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-////            int newDay = Integer.parseInt(dayStr);
-////
-////            if (userDiary.getListOfDayStory().size() == 0 || newDay > today) {
-////                DayStory.addDay(entity, userDiary);
-////            }
-////
+//            int today = Integer.parseInt(userDiary.getToday().getDayStr());
+//            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+//            int newDay = Integer.parseInt(dayStr);
+//
+//            if (userDiary.getListOfDayStory().size() == 0 || newDay > today) {
+//                DayStory.addDay(entity, userDiary);
+//            }
+//
 //            String timeStr = new SimpleDateFormat("HHmm").format(new Date());
 //            String inputText = "I play Dota 2 @MyRoom in @Bangkok";
 //            Note.addNote(entity, userDiary, inputText, timeStr);
 //
-////            try {
-////                Thread.sleep(1000);
-////            } catch (InterruptedException e) {
-////                e.printStackTrace();
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
+//            inputText = "I plan to kick #VS at @ECC tonight";
+//            Note.addNote(entity, userDiary, inputText, timeStr);
+//
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
+//            inputText = "I gonna to Sleep";
+//            Note.addNote(entity, userDiary, inputText, timeStr);
+//
+////            int onSelectedNote = 2;
+////            if (Note.isNoteInList(userDiary.getToday(), onSelectedNote)) {
+////                //Note.deleteNote(entity, userDiary.getToday(), onSelectedNote);
+////                Note.editNote(entity, userDiary.getToday(), onSelectedNote, "010000", "I gonna to Sleep");
 ////            }
-////
-////            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
-////            inputText = "I plan to kick #VS at @ECC tonight";
-////            Note.addNote(entity, userDiary, inputText, timeStr);
-////
-////            try {
-////                Thread.sleep(1000);
-////            } catch (InterruptedException e) {
-////                e.printStackTrace();
-////            }
-////
-////            timeStr = new SimpleDateFormat("HHmmss").format(new Date());
-////            inputText = "I gonna to Sleep";
-////            Note.addNote(entity, userDiary, inputText, timeStr);
-////
-//////            int onSelectedNote = 2;
-//////            if (Note.isNoteInList(userDiary.getToday(), onSelectedNote)) {
-//////                //Note.deleteNote(entity, userDiary.getToday(), onSelectedNote);
-//////                Note.editNote(entity, userDiary.getToday(), onSelectedNote, "010000", "I gonna to Sleep");
-//////            }
-////
-////            userDiary.getToday().summaryNote();
-////            System.out.println(userDiary);
+//
+//            userDiary.getToday().summaryNote();
+//            System.out.println(userDiary);
 //            // Finish Test: Add/Edit/Delete Note //
 //
 ////            String searchInput = "ecc";

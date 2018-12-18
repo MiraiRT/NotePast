@@ -116,7 +116,7 @@ public class DayStory implements Serializable {
     }
 
     public void summaryNote() {
-        Collections.sort(listOfNote, (Note a1, Note a2) -> a1.getTimeStr().compareTo(a2.getTimeStr()) );
+        Collections.sort(listOfNote, (Note a1, Note a2) -> a1.getTimeStr().compareTo(a2.getTimeStr()));
 //        List<Note> l = new ArrayList<>();
 //        //Collections.sort(listOfNote.);
 //        for (Note i : listOfNote) {

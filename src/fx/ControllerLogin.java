@@ -22,6 +22,7 @@ public class ControllerLogin implements Controller {
     private EntityDiary entity;
     static User activeAcc;
     static Diary activeDiary;
+    static String activeUser;
 
     public ControllerLogin(PageController pageController) {
         this.pageController = pageController;
@@ -49,6 +50,7 @@ public class ControllerLogin implements Controller {
                 String loginUsername = username.getText();
                 String loginPass = password.getText();
                 if (User.authen(entity, loginUsername, loginPass)) {
+                    ControllerLogin.activeUser = loginUsername;
                     ControllerLogin.activeAcc = User.getAccount(entity, loginUsername);
                     ControllerLogin.activeDiary = activeAcc.getDiary();
 

@@ -36,9 +36,7 @@ public class ControllerDiary implements Controller {
     private Pane objCreateDiary = new Pane();
     private Button diary0, diary1, diary2, diary3, diary4, diary5;
 
-    EntityDiary entity = Main.entity;
-    User activeAcc;
-    Diary activeDiary;
+    EntityDiary entity;
     String hour = new SimpleDateFormat("HH").format(new Date());
     String min = new SimpleDateFormat("mm").format(new Date());
     public static String selectedDayStoryDate;
@@ -68,43 +66,51 @@ public class ControllerDiary implements Controller {
 
         /* Click on day story */
         diary0.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex() * 6);
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getListOfDayStory().size();
+            objectNum = index - 1 - (pag.getCurrentPageIndex() * 6);
+            if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary1.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex() * 6) + 1;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getListOfDayStory().size();
+            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 1);
+            System.out.println("objectNum: " + objectNum);
+            System.out.println("index: " + index);
+            if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary2.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex() * 6) + 2;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getListOfDayStory().size();
+            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 2);
+            if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary3.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex() * 6) + 3;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getListOfDayStory().size();
+            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 3);
+            if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary4.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex() * 6) + 4;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getListOfDayStory().size();
+            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 4);
+            if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary5.setOnMouseClicked(mouseEvent -> {
-            objectNum = (pag.getCurrentPageIndex() * 6) + 5;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getListOfDayStory().size();
+            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 5);
+            if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
@@ -136,11 +142,11 @@ public class ControllerDiary implements Controller {
     }
 
     private void drawDiaryPane() {
-        for (int i = 0; i < activeDiary.getListOfDayStory().size(); i++) {
+        for (int i = 0; i < ControllerLogin.activeDiary.getListOfDayStory().size(); i++) {
             index = i;
             page = index / 6;
 
-            DayStory dayStory = activeDiary.getListOfDayStory().get(i);
+            DayStory dayStory = ControllerLogin.activeDiary.getListOfDayStory().get(ControllerLogin.activeDiary.getListOfDayStory().size() - i - 1);
             String dateDayStory = dayStory.getDayStr().substring(6) + " " +
                     convertMonth(dayStory.getDayStr().substring(4, 6)) + " " + dayStory.getDayStr().substring(0, 4);
             DiaryPane newDiaryPane = new DiaryPane(index, dateDayStory);
@@ -148,7 +154,7 @@ public class ControllerDiary implements Controller {
             paneDiary.add(newDiaryPane);
             objCreateDiary = ((DiaryPane) paneDiary.get(index)).getDiaryBox();
 
-            if (index%6 == 0) {
+            if (index % 6 == 0) {
                 createPage(page);
             }
 
@@ -158,7 +164,7 @@ public class ControllerDiary implements Controller {
 
     private void showSummary(int objectNum) {
         selectedDayStoryDate = ((DiaryPane) paneDiary.get(objectNum)).getDayStory();
-        selectedDayStory = activeDiary.getListOfDayStory().get(objectNum);
+        selectedDayStory = ControllerLogin.activeDiary.getListOfDayStory().get(objectNum);
 
         System.out.println(selectedDayStory);
         pageController.active("summary");
@@ -197,17 +203,13 @@ public class ControllerDiary implements Controller {
 
     @Override
     public void onActive() {
-        activeAcc = ControllerLogin.activeAcc;
-        activeDiary = ControllerLogin.activeDiary;
-
-        for (int i =0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             emptyPag[i] = true;
         }
-        if (activeDiary.getListOfDayStory() != null) {
+        if (ControllerLogin.activeDiary.getListOfDayStory() != null) {
             System.out.println("not null");
             drawDiaryPane();
-        }
-        else {
+        } else {
             System.out.println("errorrrrrrrrrrrrrrrrrr");
         }
 

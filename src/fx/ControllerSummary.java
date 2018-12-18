@@ -20,9 +20,6 @@ public class ControllerSummary implements Controller {
 
     EntityDiary entity = Main.entity;
 
-    User activeAcc;
-    Diary activeDiary;
-
     public ControllerSummary(PageController pageController) {
         this.pageController = pageController;
     }
@@ -70,7 +67,5 @@ public class ControllerSummary implements Controller {
     @Override
     public void onActive() {
         Scene scene = pageController.getScene("summary");
-
-        activeAcc = ControllerLogin.activeAcc;
     }
 }
