@@ -218,9 +218,9 @@ public class ControllerToday implements Controller {
                 for (int i = 0; i < tag.length; i++) {
                     if (tag[i].substring(0, 1).equals("@") || tag[i].substring(0, 1).equals("#")) {
                         if (tag[i].substring(0, 1).equals("@")) {
-                            entity.deleteNoteinTag(onSelectedNote.getId(), tag[i].substring(1), "Location");
+                            entity.deleteNoteinTag(onSelectedNote.getId(), tag[i].substring(1), "Location", ControllerLogin.activeDiary.getId());
                         } else {
-                            entity.deleteNoteinTag(onSelectedNote.getId(), tag[i].substring(1), "People");
+                            entity.deleteNoteinTag(onSelectedNote.getId(), tag[i].substring(1), "People", ControllerLogin.activeDiary.getId());
                         }
                     }
                 }

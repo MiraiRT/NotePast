@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Almost Done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotePast/EntityDiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotePast/EntityDiary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotePast/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotePast/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fx/ControllerSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fx/ControllerToday.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/ControllerToday.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -244,7 +240,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NotePast/Tag.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-99">
@@ -312,11 +308,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/NotePast/EntityDiary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="183" column="31" selection-start-line="183" selection-start-column="16" selection-end-line="183" selection-end-column="31" />
+            <state relative-caret-position="1">
+              <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#EntityDiary#0;class#EntityDiary#0" />
@@ -428,8 +424,8 @@
         <option value="$PROJECT_DIR$/src/NotePast/DayStory.java" />
         <option value="$PROJECT_DIR$/src/NotePast/Note.java" />
         <option value="$PROJECT_DIR$/src/fx/ControllerSearch.java" />
-        <option value="$PROJECT_DIR$/src/NotePast/EntityDiary.java" />
         <option value="$PROJECT_DIR$/src/fx/ControllerToday.java" />
+        <option value="$PROJECT_DIR$/src/NotePast/EntityDiary.java" />
       </list>
     </option>
   </component>
@@ -509,7 +505,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545145477369" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545146131183" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="C:/Program Files/Java/objectdb-2.7.6/bin/objectdb.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -1029,11 +1025,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545143446865</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Almost Done">
+      <created>1545145520477</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1545145520477</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193094000" />
+    <option name="totallyTimeSpent" value="193612000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1365,17 +1368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fx/ControllerSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="e#939#940#0" expanded="true" />
-            <element signature="e#991#992#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/Note.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1388,26 +1380,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NotePast/EntityDiary.java">
+    <entry file="file://$PROJECT_DIR$/src/NotePast/Tag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="183" column="31" selection-start-line="183" selection-start-column="16" selection-end-line="183" selection-end-column="31" />
+        <state relative-caret-position="-99">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#EntityDiary#0;class#EntityDiary#0" />
-            <element signature="method#closeConnection#0;class#EntityDiary#0" />
-            <element signature="method#deleteNote#0;class#EntityDiary#0" />
-            <element signature="method#getNote#0;class#EntityDiary#0" />
-            <element signature="method#addDay#0;class#EntityDiary#0" />
-            <element signature="method#deleteDay#0;class#EntityDiary#0" />
-            <element signature="method#createDiary#0;class#EntityDiary#0" />
-            <element signature="method#createUser#0;class#EntityDiary#0" />
-            <element signature="method#login#0;class#EntityDiary#0" />
-            <element signature="method#signUp#0;class#EntityDiary#0" />
-            <element signature="method#getAccount#0;class#EntityDiary#0" />
-            <element signature="method#addNoteinTag#0;class#EntityDiary#0" />
-            <element signature="method#createTag#0;class#EntityDiary#0" />
-            <element signature="method#searchTag#0;class#EntityDiary#0" />
+            <element signature="method#addNoteToTag#0;class#Tag#0" />
+            <element signature="method#searchTag#0;class#Tag#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fx/ControllerSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="e#939#940#0" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1430,14 +1421,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NotePast/Tag.java">
+    <entry file="file://$PROJECT_DIR$/src/NotePast/EntityDiary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+        <state relative-caret-position="1">
+          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#addNoteToTag#0;class#Tag#0" />
-            <element signature="method#searchTag#0;class#Tag#0" />
+            <element signature="method#EntityDiary#0;class#EntityDiary#0" />
+            <element signature="method#closeConnection#0;class#EntityDiary#0" />
+            <element signature="method#deleteNote#0;class#EntityDiary#0" />
+            <element signature="method#getNote#0;class#EntityDiary#0" />
+            <element signature="method#addDay#0;class#EntityDiary#0" />
+            <element signature="method#deleteDay#0;class#EntityDiary#0" />
+            <element signature="method#createDiary#0;class#EntityDiary#0" />
+            <element signature="method#createUser#0;class#EntityDiary#0" />
+            <element signature="method#login#0;class#EntityDiary#0" />
+            <element signature="method#signUp#0;class#EntityDiary#0" />
+            <element signature="method#getAccount#0;class#EntityDiary#0" />
+            <element signature="method#addNoteinTag#0;class#EntityDiary#0" />
+            <element signature="method#createTag#0;class#EntityDiary#0" />
+            <element signature="method#searchTag#0;class#EntityDiary#0" />
           </folding>
         </state>
       </provider>
