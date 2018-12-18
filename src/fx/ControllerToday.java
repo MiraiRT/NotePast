@@ -357,7 +357,7 @@ public class ControllerToday implements Controller {
     private void eraseDayStoryPane() {
         int i = 0;
         while (pageBox[i] != null) {
-            System.out.println("clear pagebox: " +i);
+//            System.out.println("clear pagebox: " +i);
             pageBox[i].getChildren().clear();
             i++;
         }

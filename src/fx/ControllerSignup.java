@@ -50,7 +50,7 @@ public class ControllerSignup implements Controller {
 
 
 
-                if (password1.equals(password2)) {
+                if (password1.equals(password2) & (!username.isEmpty() | !password1.isEmpty() | !password2.isEmpty())) {
                     System.out.println("Password Re-Type Correct");
                     boolean isSuccess = User.signup(entity, username, password1);
                     if (isSuccess) {

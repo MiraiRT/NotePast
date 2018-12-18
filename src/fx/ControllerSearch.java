@@ -105,6 +105,7 @@ public class ControllerSearch  implements Controller {
                 Label strNote = new Label(result.get(i).getNoteText());
                 strNote.setLayoutX(14);
                 strNote.setLayoutY(30);
+                strNote.setWrapText(true);
                 strNote.setStyle("-fx-text-Fill:#1d1f1f");
                 strNote.setFont(new Font("Segoe UI", 10));
                 searchBox.getChildren().addAll(date, strNote);

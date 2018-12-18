@@ -16,17 +16,16 @@ public class ControllerDiary implements Controller {
     private PageController pageController;
     private Button btnToday, btnDiary, btnSearch, btnLogout, btnAddEvent, doneAddEvent, closeAddEvent;
     public static Pagination pagDiary;
-    private VBox pageBox[] = new VBox[10];
+    private static VBox[] pageBoxDiary = new VBox[10];
     private Boolean emptyPag[] = {true, true, true, true, true, true, true, true, true, true};
     private int index, page, objectNum;
     private List<Pane> paneDiary = new ArrayList<>();
-    private Pane objCreateDiary = new Pane();
+    private static Pane objCreateDiary = new Pane();
     private Button diary0, diary1, diary2, diary3, diary4, diary5;
     private TextField fieldSearch;
 
     EntityDiary entity;
-    String hour = new SimpleDateFormat("HH").format(new Date());
-    String min = new SimpleDateFormat("mm").format(new Date());
+
     public static String selectedDayStoryDate;
     public static DayStory selectedDayStory;
     public static int tempPage;
@@ -61,7 +60,7 @@ public class ControllerDiary implements Controller {
             tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
             objectNum = index - 1 - (tempPage*6);
-            if (index >= objectNum) {
+            if (index >= tempPage*6) {
                 showSummary(objectNum);
             }
         });
@@ -70,7 +69,7 @@ public class ControllerDiary implements Controller {
             tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
             objectNum = index - 1 - (tempPage*6 + 1);
-            if (index > objectNum) {
+            if (index > tempPage*6 + 1) {
                 showSummary(objectNum);
             }
         });
@@ -79,7 +78,7 @@ public class ControllerDiary implements Controller {
             tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
             objectNum = index - 1 - (tempPage*6 + 2);
-            if (index > objectNum) {
+            if (index > tempPage*6 + 2) {
                 showSummary(objectNum);
             }
         });
@@ -88,7 +87,7 @@ public class ControllerDiary implements Controller {
             tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
             objectNum = index - 1 - (tempPage*6 + 3);
-            if (index > objectNum) {
+            if (index > tempPage*6 + 3) {
                 showSummary(objectNum);
             }
         });
@@ -97,7 +96,7 @@ public class ControllerDiary implements Controller {
             tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
             objectNum = index - 1 - (tempPage*6 + 4);
-            if (index > objectNum) {
+            if (index > tempPage*6 + 4) {
                 showSummary(objectNum);
             }
         });
@@ -106,7 +105,7 @@ public class ControllerDiary implements Controller {
             tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
             objectNum = index - 1 - (tempPage*6 + 5);
-            if (index > objectNum) {
+            if (index > tempPage*6 + 5) {
                 showSummary(objectNum);
             }
         });
@@ -131,24 +130,24 @@ public class ControllerDiary implements Controller {
 
     private VBox createPage(int pageIndex) {
         if (emptyPag[pageIndex]) {
-            pageBox[pageIndex] = new VBox();
-            pageBox[pageIndex].setPrefHeight(330.0);
-            pageBox[pageIndex].setPrefWidth(413.0);
+            pageBoxDiary[pageIndex] = new VBox();
+            pageBoxDiary[pageIndex].setPrefHeight(330.0);
+            pageBoxDiary[pageIndex].setPrefWidth(413.0);
             emptyPag[pageIndex] = false;
         }
-        return pageBox[pageIndex];
+        return pageBoxDiary[pageIndex];
     }
 
-    private void eraseDiaryPane() {
+    static void eraseDiaryPane() {
         int i = 0;
-        while (pageBox[i] != null) {
-            pageBox[i].getChildren().remove(objCreateDiary);
-            pageBox[i].getChildren().clear();
+        while (pageBoxDiary[i] != null) {
+            pageBoxDiary[i].getChildren().clear();
             i++;
         }
     }
 
     private void drawDiaryPane() {
+        paneDiary.clear();
         for (int i = 0; i < ControllerLogin.activeDiary.getListOfDayStory().size(); i++) {
             index = i;
             page = index / 6;
@@ -165,18 +164,15 @@ public class ControllerDiary implements Controller {
                 createPage(page);
             }
 
-            pageBox[page].getChildren().add(objCreateDiary);
+            pageBoxDiary[page].getChildren().add(objCreateDiary);
         }
     }
 
     private void showSummary(int objectNum) {
         selectedDayStory = ControllerLogin.activeDiary.getListOfDayStory().get(objectNum);
-        selectedDayStoryDate = selectedDayStory.getDayStr().substring(0, 2) + " " +
-                ControllerToday.convertMonth(selectedDayStory.getDayStr().substring(2, 4)) + " " +
-                selectedDayStory.getDayStr().substring(4, 6);
-        System.out.println(selectedDayStory.getDayStr().substring(2, 4));
-
-        System.out.println(selectedDayStory);
+        selectedDayStoryDate = selectedDayStory.getDayStr().substring(6, 8) + " " +
+                ControllerToday.convertMonth(selectedDayStory.getDayStr().substring(4, 6)) + " " +
+                selectedDayStory.getDayStr().substring(0, 4);
         pageController.active("summary");
     }
 
@@ -188,21 +184,22 @@ public class ControllerDiary implements Controller {
         }
         if (ControllerLogin.activeDiary.getListOfDayStory() != null) {
             System.out.println("not null");
-//            eraseDiaryPane();
             drawDiaryPane();
+
+            /* Pagination */
+            pagDiary.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer pageIndex) {
+                    if (!emptyPag[pageIndex] | pageIndex == 0) {
+                        return createPage(pageIndex);
+                    }
+                    return null;
+                }
+            });
         } else {
             System.out.println("error");
         }
-        /* Pagination */
-        pagDiary.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                if (!emptyPag[pageIndex] | pageIndex == 0) {
-                    return createPage(pageIndex);
-                }
-                return null;
-            }
-        });
+
 
         pagDiary.setCurrentPageIndex(0);
     }

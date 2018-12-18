@@ -63,7 +63,8 @@ public class ControllerSummary implements Controller {
             popupDel.setVisible(false);
             System.out.println("ControllerDiary.selectedDayStory.getId(): " + ControllerDiary.selectedDayStory.getId());
             DayStory.deleteDayStory(entity, ControllerLogin.activeDiary, ControllerDiary.selectedDayStory.getId());
-//            eraseDiaryPane();
+            ControllerDiary.eraseDiaryPane();
+            System.out.println("size: " + ControllerLogin.activeDiary.getListOfDayStory().size());
             pageController.active("diary");
         });
 
