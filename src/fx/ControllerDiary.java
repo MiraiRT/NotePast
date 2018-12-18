@@ -118,6 +118,7 @@ public class ControllerDiary implements Controller {
                 pageController.active("search");
             }
         });
+
         /* Click menu today */
         btnToday.setOnMouseClicked(mouseEvent -> pageController.active("today"));
 
@@ -179,8 +180,11 @@ public class ControllerDiary implements Controller {
     }
 
     private void showSummary(int objectNum) {
-        selectedDayStoryDate = ((DiaryPane) paneDiary.get(objectNum)).getDayStory();
         selectedDayStory = ControllerLogin.activeDiary.getListOfDayStory().get(objectNum);
+        selectedDayStoryDate = selectedDayStory.getDayStr().substring(0, 2) + " " +
+                ControllerToday.convertMonth(selectedDayStory.getDayStr().substring(2, 4)) + " " +
+                selectedDayStory.getDayStr().substring(4, 6);
+        System.out.println(selectedDayStory.getDayStr().substring(2, 4));
 
         System.out.println(selectedDayStory);
         pageController.active("summary");
@@ -188,6 +192,7 @@ public class ControllerDiary implements Controller {
 
     @Override
     public void onActive() {
+        fieldSearch.clear();
         for (int i = 0; i < 10; i++) {
             emptyPag[i] = true;
         }

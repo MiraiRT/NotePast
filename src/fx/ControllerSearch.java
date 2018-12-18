@@ -90,6 +90,8 @@ public class ControllerSearch  implements Controller {
                 searchBox.setPrefSize(396, 55.0);
                 searchBox.setStyle("-fx-background-color:white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1");
 
+
+
                 String strDate = result.get(i).getDayStr().substring(6) + " " +
                         ControllerToday.convertMonth(result.get(i).getDayStr().substring(4, 6)) + " "
                         + result.get(i).getDayStr().substring(0, 4) + " - " +

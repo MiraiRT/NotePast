@@ -7,6 +7,7 @@ import NotePast.User;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +24,7 @@ public class ControllerLogin implements Controller {
     static User activeAcc;
     static Diary activeDiary;
     static String activeUser;
+    private Label loginInvalid;
 
     public ControllerLogin(PageController pageController) {
         this.pageController = pageController;
@@ -36,6 +38,7 @@ public class ControllerLogin implements Controller {
         btnLogin = (Button) scene.lookup("#btnLogin");
         username = (TextField) scene.lookup("#fieldUsername");
         password = (PasswordField) scene.lookup("#fieldPassword");
+        loginInvalid = (Label) scene.lookup("#loginInvalid");
 
         btnSignup.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -69,6 +72,8 @@ public class ControllerLogin implements Controller {
                     }
                     System.out.println("Authen -> Success!!\n\n");
                     pageController.active("today");
+                } else {
+                    loginInvalid.setVisible(true);
                 }
             }
         });
@@ -83,5 +88,6 @@ public class ControllerLogin implements Controller {
         ControllerLogin.activeUser = null;
         ControllerLogin.activeDiary = null;
         ControllerLogin.activeAcc = null;
+        loginInvalid.setVisible(false);
     }
 }

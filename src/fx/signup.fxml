@@ -61,5 +61,9 @@
             <Font name="Segoe UI Bold" size="14.0" />
          </font>
       </Button>
+      <Label fx:id="signUpInvalid" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="111.0" layoutY="324.0" scaleShape="false" text="User name or password has an invalid format." textFill="#bf2e2e" visible="false">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font></Label>
    </children>
 </Pane>

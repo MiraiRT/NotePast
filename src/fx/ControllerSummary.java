@@ -86,8 +86,6 @@ public class ControllerSummary implements Controller {
         eachDay.setPrefWidth(380);
         eachDay.setSpacing(20);
 
-//        System.out.println("size: " + ControllerDiary.selectedDayStory.getListOfNote().size());
-
         ControllerDiary.selectedDayStory.summaryNote();
 
         for (int i = 0; i < ControllerDiary.selectedDayStory.getListOfNote().size(); i++) {

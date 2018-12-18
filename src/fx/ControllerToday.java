@@ -1,5 +1,10 @@
 package fx;
 
+import NotePast.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import NotePast.EntityDiary;
 import NotePast.Note;
 import NotePast.User;
@@ -11,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -267,13 +273,10 @@ public class ControllerToday implements Controller {
         });
 
         noDel.setOnMouseClicked(mouseEvent -> popupDel.setVisible(false));
-
-
     }
 
     private GridPane createPage(int pageIndex) {
         if (emptyPag[pageIndex]) {
-            System.out.println("new GridPane()");
             pageBox[pageIndex] = new GridPane();
             pageBox[pageIndex].setPrefHeight(100.0);
             pageBox[pageIndex].setPrefWidth(413.0);
@@ -354,7 +357,6 @@ public class ControllerToday implements Controller {
 
     private void drawDayStoryPane() {
         paneEvent.clear();
-//        createPage(1);
         for (int i = 0; i < ControllerLogin.activeDiary.getToday().getListOfNote().size(); i++) {
             Note note = ControllerLogin.activeDiary.getToday().getListOfNote().get(i);
             inputHH = note.getTimeStr().substring(0, 2);
@@ -387,10 +389,34 @@ public class ControllerToday implements Controller {
         }
     }
 
+    Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            int today = Integer.parseInt(ControllerLogin.activeDiary.getToday().getDayStr());
+            String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+            int newDay = Integer.parseInt(dayStr);
+
+            if (newDay > today) {
+                DayStory.addDay(entity, ControllerLogin.activeDiary);
+
+                System.out.println("newwwww dayyyyyyyyyyy");
+                pageController.active("today");
+            }
+        }
+    }));
+
+
+
     @Override
     public void onActive() {
         System.out.println("active today");
         entity = new EntityDiary();
+
+        /* show today date */
+        day = new SimpleDateFormat("dd").format(new Date());
+        month = new SimpleDateFormat("MM").format(new Date());
+        year = new SimpleDateFormat("yyyy").format(new Date());
+        dateToday.setText(day + " " + convertMonth(month) + " " + year);
 
         addEventBox.setVisible(false);
         editEventBox.setVisible(false);
@@ -416,7 +442,9 @@ public class ControllerToday implements Controller {
         } else {
             System.out.println("error");
         }
-
         pag.setCurrentPageIndex(0);
+
+        fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
+        fiveSecondsWonder.play();
     }
 }
