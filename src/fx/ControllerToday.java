@@ -1,6 +1,5 @@
 package fx;
 
-import NotePast.Diary;
 import NotePast.EntityDiary;
 import NotePast.Note;
 import NotePast.User;
@@ -27,7 +26,7 @@ public class ControllerToday implements Controller {
     private Group addEventBox, editEventBox, popupDel;
     private TextArea textAreaEvent, textAreaEventEdit;
     private TextField HH, MM, HHedit, MMedit;
-    private int page, objectNum, index = -1, onSelectedNote;
+    private int page, objectNum, index = -1, onSelectedNoteID;
     private String inputHH, inputMM, hourEdit, minEdit;
     private String textTodayEvent, timeTodayEvent;
     private Pagination pag;
@@ -213,9 +212,22 @@ public class ControllerToday implements Controller {
                 String timeStr = timeTodayEvent;
                 String inputText = textAreaEventEdit.getText();
 
-                onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getId();
-                System.out.println(onSelectedNote);
-                Note.editNote(entity, ControllerLogin.activeDiary, onSelectedNote, timeStr, inputText);
+                onSelectedNoteID = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getId();
+                Note onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum);
+                String[] tag = onSelectedNote.getNoteText().split(" ");
+                for (int i = 0; i < tag.length; i++) {
+                    if (tag[i].substring(0, 1).equals("@") || tag[i].substring(0, 1).equals("#")) {
+                        if (tag[i].substring(0, 1).equals("@")) {
+                            entity.deleteNoteinTag(onSelectedNote.getId(), tag[i].substring(1), "Location");
+                        } else {
+                            entity.deleteNoteinTag(onSelectedNote.getId(), tag[i].substring(1), "People");
+                        }
+                    }
+                }
+                ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
+                ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
+
+                Note.editNote(entity, ControllerLogin.activeDiary, onSelectedNoteID, timeStr, inputText);
                 ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
                 ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
 
@@ -237,8 +249,8 @@ public class ControllerToday implements Controller {
             popupDel.setVisible(false);
             editEventBox.setVisible(false);
 
-            onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getId();
-            Note.deleteNote(entity, ControllerLogin.activeDiary.getToday(), onSelectedNote);
+            onSelectedNoteID = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getId();
+            Note.deleteNote(entity, ControllerLogin.activeDiary.getToday(), onSelectedNoteID);
             ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
             ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
 

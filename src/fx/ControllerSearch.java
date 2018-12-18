@@ -3,6 +3,7 @@ package fx;
 import NotePast.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -19,9 +20,10 @@ public class ControllerSearch  implements Controller {
     private ScrollPane scp;
     private Pane searchBox;
     private TextField fieldSearch;
-
+    private Button btnToday, btnDiary, btnSearch, btnLogout, btnBack;
     public static String selectedDayStoryDate;
     public static DayStory selectedDayStory;
+    private List<Note> result;
 
     EntityDiary entity = Main.entity;
 
@@ -37,7 +39,26 @@ public class ControllerSearch  implements Controller {
         scene = pageController.getScene("search");
         scp = (ScrollPane) scene.lookup("#scp");
         fieldSearch = (TextField) scene.lookup("#fieldSearch");
+        btnToday = (Button) scene.lookup("#btnToday");
+        btnDiary = (Button) scene.lookup("#btnDiary");
+        btnLogout = (Button) scene.lookup("#btnLogout");
+        btnBack = (Button) scene.lookup("#btnBack");
+        btnSearch = (Button) scene.lookup("#btnSearch");
 
+        /* Click menu today */
+        btnToday.setOnMouseClicked(mouseEvent -> pageController.active("today"));
+
+        /* Click menu diary */
+        btnDiary.setOnMouseClicked(mouseEvent -> pageController.active("diary"));
+
+        /* Click menu logout */
+        btnLogout.setOnMouseClicked(mouseEvent -> pageController.active("login"));
+
+        /* Click Back */
+        btnBack.setOnMouseClicked(mouseEvent -> {
+            pageController.active("diary");
+//            ControllerDiary.pagDiary.setCurrentPageIndex(tempPage);
+        });
     }
 
     @Override
@@ -49,7 +70,8 @@ public class ControllerSearch  implements Controller {
         System.out.println(ControllerDiary.searchInput);
         fieldSearch.setText(ControllerDiary.searchInput);
 
-        List<Note> result = Tag.searchTag(ControllerDiary.searchInput, activeDiary);
+
+        result = Tag.searchTag(ControllerDiary.searchInput, ControllerLogin.activeDiary);
 
         System.out.println(result);
         VBox VBoxNote = new VBox();

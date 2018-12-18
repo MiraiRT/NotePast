@@ -181,7 +181,7 @@ public class EntityDiary {
         em.getTransaction().commit();
     }
 
-    public void deleteNoteinTag(int noteID, String name) {
+    public void deleteNoteinTag(int noteID, String name, String type) {
 //        em.getTransaction().begin();
 //        String sql = "SELECT c FROM Tag c Where c.tagName LIKE '" + name + "'";
 //        TypedQuery<Tag> query = em.createQuery(sql, Tag.class);
@@ -192,10 +192,11 @@ public class EntityDiary {
 
         em.getTransaction().begin();
         String sql = "SELECT c FROM Diary c Where c.listOfTag.tagName LIKE '"
-                + name + "' AND c.listOfTag.listOfNote.id_Note =" + noteID + "";
-        TypedQuery<Diary> query = em.createQuery(sql, Diary.class);
-        List<Diary> result = query.getResultList();
-        em.remove(result.get(0));
+                + name + "' AND c.listOfTag.tagType LIKE '" + type + "' AND c.listOfTag.listOfNote.id_Note =" + noteID + "";
+        TypedQuery<Note> query = em.createQuery(sql, Note.class);
+        List<Note> result = query.getResultList();
+        result.remove(0);
+//        em.remove(result.get(0));
         em.getTransaction().commit();
     }
 

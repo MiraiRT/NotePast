@@ -75,19 +75,12 @@ public class Note implements Serializable {
             index++;
         }
         Note note = today.getListOfNote().get(index);
-
-        String[] tag = note.getNoteText().split(" ");
-        ArrayList tagList = new ArrayList();
-        for (int i = 0; i < tag.length; i++) {
-            if (tag[i].substring(0, 1).equals("@") || tag[i].substring(0, 1).equals("#")) {
-                tagList.add(tag[i]);
-            }
-        }
-        
-
         note.setTimeStr(time);
         note.setNoteText(noteText);
+
         entity.editNote(note.getId(), time, noteText);
+        Note.detectTag(entity,diary,note);
+
         System.out.println("NoteID " + noteID + " >> Edited\n");
     }
 
