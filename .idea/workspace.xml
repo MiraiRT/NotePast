@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Rename Day -&gt; DayStory&#10;Add Feature -&gt; summaryNote in DayStory&#10;Remove LocationTag/PeopleTag/Searching">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/objectdb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/objectdb.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotePast/EntityDiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotePast/EntityDiary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotePast/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotePast/Tag.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,13 +81,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="1" />
-          <entry key="java" value="23253" />
+          <entry key="java" value="23285" />
           <entry key="txt" value="508" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="23253" />
+          <entry key="JAVA" value="23285" />
           <entry key="PLAIN_TEXT" value="508" />
           <entry key="XML" value="1" />
         </counts>
@@ -221,49 +220,15 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/User.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/NotePast/Tag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="100" column="2" lean-forward="true" selection-start-line="100" selection-start-column="2" selection-end-line="100" selection-end-column="2" />
+            <state relative-caret-position="38">
+              <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#404#405#0" expanded="true" />
-                <element signature="e#434#435#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#917#918#0" expanded="true" />
-                <element signature="e#952#953#0" expanded="true" />
-                <element signature="e#983#984#0" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
-                <element signature="e#1042#1043#0" expanded="true" />
-                <element signature="e#1083#1084#0" expanded="true" />
-                <element signature="e#1119#1120#0" expanded="true" />
-                <element signature="e#1155#1156#0" expanded="true" />
-                <element signature="e#1182#1183#0" expanded="true" />
-                <element signature="e#1967#1968#0" expanded="true" />
-                <element signature="e#2017#2018#0" expanded="true" />
-                <element signature="e#2048#2049#0" expanded="true" />
-                <element signature="e#2087#2088#0" expanded="true" />
+                <element signature="method#addNoteToTag#0;class#Tag#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/Diary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotePast/DayStory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="124" column="22" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -271,19 +236,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NotePast/Note.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="110" column="22" lean-forward="true" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
+            <state relative-caret-position="152">
+              <caret line="122" column="88" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="88" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NotePast/DayStory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="847">
+              <caret line="127" column="49" selection-start-line="127" selection-start-column="49" selection-end-line="127" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NotePast/EntityDiary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+            <state relative-caret-position="400">
+              <caret line="160" column="63" selection-start-line="160" selection-start-column="63" selection-end-line="160" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#deleteNote#0;class#EntityDiary#0" />
+                <element signature="method#getNote#0;class#EntityDiary#0" />
+                <element signature="method#addDay#0;class#EntityDiary#0" />
+                <element signature="method#deleteDay#0;class#EntityDiary#0" />
+                <element signature="method#createDiary#0;class#EntityDiary#0" />
+                <element signature="method#createUser#0;class#EntityDiary#0" />
+                <element signature="method#login#0;class#EntityDiary#0" />
+                <element signature="method#signUp#0;class#EntityDiary#0" />
+                <element signature="method#getAccount#0;class#EntityDiary#0" />
+                <element signature="method#addNoteinTag#0;class#EntityDiary#0" />
+                <element signature="method#deleteNoteinTag#0;class#EntityDiary#0" />
+                <element signature="method#createTag#0;class#EntityDiary#0" />
+                <element signature="method#searchTag#0;class#EntityDiary#0" />
               </folding>
             </state>
           </provider>
@@ -359,10 +349,10 @@
         <option value="$PROJECT_DIR$/src/fx/Main.java" />
         <option value="$PROJECT_DIR$/src/fx/ControllerLogin.java" />
         <option value="$PROJECT_DIR$/src/NotePast/Note.java" />
-        <option value="$PROJECT_DIR$/src/NotePast/Tag.java" />
         <option value="$PROJECT_DIR$/src/NotePast/User.java" />
         <option value="$PROJECT_DIR$/src/fx/ControllerToday.java" />
         <option value="$PROJECT_DIR$/src/NotePast/EntityDiary.java" />
+        <option value="$PROJECT_DIR$/src/NotePast/Tag.java" />
       </list>
     </option>
   </component>
@@ -374,9 +364,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="355" />
-    <option name="y" value="-29" />
-    <option name="width" value="981" />
+    <option name="x" value="391" />
+    <option name="y" value="-15" />
+    <option name="width" value="980" />
     <option name="height" value="795" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -433,7 +423,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545078752678" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/objectdb-2.7.6/objectdb-2.7.6/bin/objectdb.jar!/" />
+    <property name="last_opened_file_path" value="C:/Program Files/Java/objectdb-2.7.6/bin/objectdb.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -829,12 +819,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183314000" />
+    <option name="totallyTimeSpent" value="183514000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2834008" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19597316" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -845,7 +835,7 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4039146" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4039146" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1053,8 +1043,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/Tag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
+        <state relative-caret-position="38">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding>
+            <element signature="method#addNoteToTag#0;class#Tag#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,9 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="16" column="47" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1165,15 +1155,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/DayStory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="124" column="22" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
+        <state relative-caret-position="847">
+          <caret line="127" column="49" selection-start-line="127" selection-start-column="49" selection-end-line="127" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/Note.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="110" column="22" lean-forward="true" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
+        <state relative-caret-position="152">
+          <caret line="122" column="88" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1186,10 +1179,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NotePast/EntityDiary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        <state relative-caret-position="400">
+          <caret line="160" column="63" selection-start-line="160" selection-start-column="63" selection-end-line="160" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#deleteNote#0;class#EntityDiary#0" />
+            <element signature="method#getNote#0;class#EntityDiary#0" />
+            <element signature="method#addDay#0;class#EntityDiary#0" />
+            <element signature="method#deleteDay#0;class#EntityDiary#0" />
+            <element signature="method#createDiary#0;class#EntityDiary#0" />
+            <element signature="method#createUser#0;class#EntityDiary#0" />
+            <element signature="method#login#0;class#EntityDiary#0" />
+            <element signature="method#signUp#0;class#EntityDiary#0" />
+            <element signature="method#getAccount#0;class#EntityDiary#0" />
+            <element signature="method#addNoteinTag#0;class#EntityDiary#0" />
+            <element signature="method#deleteNoteinTag#0;class#EntityDiary#0" />
+            <element signature="method#createTag#0;class#EntityDiary#0" />
+            <element signature="method#searchTag#0;class#EntityDiary#0" />
           </folding>
         </state>
       </provider>
