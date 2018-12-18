@@ -62,14 +62,14 @@ public class ControllerLogin implements Controller {
                         System.out.println("New User -> Create Day");
                     }
 
-                    int today = Integer.parseInt(activeDiary.getToday().getDayStr());
-                    String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
-                    int newDay = Integer.parseInt(dayStr);
-
-                    if (newDay > today) {
-                        DayStory.addDay(entity, activeDiary);
-                        System.out.println("Create Day");
-                    }
+//                    int today = Integer.parseInt(activeDiary.getToday().getDayStr());
+//                    String dayStr = (new SimpleDateFormat("yyyyMMdd")).format(new Date());
+//                    int newDay = Integer.parseInt(dayStr);
+//
+//                    if (newDay > today) {
+//                        DayStory.addDay(entity, activeDiary);
+//                        System.out.println("Create Day");
+//                    }
                     System.out.println("Authen -> Success!!\n\n");
                     pageController.active("today");
                 } else {

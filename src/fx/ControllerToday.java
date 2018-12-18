@@ -102,13 +102,22 @@ public class ControllerToday implements Controller {
         btnToday.setOnMouseClicked(mouseEvent -> pag.setCurrentPageIndex(0));
 
         /* Click menu diary */
-        btnDiary.setOnMouseClicked(mouseEvent -> pageController.active("diary"));
+        btnDiary.setOnMouseClicked(mouseEvent -> {
+            detectNewDay.stop();
+            pageController.active("diary");
+        });
 
         /* Click menu years ago */
-        btnYearsAgo.setOnMouseClicked(mouseEvent -> pageController.active("yearsago"));
+        btnYearsAgo.setOnMouseClicked(mouseEvent -> {
+            detectNewDay.stop();
+            pageController.active("yearsago");
+        });
 
         /* Click menu logout */
-        btnLogout.setOnMouseClicked(mouseEvent -> pageController.active("login"));
+        btnLogout.setOnMouseClicked(mouseEvent -> {
+            detectNewDay.stop();
+            pageController.active("login");
+        });
 
         /* Click add event */
         btnAddEvent.setOnMouseClicked(mouseEvent -> {
@@ -349,7 +358,6 @@ public class ControllerToday implements Controller {
         int i = 0;
         while (pageBox[i] != null) {
             System.out.println("clear pagebox: " +i);
-//            pageBox[i].getChildren().remove(objCreateEvent);
             pageBox[i].getChildren().clear();
             i++;
         }
@@ -389,7 +397,7 @@ public class ControllerToday implements Controller {
         }
     }
 
-    Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+    private Timeline detectNewDay = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
             int today = Integer.parseInt(ControllerLogin.activeDiary.getToday().getDayStr());
@@ -399,7 +407,6 @@ public class ControllerToday implements Controller {
             if (newDay > today) {
                 DayStory.addDay(entity, ControllerLogin.activeDiary);
 
-                System.out.println("newwwww dayyyyyyyyyyy");
                 pageController.active("today");
             }
         }
@@ -444,7 +451,7 @@ public class ControllerToday implements Controller {
         }
         pag.setCurrentPageIndex(0);
 
-        fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
-        fiveSecondsWonder.play();
+        detectNewDay.setCycleCount(Timeline.INDEFINITE);
+        detectNewDay.play();
     }
 }

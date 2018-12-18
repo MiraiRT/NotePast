@@ -127,16 +127,6 @@ public class ControllerDiary implements Controller {
 
         /* Click menu logout */
         btnLogout.setOnMouseClicked(mouseEvent -> pageController.active("login"));
-
-        pagDiary.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                if (!emptyPag[pageIndex] | pageIndex == 0) {
-                    return createPage(pageIndex);
-                }
-                return null;
-            }
-        });
     }
 
     private VBox createPage(int pageIndex) {
@@ -203,6 +193,16 @@ public class ControllerDiary implements Controller {
         } else {
             System.out.println("error");
         }
+        /* Pagination */
+        pagDiary.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                if (!emptyPag[pageIndex] | pageIndex == 0) {
+                    return createPage(pageIndex);
+                }
+                return null;
+            }
+        });
 
         pagDiary.setCurrentPageIndex(0);
     }
