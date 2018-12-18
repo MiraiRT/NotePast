@@ -43,7 +43,7 @@ public class ControllerToday implements Controller {
     private String hour;
     private String min;
 
-    private EntityDiary entity;
+    EntityDiary entity;
 
     ControllerToday(PageController pageController) {
         this.pageController = pageController;
@@ -311,7 +311,7 @@ public class ControllerToday implements Controller {
         return false;
     }
 
-    private String convertMonth(String month) {
+    public static String convertMonth(String month) {
         switch (month) {
             case "01":
                 return "JANUARY";

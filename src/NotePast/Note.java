@@ -78,8 +78,9 @@ public class Note implements Serializable {
         note.setTimeStr(time);
         note.setNoteText(noteText);
 
-        entity.editNote(note.getId(), time, noteText);
         Note.detectTag(entity,diary,note);
+        entity.editNote(note.getId(), time, noteText);
+
 
         System.out.println("NoteID " + noteID + " >> Edited\n");
     }

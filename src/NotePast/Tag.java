@@ -55,6 +55,8 @@ public class Tag implements Serializable {
 
     public static void addNoteToTag(EntityDiary entity, Diary diary, int noteID, String name, String type) {
         int diaryID = diary.getId();
+        System.out.println(diaryID);
+        System.out.println(diary);
         if (!entity.searchTag(diaryID, name, type)) {
             Tag newTag = entity.createTag(diaryID, name, type);
             diary.getListOfTag().add(newTag);

@@ -21,14 +21,10 @@ public class ControllerSearch  implements Controller {
     private Pane searchBox;
     private TextField fieldSearch;
     private Button btnToday, btnDiary, btnSearch, btnLogout, btnBack;
-    public static String selectedDayStoryDate;
-    public static DayStory selectedDayStory;
+    private Label noResult;
     private List<Note> result;
 
-    EntityDiary entity = Main.entity;
-
-    User activeAcc;
-    Diary activeDiary;
+    EntityDiary entity;
 
     public ControllerSearch(PageController pageController) {
         this.pageController = pageController;
@@ -44,6 +40,15 @@ public class ControllerSearch  implements Controller {
         btnLogout = (Button) scene.lookup("#btnLogout");
         btnBack = (Button) scene.lookup("#btnBack");
         btnSearch = (Button) scene.lookup("#btnSearch");
+        noResult = (Label) scene.lookup("#noResult");
+
+        /* Click on search button */
+        btnSearch.setOnMouseClicked(mouseEvent -> {
+            ControllerDiary.searchInput = fieldSearch.getText();
+            if (ControllerDiary.searchInput != null){
+                pageController.active("search");
+            }
+        });
 
         /* Click menu today */
         btnToday.setOnMouseClicked(mouseEvent -> pageController.active("today"));
@@ -65,57 +70,67 @@ public class ControllerSearch  implements Controller {
     public void onActive() {
         scene = pageController.getScene("search");
 
-        activeAcc = ControllerLogin.activeAcc;
-        activeDiary = ControllerLogin.activeDiary;
+        entity = new EntityDiary();
+
         System.out.println(ControllerDiary.searchInput);
         fieldSearch.setText(ControllerDiary.searchInput);
 
+        scp.setContent(null);
 
         result = Tag.searchTag(ControllerDiary.searchInput, ControllerLogin.activeDiary);
 
-        System.out.println(result);
-        VBox VBoxNote = new VBox();
-        VBoxNote.setPrefWidth(396);
+        if (!result.isEmpty()) {
+            noResult.setVisible(false);
 
-        for (int i = 0; i < result.size(); i++) {
-            searchBox = new Pane();
-            searchBox.setPrefSize(396, 55.0);
-            searchBox.setStyle("-fx-background-color:white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1");
+            VBox VBoxNote = new VBox();
+            VBoxNote.setPrefWidth(396);
 
-            String strDate = result.get(i).getDayStr() + " " + result.get(i).getTimeStr();
-            Label date = new Label(strDate);
-            date.setLayoutX(14);
-            date.setLayoutY(10);
-            date.setStyle("-fx-text-Fill:#1d1f1f");
-            date.setFont(new Font("Segoe UI bold", 15));
+            for (int i = 0; i < result.size(); i++) {
+                searchBox = new Pane();
+                searchBox.setPrefSize(396, 55.0);
+                searchBox.setStyle("-fx-background-color:white; -fx-background-radius: 0; -fx-border-color: #388ABD; -fx-border-width: 1");
 
-            Label strNote = new Label(result.get(i).getNoteText());
-            strNote.setLayoutX(14);
-            strNote.setLayoutY(30);
-            strNote.setStyle("-fx-text-Fill:#1d1f1f");
-            strNote.setFont(new Font("Segoe UI", 10));
-            searchBox.getChildren().addAll(date, strNote);
+                String strDate = result.get(i).getDayStr().substring(6) + " " +
+                        ControllerToday.convertMonth(result.get(i).getDayStr().substring(4, 6)) + " "
+                        + result.get(i).getDayStr().substring(0, 4) + " - " +
+                        result.get(i).getTimeStr().substring(0, 2) + ":" + result.get(i).getTimeStr().substring(2, 4);
+                Label date = new Label(strDate);
+                date.setLayoutX(14);
+                date.setLayoutY(10);
+                date.setStyle("-fx-text-Fill:#1d1f1f");
+                date.setFont(new Font("Segoe UI bold", 15));
 
-            VBoxNote.getChildren().add(searchBox);
+                Label strNote = new Label(result.get(i).getNoteText());
+                strNote.setLayoutX(14);
+                strNote.setLayoutY(30);
+                strNote.setStyle("-fx-text-Fill:#1d1f1f");
+                strNote.setFont(new Font("Segoe UI", 10));
+                searchBox.getChildren().addAll(date, strNote);
 
-            String targetDay = result.get(i).getDayStr();
+                VBoxNote.getChildren().add(searchBox);
 
-            searchBox.setOnMouseClicked(mouseEvent -> {
-                System.out.println("click");
-                DayStory selectedDay = null;
-                for (DayStory day : activeDiary.getListOfDayStory()) {
-                    if (day.getDayStr().equals(targetDay)) {
-                        selectedDay = day;
-                        break;
+                String targetDay = result.get(i).getDayStr();
+
+                searchBox.setOnMouseClicked(mouseEvent -> {
+                    DayStory selectedDay = null;
+                    for (DayStory day : ControllerLogin.activeDiary.getListOfDayStory()) {
+                        if (day.getDayStr().equals(targetDay)) {
+                            selectedDay = day;
+                            break;
+                        }
                     }
-                }
-                selectedDayStoryDate = selectedDay.getDayStr();
-                selectedDayStory = selectedDay;
+                    ControllerDiary.selectedDayStoryDate = selectedDay.getDayStr();
+                    System.out.println("size2: " + selectedDay.getListOfNote().size());
+                    ControllerDiary.selectedDayStory = selectedDay;
 
-                pageController.active("summary");
-            });
+                    pageController.active("summary");
+                });
+            }
+            scp.setContent(VBoxNote);
+        } else {
+            String noResults = "No results for " + ControllerDiary.searchInput;
+            noResult.setText(noResults);
+            noResult.setVisible(true);
         }
-        scp.setContent(VBoxNote);
-
     }
 }

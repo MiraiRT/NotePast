@@ -59,7 +59,8 @@
                 <Image url="@../images/glass2.png" />
             </image>
         </ImageView>
-      <ScrollPane fx:id="scp" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="185.0" layoutY="86.0" prefHeight="330.0" prefWidth="413.0" scaleShape="false" style="-fx-background: #1D1F1F; -fx-border-color: #1D1F1F;" />
+        <Button fx:id="btnSearch" layoutX="577.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="21.0" prefWidth="16.0" text="search" />
+        <ScrollPane fx:id="scp" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="185.0" layoutY="86.0" pickOnBounds="false" prefHeight="330.0" prefWidth="413.0" scaleShape="false" style="-fx-background: #1D1F1F; -fx-border-color: #1D1F1F;" />
         <Group layoutX="185.0" layoutY="86.0" visible="false">
             <children>
                 <Pane prefHeight="55.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-color: #388ABD; -fx-border-width: 1;">
@@ -126,5 +127,9 @@
                 <Font name="Segoe UI Bold" size="14.0" />
             </font>
         </Button>
+        <Label fx:id="noResult" alignment="CENTER" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="185.0" layoutY="125.0" prefHeight="32.0" prefWidth="400.0" scaleShape="false" text="No results for @tag" textFill="WHITE" visible="false">
+            <font>
+                <Font name="Segoe UI" size="18.0" />
+            </font></Label>
     </children>
 </AnchorPane>

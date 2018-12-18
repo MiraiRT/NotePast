@@ -103,32 +103,6 @@ public class DayStory implements Serializable {
 
     public void summaryNote() {
         Collections.sort(listOfNote, (Note a1, Note a2) -> a1.getTimeStr().compareTo(a2.getTimeStr()));
-//        List<Note> l = new ArrayList<>();
-//        //Collections.sort(listOfNote.);
-//        for (Note i : listOfNote) {
-//            if (l.size() == 0) {
-//                l.add(i);
-//            } else {
-//                int toPush = Integer.parseInt(i.getTimeStr());
-//                for (int j = 0; j < l.size(); j++) {
-//                    int inList = Integer.parseInt(l.get(j).getTimeStr());
-//                    System.out.println("inList :" + inList + " toPush :" + toPush);
-//                    if(toPush < inList){
-//                        l.add(j,i);
-//                    } else if(toPush == inList){
-//                        if(i.getNoteID() < l.get(j).getNoteID()){
-//                            l.add(j,i);
-//                        } else {
-//                            l.add(j+1,i);
-//                        }
-//
-//                    }
-//                }
-//                l.add(i);
-//            }
-//        }
-//        listOfNote = l;
-//        System.out.println(listOfNote);
     }
 
     @Override

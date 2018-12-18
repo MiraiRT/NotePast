@@ -164,7 +164,7 @@ public class ControllerDiary implements Controller {
 
             DayStory dayStory = ControllerLogin.activeDiary.getListOfDayStory().get(ControllerLogin.activeDiary.getListOfDayStory().size() - i - 1);
             String dateDayStory = dayStory.getDayStr().substring(6) + " " +
-                    convertMonth(dayStory.getDayStr().substring(4, 6)) + " " + dayStory.getDayStr().substring(0, 4);
+                    ControllerToday.convertMonth(dayStory.getDayStr().substring(4, 6)) + " " + dayStory.getDayStr().substring(0, 4);
             DiaryPane newDiaryPane = new DiaryPane(index, dateDayStory);
 
             paneDiary.add(newDiaryPane);
@@ -184,37 +184,6 @@ public class ControllerDiary implements Controller {
 
         System.out.println(selectedDayStory);
         pageController.active("summary");
-    }
-
-    private String convertMonth(String month) {
-        switch (month) {
-            case "01":
-                return "JANUARY";
-            case "02":
-                return "FEBRUARY";
-            case "03":
-                return "MARCH";
-            case "04":
-                return "APRIL";
-            case "05":
-                return "MAY";
-            case "06":
-                return "JUNE";
-            case "07":
-                return "JULY";
-            case "08":
-                return "AUGUST";
-            case "09":
-                return "SEPTEMBER";
-            case "10":
-                return "OCTOBER";
-            case "11":
-                return "NOVEMBER";
-            case "12":
-                return "DECEMBER";
-            default:
-                return "ERROR";
-        }
     }
 
     @Override

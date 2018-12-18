@@ -1,9 +1,7 @@
 package fx;
 
 import NotePast.DayStory;
-import NotePast.Diary;
 import NotePast.EntityDiary;
-import NotePast.User;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-
-import static fx.ControllerDiary.tempPage;
 
 public class ControllerSummary implements Controller {
     Scene scene;
@@ -23,7 +19,7 @@ public class ControllerSummary implements Controller {
     private Button btnToday, btnDiary, btnBack, btnLogout;
     private Button btnDel, yesDel, noDel;
 
-    EntityDiary entity = Main.entity;
+    EntityDiary entity;
 
     public ControllerSummary(PageController pageController) {
         this.pageController = pageController;
@@ -79,15 +75,20 @@ public class ControllerSummary implements Controller {
     public void onActive() {
         scene = pageController.getScene("summary");
 
+        entity = new EntityDiary();
+
         popupDel.setVisible(false);
 
         dateSummary = (Label) scene.lookup("#dateSummary");
-
         dateSummary.setText(ControllerDiary.selectedDayStoryDate);
 
         VBox eachDay = new VBox();
         eachDay.setPrefWidth(380);
         eachDay.setSpacing(20);
+
+//        System.out.println("size: " + ControllerDiary.selectedDayStory.getListOfNote().size());
+
+        ControllerDiary.selectedDayStory.summaryNote();
 
         for (int i = 0; i < ControllerDiary.selectedDayStory.getListOfNote().size(); i++) {
             VBox group = new VBox();

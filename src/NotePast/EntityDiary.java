@@ -160,43 +160,25 @@ public class EntityDiary {
     //Add tag that use in note
     public void addNoteinTag(int diaryID, int noteID, String name, String type) {
         Note note = getNote(noteID);
-
         em.getTransaction().begin();
-        String sql = "SELECT c FROM Tag c Where c.tagName LIKE '" + name + "'";
+        String sql = "SELECT c FROM Tag c Where c.id_Diary =" + diaryID + " AND c.tagName LIKE'" + name + "' AND c.tagType LIKE '" + type + "'";
         TypedQuery<Tag> query = em.createQuery(sql, Tag.class);
         List<Tag> result = query.getResultList();
         result.get(0).getListOfNote().add(note);
         em.getTransaction().commit();
-
-        em.getTransaction().begin();
-        String sql2 = "SELECT c FROM Tag c Where c.id_Diary =" + diaryID + "";
-        TypedQuery<Tag> query2 = em.createQuery(sql2, Tag.class);
-        List<Tag> result2 = query2.getResultList();
-
-        String sql3 = "SELECT c FROM Diary c Where c.id_Diary =" + diaryID + "";
-        TypedQuery<Diary> query3 = em.createQuery(sql3, Diary.class);
-        List<Diary> result3 = query3.getResultList();
-
-        result3.get(0).setListOfTag(result2);
-        em.getTransaction().commit();
     }
 
     public void deleteNoteinTag(int noteID, String name, String type, int diaryID) {
-//        em.getTransaction().begin();
-//        String sql = "SELECT c FROM Tag c Where c.tagName LIKE '" + name + "'";
-//        TypedQuery<Tag> query = em.createQuery(sql, Tag.class);
-//        List<Tag> result = query.getResultList();
-//        result.get(0).getStackOfNote().add(note);
-//        String sql2 = "SELECT c FROM Tag c Where c.tagName LIKE '" + name + "'";
-//        em.getTransaction().commit();
-
         em.getTransaction().begin();
-        String sql = "SELECT c FROM Diary c Where c.listOfTag.tagName LIKE '"
-                + name + "' AND c.listOfTag.tagType LIKE '" + type + "' AND c.listOfTag.listOfNote.id_Note =" + noteID + "";
+        String sql3 = "SELECT c FROM Tag c Where c.id_Diary ="
+                + diaryID + " AND c.tagName LIKE '" + name
+                + "' AND c.tagType LIKE '" + type + "'";
+        TypedQuery<Tag> query3 = em.createQuery(sql3, Tag.class);
+        List<Tag> result3 = query3.getResultList();
+        String sql = "SELECT c FROM Note c Where c.id_Note =" + noteID + "";
         TypedQuery<Note> query = em.createQuery(sql, Note.class);
         List<Note> result = query.getResultList();
-        result.remove(0);
-//        em.remove(result.get(0));
+        result3.get(0).getListOfNote().remove(result.get(0));
         em.getTransaction().commit();
     }
 
@@ -216,18 +198,32 @@ public class EntityDiary {
         return newTag;
     }
 
+//    public boolean searchTag(int diaryID, String name,String type) {
+////        String sql = "SELECT c FROM Diary c Where c.id_Diary =" + diaryID + "";
+////        TypedQuery<Diary> query = em.createQuery(sql, Diary.class);
+////        List<Diary> result = query.getResultList();
+//
+////        String sql2 = "SELECT a FROM Tag a Where a.tagName LIKE '" + name + "' AND a.tagType LIKE '" + type + "'";
+////        TypedQuery<Tag> query2 = em.createQuery(sql2, Tag.class);
+////        List<Tag> result2 = query2.getResultList();
+//
+//        String sql3 = "SELECT n, m FROM Diary n, Tag m Where n.id_Diary ="
+//                + diaryID + " AND m.getTagName() LIKE '" + name
+//                + "' AND m.getTagType() LIKE '" + type + "'";
+//        TypedQuery<Tag> query3 = em.createQuery(sql3, Tag.class);
+//        List<Tag> result3 = query3.getResultList();
+//
+//        if (result3.isEmpty()) {
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
+
     public boolean searchTag(int diaryID, String name,String type) {
-//        String sql = "SELECT c FROM Diary c Where c.id_Diary =" + diaryID + "";
-//        TypedQuery<Diary> query = em.createQuery(sql, Diary.class);
-//        List<Diary> result = query.getResultList();
-
-//        String sql2 = "SELECT a FROM Tag a Where a.tagName LIKE '" + name + "' AND a.tagType LIKE '" + type + "'";
-//        TypedQuery<Tag> query2 = em.createQuery(sql2, Tag.class);
-//        List<Tag> result2 = query2.getResultList();
-
-        String sql3 = "SELECT n, m FROM Diary n, Tag m Where n.id_Diary ="
-                + diaryID + " AND m.getTagName() LIKE '" + name
-                + "' AND m.getTagType() LIKE '" + type + "'";
+        String sql3 = "SELECT c FROM Tag c Where c.id_Diary ="
+                + diaryID + " AND c.tagName LIKE '" + name
+                + "' AND c.tagType LIKE '" + type + "'";
         TypedQuery<Tag> query3 = em.createQuery(sql3, Tag.class);
         List<Tag> result3 = query3.getResultList();
 
