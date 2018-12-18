@@ -4,19 +4,24 @@ import NotePast.DayStory;
 import NotePast.Diary;
 import NotePast.EntityDiary;
 import NotePast.User;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextFlow;
+
+import static fx.ControllerDiary.tempPage;
 
 public class ControllerSummary implements Controller {
-    PageController pageController;
-    Label dateSummary;
+    Scene scene;
+    private PageController pageController;
+    private Label dateSummary;
+    private ScrollPane scp;
+    private  Group popupDel;
+    private Button btnToday, btnDiary, btnBack, btnLogout;
+    private Button btnDel, yesDel, noDel;
 
     EntityDiary entity = Main.entity;
 
@@ -26,46 +31,81 @@ public class ControllerSummary implements Controller {
 
     @Override
     public void initialize() {
-        Scene scene = pageController.getScene("summary");
-        ScrollPane scp = (ScrollPane) scene.lookup("#scp");
+        scene = pageController.getScene("summary");
+        scp = (ScrollPane) scene.lookup("#scp");
 
-        dateSummary = (Label) scene.lookup("#dateSummary");
+        btnToday = (Button) scene.lookup("#btnToday");
+        btnDiary = (Button) scene.lookup("#btnDiary");
+        btnBack = (Button) scene.lookup("#btnBack");
+        btnLogout = (Button) scene.lookup("#btnLogout");
+        btnDel = (Button) scene.lookup("#btnDel");
+        popupDel = (Group) scene.lookup("#popupDel");
+        yesDel = (Button) scene.lookup("#yesDel");
+        noDel = (Button) scene.lookup("#noDel");
 
-        VBox eachDay = new VBox();
-        Label time = new Label();
-        Label text = new Label();
+        /* Click menu today */
+        btnToday.setOnMouseClicked(mouseEvent -> pageController.active("today"));
 
-//        for (int i = 0; i < ControllerDiary.selectedDayStory.getListOfNote().size(); i++) {
-//            index = i;
-//            page = index / 6;
-//
-//            DayStory dayStory = activeDiary.getListOfDayStory().get(i);
-//            String dateDayStory = dayStory.getDayStr().substring(6) + " " +
-//                    convertMonth(dayStory.getDayStr().substring(4, 6)) + " " + dayStory.getDayStr().substring(0, 4);
-//            DiaryPane newDiaryPane = new DiaryPane(index, dateDayStory);
-//
-//            paneDiary.add(newDiaryPane);
-//            objCreateDiary = ((DiaryPane) paneDiary.get(index)).getDiaryBox();
-//
-//            if (index%6 == 0) {
-//                createPage(page);
-//            }
-//
-//            pageBox[page].getChildren().add(objCreateDiary);
-//        }
-//
-//        dateSummary.setText(ControllerDiary.selectedDayStory);
-        time.setFont(new Font("Segoe UI bold", 13));
-        text.setFont(new Font("Segoe UI", 10));
+        /* Click menu diary */
+        btnDiary.setOnMouseClicked(mouseEvent -> pageController.active("diary"));
 
-        time.setText("09:45");
-        text.setText("Miusov, as a man man of breeding and deilcacy, could not but feel some inwrd qualms, when he reached the Father Superior's with Ivan: he felt ashamed of havin lost his temper. He felt that he ought to have disdaimed that despicable wretch, Fyodor Pavlovitch, too much to have been upset by him in Father Zossima's cell, and so to have forgotten himself. &quot;Teh monks were not to blame, in any case,&quot; he reflceted, on the steps. &quot;And if they're decent people here (and the Father Superior, I understand, is a nobleman) why not be friendly and courteous withthem? I won't argue, I'll fall in with everything, I'll win them by politness, and show them that I've nothing to do with that Aesop, thta buffoon, that Pierrot, and have merely been takken in over this affair, just as they have.&quot;&#10;");
+        /* Click menu logout */
+        btnLogout.setOnMouseClicked(mouseEvent -> pageController.active("login"));
 
-        scp.setContent(eachDay);
+        /* Click Back */
+        btnBack.setOnMouseClicked(mouseEvent -> {
+            pageController.active("diary");
+//            ControllerDiary.pagDiary.setCurrentPageIndex(tempPage);
+        });
+
+        /* Delete day story */
+        btnDel.setOnMouseClicked(mouseEvent -> {
+            popupDel.setVisible(true);
+        });
+
+        yesDel.setOnMouseClicked(mouseEvent -> {
+            popupDel.setVisible(false);
+            System.out.println("ControllerDiary.selectedDayStory.getId(): " + ControllerDiary.selectedDayStory.getId());
+            DayStory.deleteDayStory(entity, ControllerLogin.activeDiary, ControllerDiary.selectedDayStory.getId());
+//            eraseDiaryPane();
+            pageController.active("diary");
+        });
+
+        noDel.setOnMouseClicked(mouseEvent -> popupDel.setVisible(false));
+
     }
 
     @Override
     public void onActive() {
-        Scene scene = pageController.getScene("summary");
+        scene = pageController.getScene("summary");
+
+        popupDel.setVisible(false);
+
+        dateSummary = (Label) scene.lookup("#dateSummary");
+
+        dateSummary.setText(ControllerDiary.selectedDayStoryDate);
+
+        VBox eachDay = new VBox();
+        eachDay.setPrefWidth(380);
+        eachDay.setSpacing(20);
+
+        for (int i = 0; i < ControllerDiary.selectedDayStory.getListOfNote().size(); i++) {
+            VBox group = new VBox();
+            Label time = new Label();
+            Label text = new Label();
+
+            time.setFont(new Font("Segoe UI bold", 13));
+            text.setFont(new Font("Segoe UI", 11));
+            text.setWrapText(true);
+
+            String timeSt = ControllerDiary.selectedDayStory.getListOfNote().get(i).getTimeStr();
+            String textSt = ControllerDiary.selectedDayStory.getListOfNote().get(i).getNoteText();
+
+            time.setText(timeSt.substring(0, 2) + ":" + timeSt.substring(2, 4));
+            text.setText(textSt);
+            group.getChildren().addAll(time, text);
+            eachDay.getChildren().add(group);
+        }
+        scp.setContent(eachDay);
     }
 }

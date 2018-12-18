@@ -130,9 +130,13 @@ public class ControllerToday implements Controller {
 
                 String timeStr = timeTodayEvent;
                 String inputText = textAreaEvent.getText();
+
                 Note.addNote(entity, ControllerLogin.activeDiary, inputText, timeStr);
                 ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
                 ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
+
+                textAreaEvent.clear();
+                addEventBox.setVisible(false);
 
                 eraseDayStoryPane();
                 drawDayStoryPane();
@@ -144,42 +148,48 @@ public class ControllerToday implements Controller {
         /* Click on event */
         btnEvent0.setOnMouseClicked(mouseEvent -> {
             objectNum = (pag.getCurrentPageIndex() * 6);
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getToday().getListOfNote().size();
+            if (index > objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent1.setOnMouseClicked(mouseEvent -> {
             objectNum = (pag.getCurrentPageIndex() * 6) + 1;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getToday().getListOfNote().size();
+            if (index > objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent2.setOnMouseClicked(mouseEvent -> {
             objectNum = (pag.getCurrentPageIndex() * 6) + 2;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getToday().getListOfNote().size();
+            if (index > objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent3.setOnMouseClicked(mouseEvent -> {
             objectNum = (pag.getCurrentPageIndex() * 6) + 3;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getToday().getListOfNote().size();
+            if (index > objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent4.setOnMouseClicked(mouseEvent -> {
             objectNum = (pag.getCurrentPageIndex() * 6) + 4;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getToday().getListOfNote().size();
+            if (index > objectNum) {
                 showEdit(objectNum);
             }
         });
 
         btnEvent5.setOnMouseClicked(mouseEvent -> {
             objectNum = (pag.getCurrentPageIndex() * 6) + 5;
-            if (index >= objectNum) {
+            index = ControllerLogin.activeDiary.getToday().getListOfNote().size();
+            if (index > objectNum) {
                 showEdit(objectNum);
             }
         });
@@ -355,9 +365,6 @@ public class ControllerToday implements Controller {
                 objCreateEvent = ((NotePane) paneEvent.get(index)).getNoteBox();
                 GridPane.setMargin(objCreateEvent, new Insets(12, 7, 12, 7));
 
-                textAreaEvent.clear();
-                addEventBox.setVisible(false);
-
                 if (index % 6 == 0) {
                     createPage(page);
                     pageBox[page].add(objCreateEvent, 0, 0);
@@ -392,7 +399,7 @@ public class ControllerToday implements Controller {
             System.out.println("not null");
             drawDayStoryPane();
         } else {
-            System.out.println("errorrrrrrrrrrrrrrrrrr");
+            System.out.println("error");
         }
 
         pag.setCurrentPageIndex(0);

@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #1D1F1F;" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1">
@@ -51,64 +51,8 @@
                 <Image url="@../images/bin.png" />
             </image>
         </ImageView>
-      <ScrollPane fx:id="scp" layoutX="183.0" layoutY="85.0" prefHeight="330.0" prefWidth="413.0">
-         <content>
-                  <VBox fx:id="sumVBox" prefWidth="380.0" spacing="20.0">
-                      <children>
-                          <Group>
-                              <children>
-                                  <Label layoutY="17.0" prefWidth="364.0" text="wake up">
-                                      <font>
-                                          <Font name="Segoe UI" size="10.0" />
-                                      </font>
-                                  </Label>
-                              </children>
-                          </Group>
-                          <Group layoutX="10.0" layoutY="10.0">
-                              <children>
-                                  <Label text="09:45">
-                                      <font>
-                                          <Font name="Segoe UI Bold" size="13.0" />
-                                      </font>
-                                  </Label>
-                                  <Label layoutY="17.0" prefWidth="364.0" text="Miusov, as a man man of breeding and deilcacy, could not but feel some inwrd qualms, when he reached the Father Superior's with Ivan: he felt ashamed of havin lost his temper. He felt that he ought to have disdaimed that despicable wretch, Fyodor Pavlovitch, too much to have been upset by him in Father Zossima's cell, and so to have forgotten himself. &quot;Teh monks were not to blame, in any case,&quot; he reflceted, on the steps. &quot;And if they're decent people here (and the Father Superior, I understand, is a nobleman) why not be friendly and courteous withthem? I won't argue, I'll fall in with everything, I'll win them by politness, and show them that I've nothing to do with that Aesop, thta buffoon, that Pierrot, and have merely been takken in over this affair, just as they have.&quot;&#10;" wrapText="true">
-                                      <font>
-                                          <Font name="Segoe UI" size="10.0" />
-                                      </font>
-                                  </Label>
-                              </children>
-                          </Group>
-                          <Group layoutX="10.0" layoutY="169.0">
-                              <children>
-                                  <Label text="09:45">
-                                      <font>
-                                          <Font name="Segoe UI Bold" size="13.0" />
-                                      </font>
-                                  </Label>
-                                  <Label layoutY="17.0" prefWidth="364.0" text="09:45k">
-                                      <font>
-                                          <Font name="Segoe UI" size="11.0" />
-                                      </font>
-                                  </Label>
-                              </children>
-                          </Group>
-                  <Group layoutX="10.0" layoutY="43.0">
-                     <children>
-                        <Label text="09:45">
-                           <font>
-                              <Font name="Segoe UI Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="17.0" prefWidth="364.0" text="Miusov, as a man man of breeding and deilcacy, could not but feel some inwrd qualms, when he reached the Father Superior's with Ivan: he felt ashamed of havin lost his temper. He felt that he ought to have disdaimed that despicable wretch, Fyodor Pavlovitch, too much to have been upset by him in Father Zossima's cell, and so to have forgotten himself. &quot;Teh monks were not to blame, in any case,&quot; he reflceted, on the steps. &quot;And if they're decent people here (and the Father Superior, I understand, is a nobleman) why not be friendly and courteous withthem? I won't argue, I'll fall in with everything, I'll win them by politness, and show them that I've nothing to do with that Aesop, thta buffoon, that Pierrot, and have merely been takken in over this affair, just as they have.&quot;&#10;" wrapText="true">
-                           <font>
-                              <Font name="Segoe UI" size="10.0" />
-                           </font>
-                        </Label>
-                           </children>
-                  </Group>
-                      </children>
-                  </VBox>
-         </content>
+      <Button fx:id="btnDel" layoutX="572.0" layoutY="46.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="Button" />
+      <ScrollPane fx:id="scp" layoutX="183.0" layoutY="85.0" maxWidth="413.0" minHeight="330.0" minWidth="413.0" prefHeight="330.0" prefWidth="413.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -116,7 +60,7 @@
             <Insets bottom="15.0" left="20.0" top="15.0" />
          </padding>
       </ScrollPane>
-        <Button fx:id="btnLogout1" layoutX="336.0" layoutY="430.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="BACK" textFill="WHITE">
+        <Button fx:id="btnBack" layoutX="336.0" layoutY="430.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="BACK" textFill="WHITE">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -126,5 +70,43 @@
         </Button>
         <Pane layoutX="189.0" layoutY="86.0" prefHeight="14.0" prefWidth="392.0" style="-fx-background-color: #F4F4F4;" visible="false" />
         <Pane layoutX="189.0" layoutY="397.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="392.0" style="-fx-background-color: #F4F4F4;" visible="false" />
+      <Group fx:id="popupDel" layoutX="140.0" visible="false">
+         <children>
+            <Pane opacity="0.5" prefHeight="480.0" prefWidth="500.0" style="-fx-background-color: black;" />
+            <Pane layoutX="85.0" layoutY="180.0" prefHeight="142.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #388ABD;">
+               <children>
+                  <Line endX="233.0" layoutX="101.0" layoutY="38.0" startX="-100.0" stroke="#388abd" />
+                  <Label layoutX="132.0" layoutY="9.0" text="Notepast" textFill="#1d1f1f">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="64.0" layoutY="62.0" text="Are you sure to delete this day story?" textFill="#1d1f1f">
+                     <font>
+                        <Font name="Segoe UI" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="yesDel" layoutX="50.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #388ABD; -fx-background-radius: 20;" text="Yes" textFill="WHITE">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="noDel" layoutX="186.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" style="-fx-border-color: #388ABD; -fx-border-radius: 20; -fx-background-color: white; -fx-background-radius: 20;" text="No" textFill="#388abd">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </Group>
+   
     </children>
+
 </AnchorPane>

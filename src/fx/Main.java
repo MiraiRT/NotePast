@@ -21,7 +21,6 @@ public class Main extends Application {
         Pane signupPane = FXMLLoader.load(getClass().getResource("signup.fxml"));
         Pane summaryPane = FXMLLoader.load(getClass().getResource("summary.fxml"));
         Pane todayPane = FXMLLoader.load(getClass().getResource("today.fxml"));
-        Pane yearsagoPane = FXMLLoader.load(getClass().getResource("yearsago.fxml"));
 
         Scene scene = new Scene(loginPane, 640, 480);
         primaryStage.setScene(scene);
@@ -34,7 +33,7 @@ public class Main extends Application {
         ControllerSignup controllerSignup = new ControllerSignup(pageController);
         ControllerToday controllerToday = new ControllerToday(pageController);
         ControllerDiary controllerDiary = new ControllerDiary(pageController);
-      //  ControllerYearsago controllerYearsago = new ControllerToday(pageController);
+        ControllerSearch controllerSearch = new ControllerSearch(pageController);
         ControllerSummary controllerSummary = new ControllerSummary(pageController);
 
         /*------------------------------------------------a--------------------------*/
@@ -42,7 +41,7 @@ public class Main extends Application {
         pageController.addPage("signup", signupPane, controllerSignup);
         pageController.addPage("today", todayPane, controllerToday);
         pageController.addPage("diary", diaryPane, controllerDiary);
-      //  pageController.addPage("yearsago", yearsagoPane, controllerYearsago);
+        pageController.addPage("search", searchPane, controllerSearch);
         pageController.addPage("summary", summaryPane, controllerSummary);
         entity = new EntityDiary();
 

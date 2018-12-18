@@ -1,24 +1,11 @@
 package fx;
 
 import NotePast.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
-import javafx.util.Duration;
-
-import java.io.File;
-import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,20 +14,23 @@ import java.util.List;
 public class ControllerDiary implements Controller {
     Scene scene;
     private PageController pageController;
-    private Button btnToday, btnDiary, btnYearsAgo, btnLogout, btnAddEvent, doneAddEvent, closeAddEvent;
-    private Pagination pag;
+    private Button btnToday, btnDiary, btnSearch, btnLogout, btnAddEvent, doneAddEvent, closeAddEvent;
+    public static Pagination pagDiary;
     private VBox pageBox[] = new VBox[10];
     private Boolean emptyPag[] = {true, true, true, true, true, true, true, true, true, true};
     private int index, page, objectNum;
     private List<Pane> paneDiary = new ArrayList<>();
     private Pane objCreateDiary = new Pane();
     private Button diary0, diary1, diary2, diary3, diary4, diary5;
+    private TextField fieldSearch;
 
     EntityDiary entity;
     String hour = new SimpleDateFormat("HH").format(new Date());
     String min = new SimpleDateFormat("mm").format(new Date());
     public static String selectedDayStoryDate;
     public static DayStory selectedDayStory;
+    public static int tempPage;
+    public static String searchInput;
 
     public ControllerDiary(PageController pageController) {
         this.pageController = pageController;
@@ -53,74 +43,91 @@ public class ControllerDiary implements Controller {
         btnToday = (Button) scene.lookup("#btnToday");
         btnDiary = (Button) scene.lookup("#btnDiary");
         btnLogout = (Button) scene.lookup("#btnLogout");
-        pag = (Pagination) scene.lookup("#pag");
+        pagDiary = (Pagination) scene.lookup("#pag");
         diary0 = (Button) scene.lookup("#diary0");
         diary1 = (Button) scene.lookup("#diary1");
         diary2 = (Button) scene.lookup("#diary2");
         diary3 = (Button) scene.lookup("#diary3");
         diary4 = (Button) scene.lookup("#diary4");
         diary5 = (Button) scene.lookup("#diary5");
+        btnSearch = (Button) scene.lookup("#btnSearch");
+        fieldSearch = (TextField) scene.lookup("#fieldSearch");
 
         /* create pagination pane */
-        pag.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
+        pagDiary.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
 
         /* Click on day story */
         diary0.setOnMouseClicked(mouseEvent -> {
+            tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
-            objectNum = index - 1 - (pag.getCurrentPageIndex() * 6);
-            if (index > objectNum) {
+            objectNum = index - 1 - (tempPage*6);
+            if (index >= objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary1.setOnMouseClicked(mouseEvent -> {
+            tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
-            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 1);
-            System.out.println("objectNum: " + objectNum);
-            System.out.println("index: " + index);
+            objectNum = index - 1 - (tempPage*6 + 1);
             if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary2.setOnMouseClicked(mouseEvent -> {
+            tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
-            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 2);
+            objectNum = index - 1 - (tempPage*6 + 2);
             if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary3.setOnMouseClicked(mouseEvent -> {
+            tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
-            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 3);
+            objectNum = index - 1 - (tempPage*6 + 3);
             if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary4.setOnMouseClicked(mouseEvent -> {
+            tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
-            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 4);
+            objectNum = index - 1 - (tempPage*6 + 4);
             if (index > objectNum) {
                 showSummary(objectNum);
             }
         });
 
         diary5.setOnMouseClicked(mouseEvent -> {
+            tempPage = pagDiary.getCurrentPageIndex();
             index = ControllerLogin.activeDiary.getListOfDayStory().size();
-            objectNum = index - 1 - ((pag.getCurrentPageIndex() * 6) + 5);
+            objectNum = index - 1 - (tempPage*6 + 5);
             if (index > objectNum) {
                 showSummary(objectNum);
+            }
+        });
+
+        /* Click on search button */
+        btnSearch.setOnMouseClicked(mouseEvent -> {
+            searchInput = fieldSearch.getText();
+            if (searchInput != null){
+                pageController.active("search");
             }
         });
         /* Click menu today */
         btnToday.setOnMouseClicked(mouseEvent -> pageController.active("today"));
 
         /* Click menu diary */
-//        btnDiary.setOnMouseClicked(mouseEvent -> pageController.active("diary"));
+        btnDiary.setOnMouseClicked(mouseEvent -> pageController.active("diary"));
 
-        pag.setPageFactory(new Callback<Integer, Node>() {
+        /* Click menu logout */
+        btnLogout.setOnMouseClicked(mouseEvent -> pageController.active("login"));
+
+        pagDiary.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer pageIndex) {
                 if (!emptyPag[pageIndex] | pageIndex == 0) {
@@ -139,6 +146,15 @@ public class ControllerDiary implements Controller {
             emptyPag[pageIndex] = false;
         }
         return pageBox[pageIndex];
+    }
+
+    private void eraseDiaryPane() {
+        int i = 0;
+        while (pageBox[i] != null) {
+            pageBox[i].getChildren().remove(objCreateDiary);
+            pageBox[i].getChildren().clear();
+            i++;
+        }
     }
 
     private void drawDiaryPane() {
@@ -208,11 +224,12 @@ public class ControllerDiary implements Controller {
         }
         if (ControllerLogin.activeDiary.getListOfDayStory() != null) {
             System.out.println("not null");
+//            eraseDiaryPane();
             drawDiaryPane();
         } else {
-            System.out.println("errorrrrrrrrrrrrrrrrrr");
+            System.out.println("error");
         }
 
-        pag.setCurrentPageIndex(0);
+        pagDiary.setCurrentPageIndex(0);
     }
 }
