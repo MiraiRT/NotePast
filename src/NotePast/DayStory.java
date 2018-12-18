@@ -30,13 +30,11 @@ public class DayStory implements Serializable {
     private int dayID;
     private String dayStr;
     private List<Note> listOfNote;
-    private int noteIDGenerator;
 
     public DayStory(int id_Diary, String dayStr, int dayID) {
         this.dayStr = dayStr;
         this.dayID = dayID;
         this.listOfNote = new ArrayList<>();
-        this.noteIDGenerator = 1;
         this.id_Diary = id_Diary;
     }
 
@@ -62,14 +60,6 @@ public class DayStory implements Serializable {
 
     public void setListOfNote(List<Note> listOfNote) {
         this.listOfNote = listOfNote;
-    }
-
-    public int getNoteIDGenerator() {
-        return noteIDGenerator;
-    }
-
-    public void setNoteIDGenerator(int noteIDGenerator) {
-        this.noteIDGenerator = noteIDGenerator;
     }
 
     // Method //
@@ -109,10 +99,6 @@ public class DayStory implements Serializable {
         }
         diary.getListOfDayStory().remove(index);
         entity.deleteDay(diary.getId(), dayID);
-    }
-
-    public void increaseNoteID() {
-        this.noteIDGenerator++;
     }
 
     public void summaryNote() {

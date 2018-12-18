@@ -17,9 +17,9 @@ public class EntityDiary {
         emf.close();
     }
 
-    public Note addNote(int diaryID, int dayID, int noteID, String datStr, String time, String text) {
+    public Note addNote(int diaryID, int dayID, String datStr, String time, String text) {
         em.getTransaction().begin();
-        Note newNote = new Note(noteID, datStr, time, text);
+        Note newNote = new Note(datStr, time, text);
         em.persist(newNote);
         em.getTransaction().commit();
 
@@ -95,17 +95,17 @@ public class EntityDiary {
 
     public void deleteDay(int diaryID, int dayID) {
         em.getTransaction().begin();
-        String sql = "SELECT c FROM DayStory c Where c.id_DayStory =" + dayID + "";
-        TypedQuery<DayStory> query = em.createQuery(sql, DayStory.class);
-        List<DayStory> result = query.getResultList();
-        em.remove(result.get(0));
-        em.getTransaction().commit();
-
-        em.getTransaction().begin();
         String sql2 = "SELECT c FROM Diary c Where c.id_Diary =" + diaryID + "";
         TypedQuery<Diary> query2 = em.createQuery(sql2, Diary.class);
         List<Diary> result2 = query2.getResultList();
-        em.refresh(result2.get(0));
+        String sql = "SELECT c FROM DayStory c Where c.id_DayStory =" + dayID + "";
+        TypedQuery<DayStory> query = em.createQuery(sql, DayStory.class);
+        List<DayStory> result = query.getResultList();
+        result2.get(0).getListOfDayStory().remove(result.get(0));
+        em.getTransaction().commit();
+
+        em.getTransaction().begin();
+        em.remove(result.get(0));
         em.getTransaction().commit();
     }
 
@@ -191,8 +191,8 @@ public class EntityDiary {
 //        em.getTransaction().commit();
 
         em.getTransaction().begin();
-        String sql = "SELECT c FROM Diary c Where c.stackOfTag.tagName LIKE '"
-                + name + "' AND c.stackOfTag.stackOfNote.id_Note =" + noteID + "";
+        String sql = "SELECT c FROM Diary c Where c.listOfTag.tagName LIKE '"
+                + name + "' AND c.listOfTag.listOfNote.id_Note =" + noteID + "";
         TypedQuery<Diary> query = em.createQuery(sql, Diary.class);
         List<Diary> result = query.getResultList();
         em.remove(result.get(0));

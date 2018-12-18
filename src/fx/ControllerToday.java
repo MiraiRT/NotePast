@@ -9,7 +9,6 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -123,7 +122,7 @@ public class ControllerToday implements Controller {
             inputHH = HH.getText();
             inputMM = MM.getText();
 
-            if (checkTimeFormat()) {
+            if (checkTimeFormat() & !textAreaEvent.getText().isEmpty()) {
                 inputHH = "0" + inputHH;
                 inputMM = "0" + inputMM;
                 timeTodayEvent = inputHH.substring(inputHH.length() - 2) + inputMM.substring(inputMM.length() - 2);
@@ -202,7 +201,7 @@ public class ControllerToday implements Controller {
             inputHH = HHedit.getText();
             inputMM = MMedit.getText();
 
-            if (checkTimeFormat()) {
+            if (checkTimeFormat() & !textAreaEventEdit.getText().isEmpty()) {
                 int tempPagenum = pag.getCurrentPageIndex();
 
                 inputHH = "0" + inputHH;
@@ -214,8 +213,9 @@ public class ControllerToday implements Controller {
                 String timeStr = timeTodayEvent;
                 String inputText = textAreaEventEdit.getText();
 
-                onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getNoteID();
-                Note.editNote(entity, ControllerLogin.activeDiary.getToday(), onSelectedNote, timeStr, inputText);
+                onSelectedNote = ControllerLogin.activeDiary.getToday().getListOfNote().get(objectNum).getId();
+                System.out.println(onSelectedNote);
+                Note.editNote(entity, ControllerLogin.activeDiary, onSelectedNote, timeStr, inputText);
                 ControllerLogin.activeAcc = User.getAccount(entity, ControllerLogin.activeUser);
                 ControllerLogin.activeDiary = ControllerLogin.activeAcc.getDiary();
 
@@ -256,20 +256,12 @@ public class ControllerToday implements Controller {
 
         noDel.setOnMouseClicked(mouseEvent -> popupDel.setVisible(false));
 
-        /* Pagination */
-        pag.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                if (!emptyPag[pageIndex] | pageIndex == 0) {
-                    return createPage(pageIndex);
-                }
-                return null;
-            }
-        });
+
     }
 
     private GridPane createPage(int pageIndex) {
         if (emptyPag[pageIndex]) {
+            System.out.println("new GridPane()");
             pageBox[pageIndex] = new GridPane();
             pageBox[pageIndex].setPrefHeight(100.0);
             pageBox[pageIndex].setPrefWidth(413.0);
@@ -341,7 +333,8 @@ public class ControllerToday implements Controller {
     private void eraseDayStoryPane() {
         int i = 0;
         while (pageBox[i] != null) {
-            pageBox[i].getChildren().remove(objCreateEvent);
+            System.out.println("clear pagebox: " +i);
+//            pageBox[i].getChildren().remove(objCreateEvent);
             pageBox[i].getChildren().clear();
             i++;
         }
@@ -349,36 +342,35 @@ public class ControllerToday implements Controller {
 
     private void drawDayStoryPane() {
         paneEvent.clear();
+//        createPage(1);
         for (int i = 0; i < ControllerLogin.activeDiary.getToday().getListOfNote().size(); i++) {
             Note note = ControllerLogin.activeDiary.getToday().getListOfNote().get(i);
             inputHH = note.getTimeStr().substring(0, 2);
             inputMM = note.getTimeStr().substring(2, 4);
             index = i;
-            if (checkTimeFormat()) {
-                timeTodayEvent = inputHH + ":" + inputMM;
+            timeTodayEvent = inputHH + ":" + inputMM;
 
-                page = index / 6;
+            page = index / 6;
 
-                NotePane newNotePane = new NotePane(index, inputHH, inputMM, note.getNoteText(), timeTodayEvent);
-                paneEvent.add(newNotePane);
+            NotePane newNotePane = new NotePane(index, inputHH, inputMM, note.getNoteText(), timeTodayEvent);
+            paneEvent.add(newNotePane);
 
-                objCreateEvent = ((NotePane) paneEvent.get(index)).getNoteBox();
-                GridPane.setMargin(objCreateEvent, new Insets(12, 7, 12, 7));
+            objCreateEvent = ((NotePane) paneEvent.get(index)).getNoteBox();
+            GridPane.setMargin(objCreateEvent, new Insets(12, 7, 12, 7));
 
-                if (index % 6 == 0) {
-                    createPage(page);
-                    pageBox[page].add(objCreateEvent, 0, 0);
-                } else if (index % 6 == 1) {
-                    pageBox[page].add(objCreateEvent, 1, 0);
-                } else if (index % 6 == 2) {
-                    pageBox[page].add(objCreateEvent, 0, 1);
-                } else if (index % 6 == 3) {
-                    pageBox[page].add(objCreateEvent, 1, 1);
-                } else if (index % 6 == 4) {
-                    pageBox[page].add(objCreateEvent, 0, 2);
-                } else {
-                    pageBox[page].add(objCreateEvent, 1, 2);
-                }
+            if (index % 6 == 0) {
+                createPage(page);
+                pageBox[page].add(objCreateEvent, 0, 0);
+            } else if (index % 6 == 1) {
+                pageBox[page].add(objCreateEvent, 1, 0);
+            } else if (index % 6 == 2) {
+                pageBox[page].add(objCreateEvent, 0, 1);
+            } else if (index % 6 == 3) {
+                pageBox[page].add(objCreateEvent, 1, 1);
+            } else if (index % 6 == 4) {
+                pageBox[page].add(objCreateEvent, 0, 2);
+            } else {
+                pageBox[page].add(objCreateEvent, 1, 2);
             }
         }
     }
@@ -398,6 +390,17 @@ public class ControllerToday implements Controller {
         if (ControllerLogin.activeDiary.getToday().getListOfNote() != null) {
             System.out.println("not null");
             drawDayStoryPane();
+
+            /* Pagination */
+            pag.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer pageIndex) {
+                    if (!emptyPag[pageIndex] | pageIndex == 0) {
+                        return createPage(pageIndex);
+                    }
+                    return null;
+                }
+            });
         } else {
             System.out.println("error");
         }

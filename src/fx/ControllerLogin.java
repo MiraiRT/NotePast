@@ -80,5 +80,8 @@ public class ControllerLogin implements Controller {
         username.clear();
         password.clear();
         entity = new EntityDiary();
+        ControllerLogin.activeUser = null;
+        ControllerLogin.activeDiary = null;
+        ControllerLogin.activeAcc = null;
     }
 }
