@@ -13,6 +13,7 @@ public class Tag implements Serializable {
     private int id_Tag;
 
     private int id_Diary;
+
     public int getId_Diary() {
         return id_Diary;
     }
@@ -61,17 +62,34 @@ public class Tag implements Serializable {
         entity.addNoteinTag(diaryID, noteID, name, type);
     }
 
-    public static List<Note> searchTag(String searchInput,Diary diary){
+    public static List<Note> searchTag(String searchInput, Diary diary) {
         List<Tag> allTag = diary.getListOfTag();
         List<Note> result = new ArrayList<>();
-        for(int i = 0; i < allTag.size(); i++) {
-            Tag tag = allTag.get(i);
-            if(searchInput.toLowerCase().equals(tag.getTagName().toLowerCase())){
-                for(Note n : tag.getListOfNote()) {
-                    result.add(n);
+        String searchWord;
+        if (searchInput.substring(0, 1).equals("@") || searchInput.substring(0, 1).equals("#")) {
+            searchWord = searchInput.substring(1);
+            String searchType = searchInput.substring(0, 1);
+            for (int i = 0; i < allTag.size(); i++) {
+                Tag tag = allTag.get(i);
+                if (searchWord.toLowerCase().equals(tag.getTagName().toLowerCase())
+                        && searchType.equals(tag.getTagType())) {
+                    for (Note n : tag.getListOfNote()) {
+                        result.add(n);
+                    }
+                }
+            }
+        } else {
+            searchWord = searchInput;
+            for (int i = 0; i < allTag.size(); i++) {
+                Tag tag = allTag.get(i);
+                if (searchWord.toLowerCase().equals(tag.getTagName().toLowerCase())) {
+                    for (Note n : tag.getListOfNote()) {
+                        result.add(n);
+                    }
                 }
             }
         }
+
         return result;
     }
 
